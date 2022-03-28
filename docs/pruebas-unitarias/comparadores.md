@@ -151,4 +151,4 @@ Nota: la función que arroja una excepción debe invocarse dentro de una funció
 
 Esto es solo una muestra. Para obtener una lista completa de comparadores, consulte los [documentos de referencia](https://vitest.dev/api/).
 
-Una vez que haya aprendido acerca de los comparadores que están disponibles, un buen siguiente paso es verificar cómo [probar el código asíncrono](../).
+Una vez que haya aprendido acerca de los comparadores que están disponibles, un buen siguiente paso es verificar cómo [probar el código asíncrono](pruebas-unitarias/codigo-asincrono.html).
