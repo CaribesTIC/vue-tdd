@@ -8,7 +8,7 @@ El patrón asincrónico más común son las devoluciones de llamada.
 
 Por ejemplo, supongamos que tiene una función `fetchData(callback)` que obtiene algunos datos y llama a `callback(data)` cuando se completa. Desea probar que estos datos devueltos son la cadena `'peanut butter'`.
 
-Supongamos que la función `src/js/fetchData.js` consiste en el siguiente código:
+Supongamos que en nuestro _Servicio de Api_ llamamos a la función `src/apiService/fetchData.js` :
 
 ```js
 export default function (callback) {
@@ -23,7 +23,7 @@ export default function (callback) {
 De forma predeterminada, las pruebas de se completan una vez que llegan al final de su ejecución. Eso significa que esta prueba no funcionará según lo previsto:
 
 ```js
-import fetchData from '@/js/fetchData';
+import fetchData from '@/apiService/fetchData';
 // Don't do this!
 test('the data is peanut butter', () => {
   function callback(data) {
@@ -38,7 +38,7 @@ El problema es que la prueba se completará tan pronto como se complete `fetchDa
 Hay una forma alternativa de prueba que soluciona esto. En lugar de poner la prueba en una función con un argumento vacío, usa un solo argumento llamado `done`. Así se esperará hasta que se llame el callback `done` antes de terminar la prueba.
 
 ```js
-import fetchData from '@/js/jest/callback/fetchData';
+import fetchData from '@/apiService/fetchData';
 
 test('the data is peanut butter', async done => {
   function callback(data) {
@@ -60,4 +60,82 @@ Si la declaración de `expect` falla, arroja un error y no se llama a `done()`. 
 
 Nota: `done()` no debe mezclarse con Promesas, ya que esto tiende a provocar pérdidas de memoria en las pruebas.
 
-## Promises
+## Promesas
+
+Si su código usa promesas, hay una forma más sencilla de manejar las pruebas asincrónicas. Devuelve una promesa de tu prueba y se esperará a que se resuelva esa promesa. Si se rechaza la promesa, la prueba fallará automáticamente.
+
+Por ejemplo, digamos que `fetchData`, en lugar de usar una devolución de llamada, devuelve una promesa que se supone que debe resolverse en la cadena `'peanut butter'`. 
+
+Supongamos que en nuestro _Servicio de Api_ llamamos a la función `src/apiService/fetchData.js` :
+```js
+export default function (req = true) {
+  return new Promise((resolve, reject) => {
+    console.log('Ready....go!');
+    setTimeout(function(){
+      console.log("Time's up -- stop!");
+      req
+        ? resolve("peanut butter")
+        : reject("error");      
+    }, 1000);
+  })
+};
+```
+
+Podríamos probarlo con:
+```js
+import fetchData from '@/apiService/fetchData';
+
+test('the data is peanut butter', () => {
+  return fetchData().then(data => {
+    expect(data).toBe('peanut butter');
+  });
+});
+```
+Asegúrese de devolver la promesa: si omite esta declaración de `return`, su prueba se completará antes de que se resuelva la promesa retornada por `fetchData` y `then()` tenga la oportunidad de ejecutar la devolución de llamada.
+
+Si espera que se rechace una promesa, use el método `.catch`. Asegúrese de agregar `expect.assertions` para verificar que se llame a un cierto número de afirmaciones. De lo contrario, una promesa cumplida no fallaría la prueba.
+
+```js
+import fetchData from '@/apiService/fetchData';
+
+test('the fetch fails with an error', () => {
+  expect.assertions(1);
+  return fetchData(false).catch(e => expect(e).toMatch('error'));
+});
+```
+
+## .resuelve / .rechaza
+
+También puede usar el comparador `.resolves` en su declaración de expectativa, y se esperará a que se resuelva esa promesa. Si se rechaza la promesa, la prueba fallará automáticamente.
+```js
+import fetchData from '@/apiService/fetchData';
+
+test('the data is peanut butter', () => {
+  return expect(fetchData()).resolves.toBe('peanut butter');
+});
+
+// or
+
+test('the data is peanut butter', () => {
+  return expect(fetchData()).resolves.toMatch('peanut butter');
+});
+```
+
+Asegúrese de retornar la afirmación: si omite esta declaración de retorno, su prueba se completará antes de que se resuelva la promesa devuelta por `fetchData` y `then()` tenga la oportunidad de ejecutar la devolución de llamada.
+
+Si espera que se rechace una promesa, use el comparador `.rejects`. Funciona de forma análoga al comparador `.resolves`. Si se cumple la promesa, la prueba fallará automáticamente.
+```js
+import fetchData from '@/apiService/fetchData';
+
+test('the fetch fails with an error', () => {
+  return expect(fetchData(false)).rejects.toBe('error');
+});
+
+// or
+
+test('the fetch fails with an error', () => {
+  return expect(fetchData(false)).rejects.toMatch('error');
+});
+```
+
+## Async/Await
