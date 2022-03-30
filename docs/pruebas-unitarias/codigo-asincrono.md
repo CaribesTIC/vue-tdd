@@ -80,6 +80,7 @@ export default function (req = true) {
   })
 };
 ```
+**Nota:** Tomemos en cuenta que para el llamado del código anterior usaremos el argumento `req` con el valor `true` de manera predeterminada. Cuando queramos que la prueba falle le pasaremos el valor `false`.
 
 Podríamos probarlo con:
 ```js
@@ -138,4 +139,46 @@ test('the fetch fails with an error', () => {
 });
 ```
 
-## Async/Await
+## Asíncrono/Espera
+
+Alternativamente, puede usar `async` y `await` en sus pruebas. Para escribir una prueba asíncrona, use la palabra clave `async` delante de la función que se pasó a prueba. Por ejemplo, el mismo escenario de `fetchData` se puede probar con:
+
+```js
+import fetchData from '@/apiService/fetchData';
+
+test('the data is peanut butter', async () => {
+  const data = await fetchData();
+  expect(data).toBe('peanut butter');
+});
+
+test('the fetch fails with an error', async () => {
+  expect.assertions(1);
+  try {
+    await fetchData(false);
+  } catch (e) {
+    expect(e).toMatch('error');
+  }
+});
+```
+Puede combinar `async` y `await` con `.resolves` o `.rejects`.
+
+```js
+test('the data is peanut butter', async () => {
+  await expect(fetchData()).resolves.toBe('peanut butter');
+});
+
+test('the data is peanut butter', async () => {
+  await expect(fetchData()).resolves.toMatch('peanut butter');
+});
+
+test('the fetch fails with an error', async () => {
+  await expect(fetchData(false)).rejects.toBe('error');
+});
+
+test('the fetch fails with an error', async () => {
+  await expect(fetchData(false)).rejects.toMatch('error');
+});
+```
+En estos casos, `async` y `await` son efectivamente azúcar sintáctico para la misma lógica que usa el ejemplo de promesas.
+
+Ninguno de estas formas es particularmente superior a las demás, y puede mezclarlos y combinarlos en una base de código o incluso en un solo archivo. Solo depende del estilo que sienta que hace que sus pruebas sean más simples.
