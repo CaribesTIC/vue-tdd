@@ -13,7 +13,7 @@ module.exports = {
         sidebarDepth: 1,    // optional, defaults to 1
         children: [
           { text: 'Test Driven Development', link: '/comenzar/tdd' },
-          { text: 'Entorno de prueba', link: '/comenzar/entorno-de-prueba' }          
+          { text: 'Entorno de Prueba', link: '/comenzar/entorno-de-prueba' }          
         ]
       }, {
         text: 'Pruebas Unitarias',   // required
@@ -22,7 +22,8 @@ module.exports = {
         children: [
           { text: 'Pruebas Unitarias', link: '/pruebas-unitarias/pruebas-unitarias' },
           { text: 'Comparadores', link: '/pruebas-unitarias/comparadores' },
-          { text: 'Código asíncrono', link: '/pruebas-unitarias/codigo-asincrono' }
+          { text: 'Código Asíncrono', link: '/pruebas-unitarias/codigo-asincrono' },
+          { text: 'Configuración y Desmontaje', link: '/pruebas-unitarias/configuracion-y-desmontaje' }
         ]
       }
     ]
