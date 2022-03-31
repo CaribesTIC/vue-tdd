@@ -12,18 +12,27 @@ module.exports = {
         path: '/comenzar/',      // optional, link of the title, which should be an absolute path and must exist        
         sidebarDepth: 1,    // optional, defaults to 1
         children: [
-          { text: 'Test Driven Development', link: '/comenzar/tdd' },
+          { text: 'Desarrollo Dirigido por Pruebas', link: '/comenzar/tdd' },
+          { text: 'Pruebas Unitarias', link: '/comenzar/pruebas-unitarias' },
           { text: 'Entorno de Prueba', link: '/comenzar/entorno-de-prueba' }          
         ]
       }, {
-        text: 'Pruebas Unitarias',   // required
-        path: '/pruebas-unitarias/',
+        text: 'Vitest',   // required
+        path: '/vitest/',
         collapsable: false, // optional, defaults to true        
         children: [
-          { text: 'Pruebas Unitarias', link: '/pruebas-unitarias/pruebas-unitarias' },
-          { text: 'Comparadores', link: '/pruebas-unitarias/comparadores' },
-          { text: 'Código Asíncrono', link: '/pruebas-unitarias/codigo-asincrono' },
-          { text: 'Configuración y Desmontaje', link: '/pruebas-unitarias/configuracion-y-desmontaje' }
+          
+          { text: 'Comparadores', link: '/vitest/comparadores' },
+          { text: 'Código Asíncrono', link: '/vitest/codigo-asincrono' },
+          { text: 'Configuración y Desmontaje', link: '/vitest/configuracion-y-desmontaje' },
+          { text: 'Funciones Simuladas', link: '/vitest/funciones-simuladas' }
+        ]
+      },{
+        text: 'Vue Tests Utils',
+        path: '/vtu/',
+        collapsable: false,     
+        children: [
+          { text: 'Vue Tests Utils', link: '/vtu/vtu' }
         ]
       }
     ]

@@ -1,8 +1,8 @@
-# Test Driven Development (TDD)
+# Desarrollo Dirigido por Pruebas
 
-## Desarrollo dirigido por pruebas
+## Test Driven Development (TDD)
 
-Test Driven Development (TDD), es una técnica de ingeniería de software, que dirige el desarrollo de un producto a través de la escritura de pruebas, generalmente pruebas unitarias.
+Es una técnica de ingeniería de software, que dirige el desarrollo de un producto a través de la escritura de pruebas, generalmente pruebas unitarias.
 
 TDD fue desarrollado por Kent Beck a fines de la década de 1990 y es parte de la metodología XP (Programación eXtrema). Su autor y los seguidores de la TDD aseguran que con esta técnica se obtiene un código más tolerante al cambio, robusto, seguro, más económico de mantener e, incluso, una vez que te acostumbras a aplicarlo, promete mayor velocidad a la hora de desarrollar.
 

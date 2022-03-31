@@ -1,7 +1,7 @@
 # Entorno de prueba
 
 Para preparar su proyecto y el entorno de prueba, ejecute lo siguiente en la línea de comando:
-```js
+```
 npm init vite@latest
 npm i -D vitest
 npm i -D @vue/test-utils@next
@@ -52,11 +52,11 @@ test('adds 1 + 2 to equal 3', () => {
 
 Ejecute en su terminal:
 
-```js
+```
 npm run test
 ```
 En pocos segundos aparecerá en su terminal lo siguiente:
-```js
+```
 > vue-tdd@0.0.0 test
 > vitest
 
