@@ -8,7 +8,7 @@ Si tiene algún trabajo que debe hacer repetidamente para muchas pruebas, puede 
 
 Por ejemplo, digamos que varias pruebas interactúan con una base de datos de ciudades. Tiene un método `initializeCityDatabase()` que debe llamarse antes de cada una de estas pruebas y un método `clearCityDatabase()` que debe llamarse después de cada una de estas pruebas.
 
-Supongamos que dichos métodos están en el siguiente módulo `src/modules/City.js`:
+Supongamos que dichos métodos están en el siguiente módulo `src/models/City.js`:
 
 ```js
 export const initializeDatabase = () => {
@@ -45,7 +45,7 @@ export const isIt = req => {
 Puedes hacer esto con:
 
 ```js
-import * as City from '@/modules/City';
+import * as City from '@/models/City';
 
 beforeEach(() => {
   City.initializeDatabase();
@@ -77,7 +77,7 @@ beforeEach(() => {
 En algunos casos, solo necesita realizar la configuración una vez, al principio de un archivo. Esto puede ser especialmente molesto cuando la configuración es asíncrona, por lo que no puede hacerlo en línea. Existe `beforeAll` y `afterAll` para manejar esta situación.
 
 ```js
-import * as City from '@/modules/City';
+import * as City from '@/models/City';
 
 beforeAll(() => {
   City.initializeDatabase();
@@ -103,7 +103,7 @@ De forma predeterminada, los bloques `beforeAll` y `afterAll` se aplican a todas
 Por ejemplo, podríamos hacer diferentes configuraciones para diferentes pruebas:
 
 ```js
-import * as City from '@/modules/City';
+import * as City from '@/models/City';
 
 describe('matching cities with each', () => {
   beforeEach(() => {

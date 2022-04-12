@@ -166,7 +166,7 @@ La mayoría de los ejemplos del mundo real en realidad implican obtener una func
 
 Supongamos que tenemos una clase que obtiene usuarios de nuestra API. La clase usa axios para llamar a la API y luego devuelve el atributo de datos que contiene a todos los usuarios:
 
-`users.js`
+`models/Users.js`
 
 ```js
 import axios from 'axios';
@@ -186,7 +186,7 @@ Una vez que simulamos el módulo, podemos proporcionar un `mockResolvedValue` pa
 `users.test.js`
 ```js
 import axios from 'axios';
-import Users from '@/models/users';
+import Users from '@/models/Users';
 
 //vi.mock('axios');
 
