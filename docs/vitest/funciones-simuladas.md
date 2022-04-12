@@ -186,7 +186,7 @@ Una vez que simulamos el módulo, podemos proporcionar un `mockResolvedValue` pa
 `users.test.js`
 ```js
 import axios from 'axios';
-import Users from '@/js/jest/users';
+import Users from '@/models/users';
 
 //vi.mock('axios');
 
