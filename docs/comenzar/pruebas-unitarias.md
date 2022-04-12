@@ -34,7 +34,7 @@ Una vez te acostumbres a realizar este tipo de pruebas irás descubriendo todas 
 - **Las pruebas unitarias deberían ser independientes.** Si se produce cualquier tipo de mejora o cambio en los requerimientos, las pruebas unitarias no deberían verse afectados.
 - **Prueba sólo un código a la vez.**
 - **Sigue un esquema claro.** Puede parecer algo secundario, pero no lo es. Sé también consistente a la hora de nombrar tus unit tests.
-- ** Cualquier cambio necesita pasar el test.** En el caso de producirse un cambio en el código de cualquier módulo, asegúrate de que hay una prueba unitaria que se corresponda con ese módulo y que este pasa las pruebas antes de cambiar la implementación.
+- **Cualquier cambio necesita pasar el test.** En el caso de producirse un cambio en el código de cualquier módulo, asegúrate de que hay una prueba unitaria que se corresponda con ese módulo y que este pasa las pruebas antes de cambiar la implementación.
 - **Corrige los bugs identificados durante las pruebas antes de continuar.** Asegúrate de realizar esta corrección antes de proseguir con la siguiente fase del ciclo de vida del desarrollo de software.
 - **Acostúmbrate a realizar pruebas regularmente mientras programas.** Cuanto más código escribas sin testar, más caminos tendrás que revisar para encontrar errores.
 
