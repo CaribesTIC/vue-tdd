@@ -10,6 +10,8 @@ npm i -D @testing-library/jest-dom
 npm i vuex@next --save
 npm i vue-router@4
 ```
+> **Nota:** Haremos algunos ejercicios con [Vuex4](https://vuex.vuejs.org/) más adelante, tomando en cuaenta que actualmente [Pinia](https://pinia.vuejs.org/) es la biblioteca para el manejo de estado recomendado por el core de Vue. Por lo que no se extrañe ver aquí tambien documentación de pruebas con Pinia.
+
 Luego actualice el archivo `vite.config.js` con lo siguiente:
 ```js
 /// <reference types="vitest" />
@@ -47,7 +49,9 @@ Si necesitas indagar más al respecto puedes hacerlo en la documentación oficia
 
 ---
 
-**Comencemos** escribiendo una prueba para una función hipotética que suma dos números. Dentro de la carpeta raiz del proyecto, creemos la carpeta `tests`. Aquí colocaremos todos nuestros archivos de pruebas. Nuestra estructura de carpetas debería lucir de la siguiente manera:
+**Comencemos** escribiendo una prueba para una función hipotética que suma dos números.
+
+Dentro de la carpeta raiz del proyecto, creemos la carpeta `tests`. Aquí colocaremos todos nuestros archivos de pruebas. Nuestra estructura de carpetas debería lucir de la siguiente manera:
 ```
 vue-tdd/
 ├── node_modules/
@@ -78,7 +82,7 @@ Ejecute en su terminal:
 ```
 npm run test
 ```
-No se sorprenda si le aparece un diálogo como el siguiente:
+No se sorprenda si en la terminal aparece un diálogo como el siguiente:
 
 ```
 > vue-tdd@0.0.0 test
@@ -88,11 +92,11 @@ No se sorprenda si le aparece un diálogo como el siguiente:
                                                                                                                                      
 ? Do you want to install jsdom? › (y/N)
 ```
-Nos dice que dentro de nuestros paquetes no se encuentra `jsdom`. Recordemos que en el archivo `config.vite.js` declaramos una sección llamada `test` la cual contiene el valor `"jsdom"` establecido en la propiedad `environment`.
+La terminal nos dice que dentro de nuestros paquetes no se encuentra `jsdom`. Recordemos que en el archivo `config.vite.js` declaramos una sección llamada `test` la cual contiene el valor `"jsdom"` establecido en la propiedad `environment`.
 
 [jsdom](https://www.npmjs.com/package/jsdom) es una implementación de JavaScript puro de muchos estándares web, para usar con Node.js. En general, el objetivo del proyecto es emular lo suficiente de un subconjunto de un navegador web para que sea útil para probar y extraer aplicaciones web del mundo real.
 
-Digámosle a la maquina que sí queremos instalar `jsdom` y esperemos que efectue su instalación.
+Por las razones antes mencionadas, digámosle a la maquina que sí queremos instalar `jsdom` y esperemos que efectue su instalación.
 
 Una vez instalado `jsdom` la terminal nos pedirá que volvamos a ejecutar el comando para comenzar. Es decir, `npm run test`.
 
@@ -113,4 +117,4 @@ Test Files  1 passed (1)
  PASS  Waiting for file changes...
        press h to show help, press q to quit
 ```
-Realizamos nuestra primera prueba, es momento para empezar a hablar de las pruebas unitarias.
+Excelente, ya realizamos nuestra primera prueba, ahora es momento de profundizar en las pruebas unitarias.

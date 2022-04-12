@@ -6,9 +6,9 @@ Es común en JavaScript que el código se ejecute de forma asíncrona. Cuando ti
 
 El patrón asincrónico más común son las devoluciones de llamada.
 
-Por ejemplo, supongamos que tiene una función `fetchData(callback)` que obtiene algunos datos y llama a `callback(data)` cuando se completa. Desea probar que estos datos devueltos son la cadena `'peanut butter'`.
+Supongamos que en nuestro _Servicio de Api_ tenemos una función `fetchData(callback)` que obtiene algunos datos y llama a `callback(data)` cuando se completa. Deseamos probar que estos datos devueltos son la cadena `'peanut butter'`.
 
-Supongamos que en nuestro _Servicio de Api_ llamamos a la función `src/apiService/fetchData.js` :
+Ejemplo: `src/apiService/fetchData.js` :
 
 ```js
 export default function (callback) {
@@ -20,7 +20,7 @@ export default function (callback) {
 }
 ```
 
-De forma predeterminada, las pruebas de se completan una vez que llegan al final de su ejecución. Eso significa que esta prueba no funcionará según lo previsto:
+De forma predeterminada, las pruebas se completan una vez que llegan al final de su ejecución. Eso significa que esta prueba no funcionará según lo previsto:
 
 ```js
 import fetchData from '@/apiService/fetchData';
@@ -56,9 +56,9 @@ test('the data is peanut butter', async done => {
 ```
 Si nunca se llama a `done()`, la prueba fallará (con un error de tiempo de espera), que es lo que desea que suceda.
 
-Si la declaración de `expect` falla, arroja un error y no se llama a `done()`. Si queremos ver en el registro de prueba por qué falló, tenemos que envolver `expect` en un bloque `try` y pasar el error en el bloque `catch` a `done`. De lo contrario, terminaremos con un error de tiempo de espera opaco que no muestra qué valor recibió `expect(data)`.
+Si la declaración de `expect` falla, arroja un error y no se llama a `done()`. Si queremos ver en el registro de prueba porqué falló, tenemos que envolver `expect` en un bloque `try` y pasar el error en el bloque `catch` a `done`. De lo contrario, terminaremos con un error de tiempo de espera opaco que no muestra qué valor recibió `expect(data)`.
 
-Nota: `done()` no debe mezclarse con Promesas, ya que esto tiende a provocar pérdidas de memoria en las pruebas.
+>**Nota:** `done()` no debe mezclarse con Promesas, ya que esto tiende a provocar pérdidas de memoria en las pruebas.
 
 ## Promesas
 
@@ -66,7 +66,7 @@ Si su código usa promesas, hay una forma más sencilla de manejar las pruebas a
 
 Por ejemplo, digamos que `fetchData`, en lugar de usar una devolución de llamada, devuelve una promesa que se supone que debe resolverse en la cadena `'peanut butter'`. 
 
-Supongamos que en nuestro _Servicio de Api_ llamamos a la función `src/apiService/fetchData.js` :
+Supongamos que en nuestro _Servicio de Api_ - del archivo `src/apiService/fetchData.js` - llamamos a la siguiente función:
 ```js
 export default function (req = true) {
   return new Promise((resolve, reject) => {
@@ -80,7 +80,7 @@ export default function (req = true) {
   })
 };
 ```
-**Nota:** Tomemos en cuenta que para el llamado del código anterior usaremos el argumento `req` con el valor `true` de manera predeterminada. Cuando queramos que la prueba falle le pasaremos el valor `false`.
+**Nota:** Tomemos en cuenta que para el llamado del código anterior usaremos el argumento `req` con el valor `true` de manera predeterminada para que la promesa sea exitosa (`resolve`). De otro modo, cuando queramos que la prueba falle (`reject`) le pasaremos el valor `false`.
 
 Podríamos probarlo con:
 ```js

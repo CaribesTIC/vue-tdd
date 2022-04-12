@@ -1,7 +1,6 @@
 # Uso de comparadores
 
-Los "comparadores" permiten probar valores de diferentes maneras. Este documento presentará algunos emparejadores de uso común. Para ver la lista completa, consulte el [`expect API doc`](https://vitest.dev/api/#expect). 
-
+Los "comparadores" permiten probar valores de diferentes maneras. Este documento presentará algunos comparadores de uso común. Para ver la lista completa, consulte el [`expect API doc`](https://vitest.dev/api/#expect).
 
 ## Comparadores comunes
 
@@ -12,8 +11,7 @@ test('two plus two is four', () => {
   expect(2 + 2).toBe(4);
 });
 ```
-
-En este código, `expect(2 + 2)` devuelve un objeto de "expectativa". Por lo general, no hará mucho con estos objetos de expectativa, excepto emparejadores de llamadas en ellos. En este código, `.toBe(4)` es el comparador. Cuando es ejecutado, realiza un seguimiento de todos los comparadores que fallan para poder imprimir mensajes de error.
+En este código, `expect(2 + 2)` devuelve un objeto de "expectativa". Por lo general, no hará mucho con estos objetos de expectativa, excepto comparadores de llamadas en ellos. En este código, `.toBe(4)` es el comparador. Cuando es ejecutado, realiza un seguimiento de todos los comparadores que fallan para poder imprimir mensajes de error.
 
 `toBe` usa `Object.is` para probar la igualdad exacta. Si desea verificar el valor de un objeto, use `toEqual` en su lugar:
 ```js
@@ -23,7 +21,7 @@ test('object assignment', () => {
   expect(data).toEqual({one: 1, two: 2});
 });
 ```
-`toEqual` verifica recursivamente cada campo de un objeto o matriz.
+`toEqual` verifica recursivamente cada campo de un objeto o arreglo.
 
 También puede probar el opuesto de un comparador:
 
@@ -43,8 +41,8 @@ En las pruebas, a veces necesita distinguir entre indefinido, nulo y falso, pero
 - `toBeNull` solo coincide con nulo
 - `toBeUndefined` coincide solo con indefinido
 - `toBeDefined` es lo contrario de toBeUndefined
-- `toBeTruthy` coincide con todo lo que una instrucción if trata como verdadero
-- `toBeFalsy` coincide con cualquier cosa que una instrucción if trate como falsa
+- `toBeTruthy` coincide con todo lo que una instrucción `if` trata como verdadero
+- `toBeFalsy` coincide con cualquier cosa que una instrucción `if` trata como falsa
 
 Por ejemplo:
 
@@ -91,7 +89,7 @@ Para la igualdad de punto flotante, use `toBeCloseTo` en lugar de `toEqual`, por
 ```js
 test('adding floating point numbers', () => {
   const value = 0.1 + 0.2;
-  //expect(value).toBe(0.3);           This won't work because of rounding error
+  //expect(value).toBe(0.3);      This won't work because of rounding error
   expect(value).toBeCloseTo(0.3); // This works.
 });
 ```
@@ -145,7 +143,7 @@ test('compiling android goes as expected', () => {
   expect(() => compileAndroidCode()).toThrowError(/JDK/);
 });
 ```
-Nota: la función que arroja una excepción debe invocarse dentro de una función de ajuste; de lo contrario, la aserción `toThrow` fallará.
+Nota: la función que arroja una excepción debe invocarse dentro de una función de ajuste - de lo contrario, la aserción `toThrow` fallará.
 
 ## Y más
 
