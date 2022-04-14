@@ -22,7 +22,7 @@ module.exports = {
         path: '/vitest/',
         collapsable: false, // optional, defaults to true        
         children: [
-          { text: '¿Porqué Vitest?', link: '/vitest/porque-vitest' },
+          { text: '¿Por qué Vitest?', link: '/vitest/porque-vitest' },
           { text: 'Comparadores', link: '/vitest/comparadores' },
           { text: 'Código Asíncrono', link: '/vitest/codigo-asincrono' },
           { text: 'Configuración y Desmontaje', link: '/vitest/configuracion-y-desmontaje' },
@@ -35,7 +35,12 @@ module.exports = {
         children: [
           { text: '¿Qué es Vue Test Utils?', link: '/vtu/intro' },
           { text: 'Un Curso Acelerado', link: '/vtu/un-curso-acelerado' },
-          { text: 'Renderizado Condicional', link: '/vtu/renderizado-condicional' }
+          { text: 'Renderizado Condicional', link: '/vtu/renderizado-condicional' },
+          
+          
+          
+          
+          { text: 'Pasando Datos a Componentes', link: '/vtu/pasando-datos-a-componentes' }
         ]
       }
     ]
