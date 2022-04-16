@@ -20,7 +20,7 @@ module.exports = {
       }, {
         text: 'Vitest',   // required
         path: '/vitest/',
-        collapsable: true, // optional, defaults to true        
+        collapsable: false, // optional, defaults to true        
         children: [
           { text: '¿Por qué Vitest?', link: '/vitest/porque-vitest' },
           { text: 'Comparadores', link: '/vitest/comparadores' },
@@ -31,24 +31,14 @@ module.exports = {
       },{
         text: 'Vue Tests Utils',
         path: '/vtu/',
-        collapsable: true,     
+        collapsable: false,     
         children: [
-          {
-            text: 'Esencial',
-            path: '/vtu/esencial/',
-            collapsable: true,     
-            children: [
-              { text: '¿Qué es Vue Test Utils?', link: '/vtu/esencial/intro' },
-              { text: 'Un Curso Acelerado', link: '/vtu/esencial/un-curso-acelerado' },
-              { text: 'Renderizado Condicional', link: '/vtu/esencial/renderizado-condicional' },
-              { text: 'Probando el Manejo de Eventos', link: '/vtu/esencial/manejo-de-eventos' },              
-              { text: 'Probando Formularios', link: '/vtu/esencial/formularios' },              
-              { text: 'Pasando Datos a Componentes', link: '/vtu/esencial/pasando-datos-a-componentes' }
-            ]
-          }
+          { text: '¿Qué es Vue Test Utils?', link: '/vtu/intro' },
+          { text: 'Un Curso Acelerado', link: '/vtu/un-curso-acelerado' },
+          { text: 'Renderizado Condicional', link: '/vtu/renderizado-condicional' },
+          { text: 'Pasando Datos a Componentes', link: '/vtu/pasando-datos-a-componentes' }
         ]
       }
     ]
   }
 }
-

@@ -244,7 +244,7 @@ En la fase de _afirmación_, hacemos afirmaciones sobre cómo esperamos que sea 
 
 Casi todas las pruebas seguirán estas tres fases. No necesita separarlos con nuevas líneas como lo hace esta guía, pero es bueno tener en cuenta estas tres fases al escribir sus pruebas.
 
-# Conclusión
+## Conclusión
 - Use `mount()` para renderizar un componente.
 - Utilice `get()` y `findAll()` para consultar el DOM.
 - `trigger()` y `setValue()` son ayudantes para simular la entrada del usuario.

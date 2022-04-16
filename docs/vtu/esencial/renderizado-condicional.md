@@ -87,7 +87,7 @@ test('renders an admin link', () => {
 ```
 Si tiene otras propiedades en `data` - no se preocupe: Vue Test Utils fusionará las dos. La `data` de las opciones de montaje tendrán prioridad sobre los valores predeterminados.
 
-Para saber qué otras opciones de montaje existen, consulte [Pasando Datos](../vtu/pasando-datos-a-componentes.html) o consulte las [opciones de montaje](https://test-utils.vuejs.org/api/).
+Para saber qué otras opciones de montaje existen, consulte [Pasando Datos](../esencial/pasando-datos-a-componentes.html) o consulte las [opciones de montaje](https://test-utils.vuejs.org/api/).
 
 ## Comprobación de la visibilidad de los elementos
 
