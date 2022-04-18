@@ -50,7 +50,7 @@ test('renders a todo', () => {
   expect(todo.text()).toBe('Learn Vue.js 3')
 })
 ```
-Comenzamos importando el montaje: esta es la forma principal de representar un componente en VTU. Declara una prueba utilizando la función de prueba con una breve descripción de la prueba. Las funciones `test` y `expect` están disponibles globalmente en la mayoría de los ejecutores de pruebas (este ejemplo usa [Vitest](https://vitest.dev/)). Si `test` y `expect` parece confuso, [aquí](../comenzar/tdd.html) encontraras lo que debes conocer antes de probar componentes de Vue.
+Comenzamos importando el montaje: esta es la forma principal de representar un componente en VTU. Declara una prueba utilizando la función de prueba con una breve descripción de la prueba. Las funciones `test` y `expect` están disponibles globalmente en la mayoría de los ejecutores de pruebas (este ejemplo usa [Vitest](https://vitest.dev/)). Si `test` y `expect` parece confuso, [aquí](../../comenzar/tdd.html) encontraras lo que debes conocer antes de probar componentes de Vue.
 
 A continuación, llamamos a `mount` y pasamos el componente como primer argumento; esto es algo que casi todas las pruebas (de componentes Vue) que escribas harán. Por convención, asignamos el resultado a una variable llamada `wrapper`, ya que `mount` proporciona un "envoltorio" simple alrededor de la aplicación con algunos métodos convenientes para realizar pruebas.
 
