@@ -43,9 +43,17 @@ module.exports = {
               { text: 'Renderizado Condicional', link: '/vtu/esencial/renderizado-condicional' },
               { text: 'Probando el Manejo de Eventos', link: '/vtu/esencial/manejo-de-eventos' },              
               { text: 'Probando Formularios', link: '/vtu/esencial/formularios' },              
-              { text: 'Pasando Datos a Componentes', link: '/vtu/esencial/pasando-datos-a-componentes' }
+              { text: 'Pasando Datos a Componentes', link: '/vtu/esencial/pasando-datos-a-componentes' },
+              { text: 'Escribir componentes que sean fáciles de probar', link: '/vtu/esencial/escribir-componentes-que-sean faciles-de-probar' }
             ]
-          }
+          }, {
+            text: 'Vue Test Utils en-profundidad',
+            path: '/vtu/vue-test-utils-en-profundidad/',
+            collapsable: true,     
+            children: [
+              { text: 'Realizando solicitudes HTTP', link: '/vtu/vue-test-utils-en-profundidad/solicitudes-http' }
+            ]
+          },
         ]
       }
     ]
