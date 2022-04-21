@@ -52,7 +52,8 @@ module.exports = {
             collapsable: true,     
             children: [
               { text: 'Ranuras', link: '/vtu/vue-test-utils-en-profundidad/ranuras' },
-              { text: 'Realizando solicitudes HTTP', link: '/vtu/vue-test-utils-en-profundidad/solicitudes-http' }
+              { text: 'Comportamiento Asíncrono', link: '/vtu/vue-test-utils-en-profundidad/comportamiento-asincrono'},              
+              { text: 'Realizando Solicitudes HTTP', link: '/vtu/vue-test-utils-en-profundidad/solicitudes-http' }
             ]
           },
         ]
