@@ -51,6 +51,7 @@ module.exports = {
             path: '/vtu/vue-test-utils-en-profundidad/',
             collapsable: true,     
             children: [
+              { text: 'Ranuras', link: '/vtu/vue-test-utils-en-profundidad/ranuras' },
               { text: 'Realizando solicitudes HTTP', link: '/vtu/vue-test-utils-en-profundidad/solicitudes-http' }
             ]
           },
