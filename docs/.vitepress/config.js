@@ -53,7 +53,8 @@ module.exports = {
             children: [
               { text: 'Ranuras', link: '/vtu/vue-test-utils-en-profundidad/ranuras' },
               { text: 'Comportamiento Asíncrono', link: '/vtu/vue-test-utils-en-profundidad/comportamiento-asincrono'},              
-              { text: 'Realizando Solicitudes HTTP', link: '/vtu/vue-test-utils-en-profundidad/solicitudes-http' }
+              { text: 'Realizando Solicitudes HTTP', link: '/vtu/vue-test-utils-en-profundidad/solicitudes-http' },
+              { text: 'Probando Vuex', link: '/vtu/vue-test-utils-en-profundidad/probando-vuex' }
             ]
           },
         ]
