@@ -55,6 +55,7 @@ module.exports = {
               { text: 'Comportamiento Asíncrono', link: '/vtu/vue-test-utils-en-profundidad/comportamiento-asincrono'},              
               { text: 'Realizando Solicitudes HTTP', link: '/vtu/vue-test-utils-en-profundidad/solicitudes-http' },              
               { text: 'Transiciones', link: '/vtu/vue-test-utils-en-profundidad/transiciones' },
+              { text: 'Instancia de Componente', link: '/vtu/vue-test-utils-en-profundidad/instancia-de-componente' },
               { text: 'Probando Vuex', link: '/vtu/vue-test-utils-en-profundidad/probando-vuex' }
             ]
           },
