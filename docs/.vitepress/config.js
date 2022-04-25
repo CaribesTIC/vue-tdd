@@ -56,6 +56,7 @@ module.exports = {
               { text: 'Realizando Solicitudes HTTP', link: '/vtu/vue-test-utils-en-profundidad/solicitudes-http' },              
               { text: 'Transiciones', link: '/vtu/vue-test-utils-en-profundidad/transiciones' },
               { text: 'Instancia de Componente', link: '/vtu/vue-test-utils-en-profundidad/instancia-de-componente' },
+              { text: 'Reusabilidad & Composición', link: '/vtu/vue-test-utils-en-profundidad/reusabilidad-y-composicion' },
               { text: 'Probando Vuex', link: '/vtu/vue-test-utils-en-profundidad/probando-vuex' }
             ]
           },
