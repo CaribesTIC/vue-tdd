@@ -139,7 +139,7 @@ En lugar de usar una tienda Vuex real e instalarla a través de `global.plugins`
 
 Si bien puede parecer conveniente probar la tienda de forma aislada, tenga en cuenta que no le avisará si rompe su tienda Vuex. Considere cuidadosamente si quiere simular la tienda Vuex o usar una real, y comprenda las compensaciones.
 
-# Probar Vuex de forma aislada
+## Probar Vuex de forma aislada
 
 Es posible que desee probar sus mutaciones o acciones de Vuex en total aislamiento, especialmente si son complejas. No necesita Vue Test Utils para esto, ya que una tienda Vuex es solo JavaScript normal. Así es como puede probar la mutación de `increment` sin Vue Test Utils:
 

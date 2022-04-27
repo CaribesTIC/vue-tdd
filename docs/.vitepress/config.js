@@ -57,7 +57,9 @@ module.exports = {
               { text: 'Transiciones', link: '/vtu/vue-test-utils-en-profundidad/transiciones' },
               { text: 'Instancia de Componente', link: '/vtu/vue-test-utils-en-profundidad/instancia-de-componente' },
               { text: 'Reusabilidad & Composición', link: '/vtu/vue-test-utils-en-profundidad/reusabilidad-y-composicion' },
-              { text: 'Probando Vuex', link: '/vtu/vue-test-utils-en-profundidad/probando-vuex' }
+              { text: 'Probando Vuex', link: '/vtu/vue-test-utils-en-profundidad/probando-vuex' },
+              { text: 'Un poco más sobre Vuex', link: '/vtu/vue-test-utils-en-profundidad/un-poco-mas-sobre-vuex' },
+              { text: 'Probando VueRouter', link: '/vtu/vue-test-utils-en-profundidad/probando-vuerouter' }              
             ]
           },
         ]
