@@ -14,8 +14,7 @@ module.exports = {
         sidebarDepth: 1,    // optional, defaults to 1
         children: [
           { text: 'Desarrollo Dirigido por Pruebas', link: '/comenzar/tdd' },
-          { text: 'Pruebas Unitarias', link: '/comenzar/pruebas-unitarias' },
-          { text: 'Entorno de Prueba', link: '/comenzar/entorno-de-prueba' }          
+          { text: 'Pruebas Unitarias', link: '/comenzar/pruebas-unitarias' }                    
         ]
       }, {
         text: 'Vitest',   // required
@@ -23,6 +22,7 @@ module.exports = {
         collapsable: true, // optional, defaults to true        
         children: [
           { text: '¿Por qué Vitest?', link: '/vitest/porque-vitest' },
+          { text: 'Entorno de Prueba', link: '/vitest/entorno-de-prueba' },
           { text: 'Comparadores', link: '/vitest/comparadores' },
           { text: 'Código Asíncrono', link: '/vitest/codigo-asincrono' },
           { text: 'Configuración y Desmontaje', link: '/vitest/configuracion-y-desmontaje' },
@@ -39,6 +39,7 @@ module.exports = {
             collapsable: true,     
             children: [
               { text: '¿Qué es Vue Test Utils?', link: '/vtu/esencial/intro' },
+              { text: 'Entorno de Prueba', link: '/vtu/esencial/entorno-de-prueba' },
               { text: 'Un Curso Acelerado', link: '/vtu/esencial/un-curso-acelerado' },
               { text: 'Renderizado Condicional', link: '/vtu/esencial/renderizado-condicional' },
               { text: 'Probando el Manejo de Eventos', link: '/vtu/esencial/manejo-de-eventos' },              
