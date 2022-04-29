@@ -64,7 +64,28 @@ module.exports = {
             ]
           },
         ]
-      }
+      }, {
+        text: 'Vue Testing Library',   // required
+        path: '/vtl/',
+        collapsable: true, // optional, defaults to true     
+        children: [
+          {
+            text: 'documentacion',
+            path: '/vtl/documentacion/',
+            collapsable: true,     
+            children: [
+              { text: '¿Qué es Vue Testing Library?', link: '/vtl/documentacion/intro' },
+            ]
+          }, {
+            text: 'Diseño Dirigido por Pruebas',
+            path: '/vtl/ddp/',
+            collapsable: true,     
+            children: [
+                { text: 'Introducción', link: '/vtl/ddp/intro' },          
+            ]
+          },
+        ]
+      }      
     ]
   }
 }
