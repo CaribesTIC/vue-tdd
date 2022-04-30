@@ -81,7 +81,8 @@ module.exports = {
             path: '/vtl/ddp/',
             collapsable: true,     
             children: [
-                { text: 'Introducción', link: '/vtl/ddp/intro' },          
+                { text: 'Introducción', link: '/vtl/ddp/intro' },  
+                { text: 'Patrones para Probar Accesorios', link: '/vtl/ddp/patrones-para-probar-accesorios' },        
             ]
           },
         ]
