@@ -60,7 +60,7 @@ module.exports = {
               { text: 'Reusabilidad & Composición', link: '/vtu/vue-test-utils-en-profundidad/reusabilidad-y-composicion' },
               { text: 'Probando Vuex', link: '/vtu/vue-test-utils-en-profundidad/probando-vuex' },
               { text: 'Un poco más sobre Vuex', link: '/vtu/vue-test-utils-en-profundidad/un-poco-mas-sobre-vuex' },
-              { text: 'Probando VueRouter', link: '/vtu/vue-test-utils-en-profundidad/probando-vuerouter' }              
+              { text: 'Probando Vue Router', link: '/vtu/vue-test-utils-en-profundidad/probando-vue-router' }              
             ]
           },
         ]

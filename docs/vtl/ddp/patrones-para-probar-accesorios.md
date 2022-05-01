@@ -5,12 +5,12 @@ En esta sección, exploramos los accesorios y el tipo de pruebas que quizás des
 >Considere una de las grandes ideas detrás de marcos como Vue y React:
 **_"Su interfaz de usuario es una función de sus datos"_.**
 
-Esta idea viene en muchas formas; otro es "interfaces impulsadas por datos". Básicamente, su interfaz de usuario (IU) debe estar determinada por los datos presentes. Dados los datos X, su interfaz de usuario debería ser Y. En informática, esto se conoce como determinismo.
+Esta idea viene en muchas formas; otro es _"interfaces impulsadas por datos"_. Básicamente, su interfaz de usuario (IU) debe estar determinada por los datos presentes. Dados los datos `X`, su interfaz de usuario debería ser `Y`. En informática, esto se conoce como determinismo.
 Tome esta función de suma por ejemplo:
 
 ```js
 function sum(a, b) {
-    return a + b
+  return a + b
 }
 ```
 Una función de suma simple. Es una función pura.
