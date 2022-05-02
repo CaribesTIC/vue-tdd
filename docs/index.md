@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /logo.svg
+heroImage: /logo.png
 heroAlt: Logo image
 heroText: Vue(tdd)
 tagline: TDD con Vue 3

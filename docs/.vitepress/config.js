@@ -3,6 +3,7 @@ module.exports = {
   description: 'TDD con Vue 3.',
   base: '/vue-tdd/', //  The default path during deployment / secondary address / base can be used/
   themeConfig: {
+    logo: '/logo.png',
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/comenzar/tdd' },
