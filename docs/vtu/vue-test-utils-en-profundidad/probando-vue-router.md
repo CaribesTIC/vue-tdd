@@ -530,34 +530,91 @@ El uso de un enrutador real con la Composition API funciona igual que el uso de 
 ```js
 import { mount, flushPromises } from '@vue/test-utils'
 import { createRouter, createWebHistory } from 'vue-router'
-import { routes } from "@/router"
+import { useRouter, useRoute } from 'vue-router'
+
+const Component = {
+  template: `<button @click="redirect">Click to Edit</button>`,
+  props: ['isAuthenticated', 'id'],
+  setup (props) {
+    const router = useRouter()
+    const route = useRoute()
+
+    const redirect = () => {      
+      if (props.isAuthenticated) {
+        router.push(`/posts/${props.id}/edit`)
+      } else {
+        router.push('/404')
+      }
+    }
+
+    return {
+      redirect
+    }
+  }
+}
+
+const routes = [
+  {
+    path: '/',
+    component: {
+      template: 'Welcome to the blogging app'
+    }
+  }, {
+    path: '/posts/:id/edit',
+    component: Component,
+    props: true
+  }
+];
 
 let router;
 
 beforeEach(async () => {
   router = createRouter({
     history: createWebHistory(),
-    routes: routes,
+    routes,
   })
 
   router.push('/')
   await router.isReady()
 });
 
-test('allows authenticated user to edit a post', async () => {
+test('allows not authenticated user to edit a post', async () => {
+
   const wrapper = mount(Component, {
     props: {
-      isAuthenticated: true
+      isAuthenticated: false,      
     },
     global: {
       plugins: [router],
     }
   })
 
+  const pushSpy = vi.spyOn(router, 'push');
+  
   await wrapper.find('button').trigger('click')
 
-  expect(push).toHaveBeenCalledTimes(1)
-  expect(push).toHaveBeenCalledWith('/posts/1/edit')
+  expect(pushSpy).toHaveBeenCalledTimes(1)
+  expect(pushSpy).toHaveBeenCalledWith('/404')
+})
+
+test('allows authenticated user to edit a post', async () => {
+  
+  const wrapper = mount(Component, {
+    props: {
+      isAuthenticated: true,
+      id: 1     
+    },
+    global: {
+      plugins: [router]
+    }    
+  })
+
+  const pushSpy = vi.spyOn(router, 'push')
+  
+  await wrapper.find('button').trigger('click')
+
+  expect(pushSpy).toHaveBeenCalledTimes(1)
+  expect(pushSpy).toHaveBeenCalledWith('/posts/1/edit')
 })
 ```
 Para aquellos que prefieren un enfoque no manual, la biblioteca [vue-router-mock](https://github.com/posva/vue-router-mock) creada por Posva también está disponible como alternativa.
