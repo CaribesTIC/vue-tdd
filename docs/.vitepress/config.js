@@ -62,7 +62,8 @@ module.exports = {
               { text: 'Probando Vuex', link: '/vtu/vue-test-utils-en-profundidad/probando-vuex' },
               { text: 'Un poco más sobre Vuex', link: '/vtu/vue-test-utils-en-profundidad/un-poco-mas-sobre-vuex' },
               { text: 'Probando Vue Router', link: '/vtu/vue-test-utils-en-profundidad/probando-vue-router' },
-              { text: 'Probando Teleport', link: '/vtu/vue-test-utils-en-profundidad/probando-teleport' }
+              { text: 'Probando Teleport', link: '/vtu/vue-test-utils-en-profundidad/probando-teleport' },
+              { text: 'Talones y Montaje Superficial', link: '/vtu/vue-test-utils-en-profundidad/talones-y-montaje-superficial' }
             ]
           },
         ]
