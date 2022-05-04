@@ -42,6 +42,7 @@ module.exports = {
               { text: '¿Qué es Vue Test Utils?', link: '/vtu/esencial/intro' },
               { text: 'Entorno de Prueba', link: '/vtu/esencial/entorno-de-prueba' },
               { text: 'Un Curso Acelerado', link: '/vtu/esencial/un-curso-acelerado' },
+              { text: 'Renderizar Componentes', link: '/vtu/esencial/renderizar-componentes' },
               { text: 'Renderizado Condicional', link: '/vtu/esencial/renderizado-condicional' },
               { text: 'Probando el Manejo de Eventos', link: '/vtu/esencial/manejo-de-eventos' },              
               { text: 'Probando Formularios', link: '/vtu/esencial/formularios' },              
