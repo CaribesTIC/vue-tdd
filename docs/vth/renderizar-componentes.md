@@ -88,6 +88,6 @@ Esto puede ser útil. Imagina que quieres probar tu componente `App.vue`, que se
 ```
 Y queremos probar que `<h1>My Vue App</h1>` se representa correctamente. También tenemos un componente `<fetch-data>`, que realiza una solicitud a una API externa en su enlace de ciclo de vida `mounted`.
 
-Si usamos `mount`, aunque todo lo que queremos hacer es asegurar que se represente algún texto, `<fetch-data />` realizará una solicitud de API. Esto hará que nuestra prueba sea lenta y propensa a fallar. Entonces, eliminamos las dependencias externas. Al usar `shallowMount`, `<fetch-data />` se reemplazará con un <fetch-data-stub /> y no se iniciará la llamada a la API.
+Si usamos `mount`, aunque todo lo que queremos hacer es asegurar que se represente algún texto, `<fetch-data />` realizará una solicitud de API. Esto hará que nuestra prueba sea lenta y propensa a fallar. Entonces, eliminamos las dependencias externas. Al usar `shallowMount`, `<fetch-data />` se reemplazará con un `<fetch-data-stub />` y no se iniciará la llamada a la API.
 
 Como regla general, debe intentar usar `mount`, ya que se parecerá más a sus componentes y cómo aparecerán en un entorno real. Dicho esto, si tiene problemas con la activación de muchas solicitudes de API o con el suministro de las dependencias necesarias para representar su componente, puede usar `shallowMount`.
