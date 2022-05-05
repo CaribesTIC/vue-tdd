@@ -41,9 +41,8 @@ module.exports = {
             children: [
               { text: '¿Qué es Vue Test Utils?', link: '/vtu/esencial/intro' },
               { text: 'Entorno de Prueba', link: '/vtu/esencial/entorno-de-prueba' },
-              { text: 'Un Curso Acelerado', link: '/vtu/esencial/un-curso-acelerado' },
-              { text: 'Renderizar Componentes', link: '/vtu/esencial/renderizar-componentes' },
-              { text: 'Renderizado Condicional', link: '/vtu/esencial/renderizado-condicional' },
+              { text: 'Un Curso Acelerado', link: '/vtu/esencial/un-curso-acelerado' },              
+              { text: 'Renderizado Condicional', link: '/vtu/esencial/renderizado-condicional' },              
               { text: 'Probando el Manejo de Eventos', link: '/vtu/esencial/manejo-de-eventos' },              
               { text: 'Probando Formularios', link: '/vtu/esencial/formularios' },              
               { text: 'Pasando Datos a Componentes', link: '/vtu/esencial/pasando-datos-a-componentes' },
@@ -67,6 +66,14 @@ module.exports = {
               { text: 'Talones y Montaje Superficial', link: '/vtu/vue-test-utils-en-profundidad/talones-y-montaje-superficial' }
             ]
           },
+        ]
+      }, {
+        text: 'Vue Testing Handbook',   // required
+        path: '/vth/',
+        collapsable: true, // optional, defaults to true     
+        children: [
+          { text: 'Renderizar Componentes', link: '/vth/renderizar-componentes' },
+          { text: 'Probando Propiedades', link: '/vth/probando-propiedades' }
         ]
       }, {
         text: 'Vue Testing Library',   // required
