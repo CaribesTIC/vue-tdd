@@ -73,7 +73,8 @@ module.exports = {
         collapsable: true, // optional, defaults to true     
         children: [
           { text: 'Renderizar Componentes', link: '/vth/renderizar-componentes' },
-          { text: 'Probando Propiedades', link: '/vth/probando-propiedades' }
+          { text: 'Probando Propiedades', link: '/vth/probando-propiedades' },          
+          { text: 'Propiedades Calculadas', link: '/vth/propiedades-calculadas' }
         ]
       }, {
         text: 'Vue Testing Library',   // required
