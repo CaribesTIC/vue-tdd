@@ -74,7 +74,8 @@ module.exports = {
         children: [
           { text: 'Renderizar Componentes', link: '/vth/renderizar-componentes' },
           { text: 'Probando Propiedades', link: '/vth/probando-propiedades' },          
-          { text: 'Propiedades Calculadas', link: '/vth/propiedades-calculadas' }
+          { text: 'Propiedades Calculadas', link: '/vth/propiedades-calculadas' },
+          { text: 'Simulando la entrada del usuario', link: '/vth/simulando-la-entrada-del-usuario' }
         ]
       }, {
         text: 'Vue Testing Library',   // required
