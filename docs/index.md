@@ -12,7 +12,10 @@ features:
   - title: Vue Test Utils (VTU)
     details: ¡La biblioteca oficial de utilidades de prueba para Vue.js! Es un conjunto de funciones de utilidad destinadas a simplificar las pruebas de los componentes de Vue.js. Proporciona algunos métodos para montar e interactuar con los componentes de Vue de forma aislada.
   - title: Vue Testing Library (VTL)
-    details: Vue Testing Library se basa en DOM Testing Library al agregar API para trabajar con componentes de Vue. Está construido sobre VTU, la biblioteca de prueba oficial para Vue, ajustando algunos métodos de ambas fuentes.
+    details: Vue Testing Library se basa en DOM Testing Library al agregar API para trabajar con componentes de Vue. Está construido sobre VTU, la biblioteca de prueba oficial para Vue, ajustando algunos métodos de ambas fuentes.    
+  - title: Vue Testing Handbook (VTH)
+    details: Vue Testing Handbook es un sitio que contiene informaciòn relevante para aprender sobre Vue(TDD).
+
 footer: MIT Licensed | Copyleft © 2022-present Ernesto Canquiz
 ---
 
