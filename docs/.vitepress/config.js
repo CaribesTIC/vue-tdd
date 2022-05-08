@@ -75,7 +75,8 @@ module.exports = {
           { text: 'Renderizar Componentes', link: '/vth/renderizar-componentes' },
           { text: 'Probando Propiedades', link: '/vth/probando-propiedades' },          
           { text: 'Propiedades Calculadas', link: '/vth/propiedades-calculadas' },
-          { text: 'Simulando la entrada del usuario', link: '/vth/simulando-la-entrada-del-usuario' }
+          { text: 'Simulando la entrada del usuario', link: '/vth/simulando-la-entrada-del-usuario' },          
+          { text: 'Probando Eventos Emitidos', link: '/vth/probando-eventos-emitidos' }          
         ]
       }, {
         text: 'Vue Testing Library',   // required
