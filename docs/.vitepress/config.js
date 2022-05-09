@@ -76,7 +76,10 @@ module.exports = {
           { text: 'Probando Propiedades', link: '/vth/probando-propiedades' },          
           { text: 'Propiedades Calculadas', link: '/vth/propiedades-calculadas' },
           { text: 'Simulando la entrada del usuario', link: '/vth/simulando-la-entrada-del-usuario' },          
-          { text: 'Probando Eventos Emitidos', link: '/vth/probando-eventos-emitidos' }          
+          { text: 'Probando Eventos Emitidos', link: '/vth/probando-eventos-emitidos' },
+          { text: 'Simulando Objetos Globales', link: '/vth/simulando-objetos-globales' },          
+          { text: 'Probando Vuex en componentes', link: '/vth/probando-vuex-en-componentes' },          
+          { text: 'Vue Router', link: '/vth/vue-router' }
         ]
       }, {
         text: 'Vue Testing Library',   // required
