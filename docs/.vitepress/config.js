@@ -73,12 +73,13 @@ module.exports = {
         collapsable: true, // optional, defaults to true     
         children: [
           { text: 'Renderizar Componentes', link: '/vth/renderizar-componentes' },
-          { text: 'Probando Propiedades', link: '/vth/probando-propiedades' },          
+          { text: 'Probando Propiedades', link: '/vth/probando-propiedades' },
           { text: 'Propiedades Calculadas', link: '/vth/propiedades-calculadas' },
-          { text: 'Simulando la entrada del usuario', link: '/vth/simulando-la-entrada-del-usuario' },          
+          { text: 'Simulando la entrada del usuario', link: '/vth/simulando-la-entrada-del-usuario' },
           { text: 'Probando Eventos Emitidos', link: '/vth/probando-eventos-emitidos' },
-          { text: 'Simulando Objetos Globales', link: '/vth/simulando-objetos-globales' },          
-          { text: 'Probando Vuex en componentes', link: '/vth/probando-vuex-en-componentes' },          
+          { text: 'Simulando Objetos Globales', link: '/vth/simulando-objetos-globales' },
+          { text: 'Talonando Componentes', link: '/vth/talonando-componentes' },
+          { text: 'Probando Vuex en componentes', link: '/vth/probando-vuex-en-componentes' },    
           { text: 'Vue Router', link: '/vth/vue-router' }
         ]
       }, {
