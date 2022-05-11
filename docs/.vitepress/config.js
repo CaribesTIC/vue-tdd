@@ -79,6 +79,7 @@ module.exports = {
           { text: 'Probando Eventos Emitidos', link: '/vth/probando-eventos-emitidos' },
           { text: 'Simulando Objetos Globales', link: '/vth/simulando-objetos-globales' },
           { text: 'Talonando Componentes', link: '/vth/talonando-componentes' },
+          { text: 'Encontrando elementos y componentes', link: '/vth/encontrando-elementos-y-componentes' },
           { text: 'Probando Vuex en componentes', link: '/vth/probando-vuex-en-componentes' },    
           { text: 'Vue Router', link: '/vth/vue-router' }
         ]
