@@ -82,6 +82,7 @@ module.exports = {
           { text: 'Encontrando elementos y componentes', link: '/vth/encontrando-elementos-y-componentes' },
           { text: 'Probando Vuex', link: '/vth/probando-vuex' },
           { text: 'Vuex Mutaciones', link: '/vth/vuex-mutaciones' },
+          { text: 'Vuex Accciones', link: '/vth/vuex-acciones' },
           { text: 'Probando Vuex en componentes - estados y captadores', link: '/vth/probando-vuex-en-componentes' },
           { text: 'Probando Vuex en componentes - mutaciones y acciones', link: '/vth/probando-vuex-en-componentes-mutaciones-y-acciones' },  
           { text: 'Vue Router', link: '/vth/vue-router' }
