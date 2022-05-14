@@ -90,7 +90,7 @@ describe("poodlesByAge", () => {
 ```
 En lugar de pasar realmente el captador de `poodles` real, pasamos el resultado que devolvería. Ya sabemos que está funcionando, ya que escribimos una prueba para ello. Esto nos permite centrarnos en probar la lógica exclusiva de `poodlesByAge`.
 
-Es posible tener captadores `async`. Se pueden probar con la misma técnica que las acciones `async`, sobre las que puede leer [aquí](../vth/vuex-mutaciones).
+Es posible tener captadores `async`. Se pueden probar con la misma técnica que las acciones `async`, sobre las que puede leer [aquí](../vth/vuex-acciones).
 
 ## Conclusión
 
