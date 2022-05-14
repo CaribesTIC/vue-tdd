@@ -17,6 +17,7 @@ Escribiremos una acción que siga un patrón Vuex común:
 Esta es una acción de `authenticate`, que envía un nombre de usuario y una contraseña a una API externa para verificar si coinciden. Luego, el resultado se usa para actualizar el estado al realizar una mutación `SET_AUTHENTICATED` con el resultado como carga útil.
 
 ```js
+// store/actions.js
 import axios from "axios"
 
 export default {
@@ -160,6 +161,7 @@ FAIL  tests/unit/actions.spec.js
 Detectó con éxito un error... pero no el que esperábamos. Actualice `authenticate` para arrojar el error que espera la prueba:
 
 ```js
+// store/actions.js
 import axios from "axios"
 
 export default {

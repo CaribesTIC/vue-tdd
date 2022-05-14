@@ -13,6 +13,7 @@ Las mutaciones tienden a seguir un patrón establecido. Obtenga algunos datos, t
 Lo desarrollaremos usando TDD. El comienzo de la mutación es el siguiente:
 
 ```js
+// store/mutations.js
 export default {
   SET_POST(state, { post }) {
 
@@ -59,6 +60,7 @@ FAIL  tests/unit/mutations.spec.js
 Comencemos agregando `post.id` a `state.postIds`:
 
 ```js
+// store/mutations.js
 export default {
   SET_POST(state, { post }) {
     state.postIds.push(post.id)
@@ -78,6 +80,7 @@ Received:
 `postIds` se ve bien. Ahora solo necesitamos agregar la publicación a `state.posts`. Debido a cómo funciona el sistema de reactividad de Vue, no podemos simplemente escribir `post[post.id] = post` para agregar la publicación. Más detalles se pueden encontrar [aquí](https://vuejs.org/guide/extras/reactivity-in-depth.html). Básicamente, necesita crear un nuevo objeto usando `Object.assign` o el operador `...`. Usaremos el operador `...` para asignar la publicación a `state.posts`:
 
 ```js
+// store/mutations.js
 export default {
   SET_POST(state, { post }) {
     state.postIds.push(post.id)
