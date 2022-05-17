@@ -56,7 +56,7 @@ Ahora agregue la lógica de envío del formulario:
 
 Bastante simple, simplemente configuramos el `submitted` como `true` cuando se envía el formulario, lo que a su vez revela el `<div>` que contiene el mensaje de éxito.
 
-escribir la prueba
+## Escribiendo la prueba
 
 Veamos una prueba. Estamos marcando esta prueba como `async` - siga leyendo para averiguar por qué.
 
