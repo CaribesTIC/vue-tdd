@@ -1,4 +1,4 @@
-## Vue Router
+# Vue Router
 
 Dado que un enrutador generalmente involucra múltiples componentes que operan juntos, a menudo las pruebas de enrutamiento se realizan más arriba en la [pirámide de prueba](https://www.freecodecamp.org/news/the-front-end-test-pyramid-rethink-your-testing-3b343c2bca51), justo en el nivel de prueba de integración/e2e. Sin embargo, tener algunas pruebas unitarias en torno a su enrutamiento también puede ser beneficioso.
 
@@ -117,7 +117,7 @@ describe("App", () => {
 })
 ```
 
-- Observe que las pruebas son marcadas `await` y llama `nextTick`. Ver [aquí](../vth/simulando-la-entrada-del-usuario.html#escribiendo-la-prueba) para más detalles sobre por qué.
+- Observe que las pruebas son marcadas `await` y llaman `nextTick`. Ver [aquí](../vth/simulando-la-entrada-del-usuario.html#escribiendo-la-prueba) para más detalles sobre por qué.
 
 Como de costumbre, comenzamos importando los distintos módulos para la prueba. En particular, estamos importando las rutas reales que usaremos para la aplicación. Esto es ideal de alguna manera: si el enrutamiento real se rompe, las pruebas unitarias deberían fallar, permitiéndonos solucionar el problema antes de implementar la aplicación.
 
@@ -130,7 +130,7 @@ await router.isReady()
 
 Vue Router 4 (el que funciona con Vue 3) tiene enrutamiento asíncrono. Eso significa que debemos asegurarnos de que el enrutador haya terminado el enrutamiento inicial antes de montar el componente. Esto se logra fácilmente con `await router.isReady()`.
 
-Finalmente, tenga en cuenta que estamos usando `mount`. Si usamos `shallowMount`, `<router-link>` se eliminará, independientemente de la ruta actual, se generará un componente talonado inútil.
+Finalmente, tenga en cuenta que estamos usando `mount`. Si usamos `shallowMount`, `<router-link>` se talonará, independientemente de la ruta actual, se generará un componente talonado inútil.
 
 ## Solución alternativa para árboles de renderizado grandes usando `mount`
 
@@ -233,30 +233,29 @@ FAIL  tests/unit/NestedRoute.spec.js
 
 Esto se debe a que `$route` no existe. Podríamos usar un enrutador real, pero en este caso es más fácil usar la opción de montaje `mocks`:
 
-```js{9,10,11,12,13,14,15,16}
+```js{8,9,10,11,12,13,14,15,16}
 import { mount } from "@vue/test-utils"
 import NestedRoute from "@/components/NestedRoute.vue"
-import routes from "@/router/routes.js"
 
 describe("NestedRoute", () => {
   it("renders a username from query string", () => {
     const username = "alice"
     const wrapper = mount(NestedRoute, {
-    global: {
-      mocks: {
-        $route: {
-          params: { username }
+      global: {
+        mocks: {
+          $route: {
+            params: { username }
+          }
         }
       }
-    }
-  })
+    })
 
     expect(wrapper.find(".username").text()).toBe(username)
   })
 })
 ```
 
-Ahora pasa la prueba. En este caso, no hacemos ninguna navegación ni nada que dependa de la implementación del enrutador, por lo que usar `mocks` es bueno. Realmente no nos importa cómo aparece ombre de usel nuario en la cadena de consulta, solo que está presente.
+Ahora pasa la prueba. En este caso, no hacemos ninguna navegación ni nada que dependa de la implementación del enrutador, por lo que usar `mocks` es bueno. Realmente no nos importa cómo aparece `username` en la cadena de consulta, solo que está presente.
 
 A veces, el servidor manejará partes del enrutamiento, a diferencia del enrutamiento del lado del cliente con Vue Router. En tales casos, el uso de `mocks` para establecer la cadena de consulta en una prueba es una buena alternativa al uso de una instancia real de Vue Router.
 
@@ -271,7 +270,7 @@ Asegurarse de que se comporten correctamente suele ser un trabajo para una prueb
 
 ## Guardias Globales
 
-Digamos que tiene una función `bustCache` que debe llamarse en cada ruta que contiene el metacampo `shouldBustCache`.
+Digamos que tiene una función `bustCache`:
 
 ```js
 // bust-cache.js
@@ -279,7 +278,7 @@ export function bustCache() {
 }
 ```
 
-Tus rutas podrían verse así:
+Que debe llamarse en cada ruta que contiene el metacampo `shouldBustCache`. Tus rutas podrían verse así:
 
 ```js
 // router/routes.js
@@ -473,8 +472,8 @@ Si bien este estilo de prueba unitaria puede ser útil para obtener comentarios 
 Esta guía cubrió:
 
 - Prueba de componentes renderizados condicionalmente por Vue Router
-- Simular los componentes de Vue usando `vi.mock` y `localVue`
-- Desacoplar los guardianes de navegación global del enrutador y probar el independientemente
+- Simular los componentes de Vue usando `vi.mock` y `global.mocks`
+- Desacoplar los guardias de navegación global del enrutador y probarlos de manera independiente
 - Usando `vi.mock` para simular un módulo
 
 El código fuente de la prueba descrita en esta página se puede encontrar [aquí](https://github.com/lmiller1990/vue-testing-handbook/blob/master/demo-app-vue-3/tests/unit/App.spec.js) y [aquí](https://github.com/lmiller1990/vue-testing-handbook/blob/master/demo-app-vue-3/tests/unit/NestedRoute.spec.js).

@@ -86,7 +86,9 @@ module.exports = {
           { text: 'Vuex Captadores', link: '/vth/vuex-captadores' },
           { text: 'Probando Vuex en componentes - estados y captadores', link: '/vth/probando-vuex-en-componentes' },
           { text: 'Probando Vuex en componentes - mutaciones y acciones', link: '/vth/probando-vuex-en-componentes-mutaciones-y-acciones' },  
-          { text: 'Vue Router', link: '/vth/vue-router' }
+          { text: 'Vue Router', link: '/vth/vue-router' },
+          { text: 'API de Composición', link: '/vth/api-de-composicion' },
+          { text: 'Reduciendo Repetitividad en las Pruebas', link: '/vth/reduciendo-repetitividad-en-las-pruebas' }          
         ]
       }, {
         text: 'Vue Testing Library',   // required

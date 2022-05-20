@@ -112,7 +112,7 @@ Podemos ver que se usó la propiedad `isAdmin` para renderizar el elemento `<spa
 
 ## Refactorizando las pruebas
 
-Refactoricemos las pruebas siguiendo el principio "Don't Repeat Yourself" (DRY). Dado que todas las pruebas están pasando, podemos refactorizar con confianza. Mientras todas las pruebas pasen después de la refactorización, podemos estar seguros de que no rompimos nada.
+Refactoricemos las pruebas siguiendo el principio _"Don't Repeat Yourself"_ (DRY). Dado que todas las pruebas están pasando, podemos refactorizar con confianza. Mientras todas las pruebas pasen después de la refactorización, podemos estar seguros de que no rompimos nada.
 
 ## Refactorizar con una Función de Fábrica
 
