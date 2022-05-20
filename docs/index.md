@@ -14,7 +14,9 @@ features:
   - title: Vue Testing Library (VTL)
     details: Vue Testing Library se basa en DOM Testing Library al agregar API para trabajar con componentes de Vue. Está construido sobre VTU, la biblioteca de prueba oficial para Vue, ajustando algunos métodos de ambas fuentes.    
   - title: Vue Testing Handbook (VTH)
-    details: Vue Testing Handbook es un sitio que contiene informaciòn relevante para aprender sobre Vue(TDD).
+    details: Vue Testing Handbook es un sitio que contiene informaciòn relevante para aprender sobre Vue(TDD).    
+  - title: Probando Pinia
+    details: Las tiendas, por diseño, se utilizarán en muchos lugares y pueden hacer que las pruebas sean mucho más difíciles de lo que deberían ser. Afortunadamente, esto no tiene por qué ser así.
 
 footer: MIT Licensed | Copyleft © 2022-present Ernesto Canquiz
 ---

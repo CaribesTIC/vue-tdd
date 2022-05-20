@@ -112,7 +112,14 @@ module.exports = {
             ]
           },
         ]
-      }      
+      }, {
+        text: 'Pinia',
+        path: '/pinia/',
+        collapsable: true, // optional, defaults to true     
+        children: [
+          { text: 'Probando Pinia', link: '/pinia/probando-pinia' }
+        ]
+      }            
     ]
   }
 }
