@@ -10,16 +10,16 @@ Las tiendas, por diseño, se utilizarán en muchos lugares y pueden hacer que la
 
 Dependiendo de qué o cómo esté probando, debemos ocuparnos de estos tres de manera diferente:
 
-- [Tiendas de prueba](../../vue-tdd/pinia/probando-pinia.html#pruebas-de-tiendas)
-    - [Unidad de prueba de una tienda](../../vue-tdd/pinia/probando-pinia.html#unidad-de-prueba-de-una-tienda)
-    - [Componentes de pruebas unitarias](../../vue-tdd/pinia/probando-pinia.html#componentes-de-pruebas-unitarias)
-        - [Estado inicial](../../vue-tdd/pinia/probando-pinia.html#estado-inicial)
-        - [Personalización del comportamiento de las acciones](../../vue-tdd/pinia/probando-pinia.html#personalizacion-del-comportamiento-de-las-acciones).
-        - [Especificación de la función createSpy](../../vue-tdd/pinia/probando-pinia.html#especificacion-de-la-funcion-createspy)
-        - [Simulando captadores](../../vue-tdd/pinia/probando-pinia.html#simulando-captadores)
-        - [Complementos de Pinia](../../vue-tdd/pinia/probando-pinia.html#complementos-de-pinia)
-    - [Pruebas E2E](../../vue-tdd/pinia/probando-pinia.html#pruebas-e2e)
-    - [Componentes de prueba unitaria (Vue 2)](../../vue-tdd/pinia/probando-pinia.html#componentes-de-prueba-unitaria-vue-2)
+- [Pruebas de Tiendas](probando-pinia.html#pruebas-de-tiendas)
+    - [Unidad de prueba de una tienda](probando-pinia.html#unidad-de-prueba-de-una-tienda)
+    - [Componentes de pruebas unitarias](probando-pinia.html#componentes-de-pruebas-unitarias)
+        - [Estado inicial](probando-pinia.html#estado-inicial)
+        - [Personalización del comportamiento de las acciones](probando-pinia.html#personalizacion-del-comportamiento-de-las-acciones).
+        - [Especificación de la función createSpy](probando-pinia.html#especificacion-de-la-funcion-createspy)
+        - [Simulando captadores](probando-pinia.html#simulando-captadores)
+        - [Complementos de Pinia](probando-pinia.html#complementos-de-pinia)
+    - [Pruebas E2E](probando-pinia.html#pruebas-e2e)
+    - [Componentes de prueba unitaria (Vue 2)](probando-pinia.html#componentes-de-prueba-unitaria-vue-2)
 
 ## Unidad de prueba de una tienda
 
@@ -108,7 +108,7 @@ expect(store.someAction).toHaveBeenCalledTimes(1)
 expect(store.someAction).toHaveBeenLastCalledWith()
 ```
 
-Tenga en cuenta que si está utilizando Vue 2, `@vue/test-utils` requiere una [configuración ligeramente diferente](../../vue-tdd/pinia/probando-pinia.html#componentes-de-prueba-unitaria-vue-2).
+Tenga en cuenta que si está utilizando Vue 2, `@vue/test-utils` requiere una [configuración ligeramente diferente](probando-pinia.html#componentes-de-prueba-unitaria-vue-2).
 
 ## Estado inicial
 
