@@ -94,7 +94,7 @@ Observe que tanto el `state` como las `mutations` están desacopladas de la tien
 
 - ¿Se renderiza el `message` cuando se recibe una propiedad?
 - ¿Están correctamente renderizados los `posts`?
-- ¿Se muestra el botón _New Post_ cuando `authenticated` es `false` y se oculta cuando es `false`?
+- ¿Se muestra el botón _New Post_ cuando `authenticated` es `true` y se oculta cuando es `false`?
 
 Idealmente, las pruebas deben ser lo más concisas posible.
 
@@ -435,7 +435,7 @@ describe('Posts.vue', () => {
     expect(wrapper.find(".new-post").text()).toBe('New Post')
   })
 
-  it('renders without new post if authenticated', async () => {
+  it('renders without new post if not authenticated', async () => {
     const wrapper = createWrapper(Posts, {}, { authenticated: false}, routes)
 
     expect(wrapper.html()).not.toContain('New Post')
