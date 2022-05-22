@@ -96,11 +96,14 @@ module.exports = {
         collapsable: true, // optional, defaults to true     
         children: [
           {
-            text: 'documentacion',
+            text: 'Documentación',
             path: '/vtl/documentacion/',
             collapsable: true,     
             children: [
-              { text: '¿Qué es Vue Testing Library?', link: '/vtl/documentacion/intro' },
+              { text: '¿Qué es Testing Library?', link: '/vtl/documentacion/intro' },
+              { text: 'Guías de Principios', link: '/vtl/documentacion/guias-de-principios' },
+              { text: '¿Qué es Vue Testing Library?', link: '/vtl/documentacion/intro-v' },
+              { text: 'Ejemplos', link: '/vtl/documentacion/ejemplos' },
             ]
           }, {
             text: 'Diseño Dirigido por Pruebas',
