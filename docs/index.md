@@ -7,6 +7,8 @@ tagline: TDD con Vue 3
 actionText: Comenzar
 actionLink: /comenzar/tdd
 features:
+  - title: Vue(tdd)
+    details: Aprende las bases TDD para Vue (con Vitest) paso a paso, de cero a experto. Todo desde un solo lugar, aquí. 
   - title: Vitest (VI)
     details: Es un marco de prueba de unidad ultrarrápido. Permite la creación de un corredor simple que no necesita lidiar con la complejidad de transformar archivos de origen y puede enfocarse únicamente en proporcionar el mejor DX durante las pruebas.
   - title: Vue Test Utils (VTU)
@@ -16,7 +18,10 @@ features:
   - title: Vue Testing Handbook (VTH)
     details: Vue Testing Handbook es un sitio que contiene informaciòn relevante para aprender sobre Vue(TDD).    
   - title: Probando Pinia
-    details: Las tiendas, por diseño, se utilizarán en muchos lugares y pueden hacer que las pruebas sean mucho más difíciles de lo que deberían ser. Afortunadamente, esto no tiene por qué ser así.
+    details: Las tiendas, por diseño, se utilizarán en muchos lugares y pueden hacer que las pruebas sean mucho más difíciles de lo que deberían ser. Afortunadamente, esto no tiene por qué ser así. 
+  - title: Cypress
+    details: Proximamente...
+    
 
 footer: MIT Licensed | Copyleft © 2022-present Ernesto Canquiz
 ---
