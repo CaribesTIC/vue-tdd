@@ -3,12 +3,12 @@ home: true
 heroImage: /logo.png
 heroAlt: Logo image
 heroText: Vue(tdd)
-tagline: TDD con Vue 3
+tagline: TDD con Vue3
 actionText: Comenzar
 actionLink: /comenzar/tdd
 features:
   - title: Vue(tdd)
-    details: Aprende las bases TDD para Vue (con Vitest) paso a paso, de cero a experto. Todo desde un solo lugar, aquí. 
+    details: Aprende TDD para Vue3 de cero a experto, paso a paso. Aquí, explica la correspondiente configuración de Vitest (con Vite) para tus proyectos y la migración a Vitest en cuanto a los Mocks (simulaciones). Todo desde un solo lugar.
   - title: Vitest (VI)
     details: Es un marco de prueba de unidad ultrarrápido. Permite la creación de un corredor simple que no necesita lidiar con la complejidad de transformar archivos de origen y puede enfocarse únicamente en proporcionar el mejor DX durante las pruebas.
   - title: Vue Test Utils (VTU)
