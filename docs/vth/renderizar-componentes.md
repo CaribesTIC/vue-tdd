@@ -40,7 +40,7 @@ test('stubs component with custom template', () => {
 })
 ```
 
-Tanto `mountWrapper.html()` como `smoothWrapper.html()` producen el siguiente resultado:
+Tanto `mountWrapper.html()` como `shallowWrapper.html()` producen el siguiente resultado:
 
 ```html
 <div>Child component</div>

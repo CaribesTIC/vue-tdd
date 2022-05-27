@@ -1,11 +1,11 @@
 # Patrones para Probar Accesorios
 
-En esta sección, exploramos los accesorios y el tipo de pruebas que quizás desee considerar escribir. Esto lleva a un tema mucho más fundamental e importante; trazar una línea clara entre la lógica empresarial y la interfaz de usuario, también conocida como _separación de preocupaciones_, y cómo sus pruebas pueden ayudar a aclarar esta distinción.
+En esta sección, exploramos los accesorios y el tipo de pruebas que quizás desee considerar escribir. Esto lleva a un tema mucho más fundamental e importante; trazar una línea clara entre la lógica de negocios y la UI, también conocida como _separación de preocupaciones_, y cómo sus pruebas pueden ayudar a aclarar esta distinción.
 
 >Considere una de las grandes ideas detrás de marcos como Vue y React:
 **_"Su interfaz de usuario es una función de sus datos"_.**
 
-Esta idea viene en muchas formas; otro es _"interfaces impulsadas por datos"_. Básicamente, su interfaz de usuario (IU) debe estar determinada por los datos presentes. Dados los datos `X`, su interfaz de usuario debería ser `Y`. En informática, esto se conoce como determinismo.
+Esta idea viene en muchas formas; otro es _"interfaces impulsadas por datos"_. Básicamente, su interfaz de usuario (UI) debe estar determinada por los datos presentes. Dados los datos `X`, su UI debería ser `Y`. En informática, esto se conoce como determinismo.
 Tome esta función de suma por ejemplo:
 
 ```js
@@ -258,3 +258,27 @@ describe('Message', () => {
   })
 })
 ```
+
+## Concepto Clave: Separación de Preocupaciones
+
+Hemos escrito dos tipos diferentes de pruebas. La primera es una prueba de UI - en la que hacemos afirmaciones contra `classList`. El segundo es para el validador. Pone a prueba la lógica de negocios.
+
+Para que esto quede más claro, imagina que tu empresa se especializa en sistemas de diseño. Tienes algunos diseñadores que probablemente usan Figma o Sketch para diseñar cosas como botones y mensajes.
+
+Han decidido admitir tres variantes de mensajes: _success_, _warning_ y _error_. Eres un desarrollador front-end. En este ejemplo, está trabajando en la integración de Vue - escribirá componentes de Vue que aplican clases específicas, que utilizan el CSS que proporcionó por los diseñadores.
+
+En el futuro, también deberá crear componentes React y Angular utilizando el mismo CSS y las mismas pautas. Las tres integraciones podrían hacer uso de la función `validateVariant` y probar. Es la lógica de negocios central.
+
+Esta distinción es importante. Cuando usamos los métodos de _Testing Library_ (como el `render`) y las API DOM (como `classList`), verificamos que la capa de la UI de Vue funcione correctamente. La prueba de `validateVariant` es para nuestra lógica de negocios. Estas diferencias a veces se denominan _preocupaciones_. Una pieza de código se refiere a la UI. El otro se ocupa de la lógica de negocios.
+
+Separarlos es bueno. Hace que su código sea más fácil de probar y mantener. Este concepto se conoce como _separación de preocupaciones_. Revisaremos esto a lo largo de este contenido.
+
+Si desea saber si algo es parte de la UI o la lógica de negocios, pregúntese esto: "si cambiara a React, ¿podría reutilizar este código y probarlo?".
+
+En este caso, podría reutilizar el validador y su prueba cuando escriba la integración de React. El validador se preocupa por la lógica de negocios y no sabe nada sobre el marco de la UI. Vue o React, solo admitiremos tres variantes de mensajes: _success_, _warning_ y _error_. El componente y la prueba del componente (donde afirmamos usar `classes()`) tendrían que reescribirse usando un componente React y una biblioteca de pruebas React.
+
+Idealmente, no desea que su lógica de negocios se acople a su marco de trabajo de elección; Los marcos van y vienen, pero es poco probable que los problemas que su negocio está resolviendo cambien significativamente.
+
+He visto que la separación deficiente de las preocupaciones le cuesta a las empresas decenas de miles de dólares; llegan a un punto en el que agregar nuevas funciones es arriesgado y lento, porque el problema principal de su negocio está demasiado relacionado con la UI. Reescribir la UI significa reescribir la lógica de negocios.
+
+## Separation of Concerns - Case Study
