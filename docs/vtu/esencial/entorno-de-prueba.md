@@ -89,7 +89,7 @@ Podemos ver que el marcado es correcto y la prueba pasa. La prueba pasa porque n
 
 Necesitamos hacer una afirmación para asegurarnos de que el componente se comporta correctamente. Podemos hacer eso usando `expect` de la API  de Vitest. Tiene este aspecto: `expect(result).to [matcher] (actual)`.
 
-[Los comparadores](../../vitest/comparadores.html) son métodos para comparar valores y objetos. Por ejemplo:
+[Los comparadores](../../vitest/usando-comparadores.html) son métodos para comparar valores y objetos. Por ejemplo:
 
 ```js
 expect(1).toBe(1)

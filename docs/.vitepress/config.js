@@ -24,10 +24,11 @@ module.exports = {
         children: [
           { text: '¿Por qué Vitest?', link: '/vitest/porque-vitest' },
           { text: 'Entorno de Prueba', link: '/vitest/entorno-de-prueba' },
-          { text: 'Comparadores', link: '/vitest/comparadores' },
-          { text: 'Código Asíncrono', link: '/vitest/codigo-asincrono' },
+          { text: 'Usando Comparadores', link: '/vitest/usando-comparadores' },
+          { text: 'Probando Código Asíncrono', link: '/vitest/probando-codigo-asincrono' },                    
           { text: 'Configuración y Desmontaje', link: '/vitest/configuracion-y-desmontaje' },
-          { text: 'Funciones Simuladas', link: '/vitest/funciones-simuladas' }
+          { text: 'Funciones Simuladas', link: '/vitest/funciones-simuladas' },
+          { text: 'Un Ejemplo Asíncrono', link: '/vitest/un-ejemplo-asincrono' }
         ]
       },{
         text: 'Vue Tests Utils',

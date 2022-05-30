@@ -64,7 +64,7 @@ test('city database has San Juan', () => {
 });
 ```
 
-`beforeEach` y `afterEach` pueden manejar código asíncrono de la misma manera que [las pruebas pueden manejar código asíncrono](../vitest/codigo-asincrono.html) - pueden tomar un parámetro `done` o devolver una promesa. Por ejemplo, si `initializeCityDatabase()` devolvió una promesa que se resolvió cuando se inicializó la base de datos, nos gustaría devolver esa promesa:
+`beforeEach` y `afterEach` pueden manejar código asíncrono de la misma manera que [las pruebas pueden manejar código asíncrono](../vitest/probando-codigo-asincrono.html) - pueden tomar un parámetro `done` o devolver una promesa. Por ejemplo, si `initializeCityDatabase()` devolvió una promesa que se resolvió cuando se inicializó la base de datos, nos gustaría devolver esa promesa:
 
 ```js
 beforeEach(() => {

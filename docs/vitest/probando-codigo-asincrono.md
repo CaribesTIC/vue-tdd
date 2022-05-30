@@ -1,4 +1,4 @@
-# Código Asíncrono
+# Probando Código Asíncrono
 
 Es común en JavaScript que el código se ejecute de forma asíncrona. Cuando tiene un código que se ejecuta de forma asíncrona, Vitest necesita saber cuándo se ha completado el código que está probando, antes de poder pasar a otra prueba. Vitest tiene varias formas de manejar esto.
 
@@ -180,5 +180,9 @@ test('the fetch fails with an error', async () => {
 });
 ```
 En estos casos, `async` y `await` son efectivamente azúcar sintáctico para la misma lógica que usa el ejemplo de promesas.
+
+:::warning PRECAUCIÓN
+Asegúrese de devolver (`return`) o esperar (`await`) la promesa - si omite la declaración de `return`/`await`, su prueba se completará antes de que la promesa devuelta por `fetchData` se resuelva o rechace.
+:::
 
 Ninguno de estas formas es particularmente superior a las demás, y puede mezclarlos y combinarlos en una base de código o incluso en un solo archivo. Solo depende del estilo que sienta que hace que sus pruebas sean más simples.

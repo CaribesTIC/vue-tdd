@@ -1,4 +1,4 @@
-# Uso de comparadores
+# Usando comparadores
 
 Los "comparadores" permiten probar valores de diferentes maneras. Este documento presentará algunos comparadores de uso común. Para ver la lista completa, consulte el [`expect API doc`](https://vitest.dev/api/#expect).
 
@@ -149,4 +149,4 @@ Nota: la función que arroja una excepción debe invocarse dentro de una funció
 
 Esto es solo una muestra. Para obtener una lista completa de comparadores, consulte los [documentos de referencia](https://vitest.dev/api/).
 
-Una vez que haya aprendido acerca de los comparadores que están disponibles, un buen siguiente paso es verificar cómo [probar el código asíncrono](../vitest/codigo-asincrono.html).
+Una vez que haya aprendido acerca de los comparadores que están disponibles, un buen siguiente paso es verificar cómo [probar el código asíncrono](../vitest/probando-codigo-asincrono.html).
