@@ -156,4 +156,4 @@ it('tests error with async/await and rejects', async () => {
 
 El código de este ejemplo está disponible en [ejemplos/asíncronos](https://github.com/facebook/jest/tree/main/examples/async).
 
-Si desea probar los temporizadores, como setTimeout, eche un vistazo a la documentación de las [simulaciones de temporizador](https://jestjs.io/docs/timer-mocks).
+Si desea probar los temporizadores, como setTimeout, eche un vistazo a la documentación de las [Simulaciones de Temporizador](../vitest/simulaciones-de-temporizador.html).

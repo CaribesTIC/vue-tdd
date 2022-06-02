@@ -28,7 +28,8 @@ module.exports = {
           { text: 'Probando Código Asíncrono', link: '/vitest/probando-codigo-asincrono' },                    
           { text: 'Configuración y Desmontaje', link: '/vitest/configuracion-y-desmontaje' },
           { text: 'Funciones Simuladas', link: '/vitest/funciones-simuladas' },
-          { text: 'Un Ejemplo Asíncrono', link: '/vitest/un-ejemplo-asincrono' }
+          { text: 'Un Ejemplo Asíncrono', link: '/vitest/un-ejemplo-asincrono' },
+          { text: 'Simulaciones de Temporizador', link: '/vitest/simulaciones-de-temporizador'}
         ]
       },{
         text: 'Vue Tests Utils',
