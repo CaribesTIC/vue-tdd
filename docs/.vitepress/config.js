@@ -113,7 +113,8 @@ module.exports = {
             collapsable: true,     
             children: [
                 { text: 'Introducción', link: '/vtl/ddp/intro' },  
-                { text: 'Patrones para Probar Accesorios', link: '/vtl/ddp/patrones-para-probar-accesorios' }                      
+                { text: 'Patrones para Probar Accesorios', link: '/vtl/ddp/patrones-para-probar-accesorios' },
+                { text: 'Emitir Eventos', link: '/vtl/ddp/emitir-eventos' }
             ]
           },
         ]
