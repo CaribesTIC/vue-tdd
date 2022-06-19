@@ -1,4 +1,4 @@
-# Simulación
+# Simulaciones
 
 Al escribir pruebas, es solo cuestión de tiempo antes de que necesite crear una versión "falsa" de un servicio interno o externo. Esto se conoce comúnmente como simulación. Vitest proporciona funciones de utilidad para ayudarlo a través de su ayudante **vi**. Puede usar `import { vi } from 'vitest'` o acceder a él globalmente (cuando la [configuración global](https://vitest.dev/config/#globals) está habilitada).
 

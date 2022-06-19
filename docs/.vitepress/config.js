@@ -30,7 +30,7 @@ module.exports = {
           { text: 'Probando Código Asíncrono', link: '/vitest/probando-codigo-asincrono' },          
           { text: 'Un Ejemplo Asíncrono', link: '/vitest/un-ejemplo-asincrono' },
           { text: 'Funciones Simuladas', link: '/vitest/funciones-simuladas' },
-          { text: 'Simulación', link: '/vitest/simulacion'},
+          { text: 'Simulaciones', link: '/vitest/simulaciones'},
           { text: 'Simulaciones de Temporizador', link: '/vitest/simulaciones-de-temporizador'},
           { text: 'Simulaciones de Clase ES6', link: '/vitest/simulaciones-de-clase-es6'}          
         ]
