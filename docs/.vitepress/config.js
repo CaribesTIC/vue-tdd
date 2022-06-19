@@ -27,9 +27,9 @@ module.exports = {
           { text: 'Usando Comparadores', link: '/vitest/usando-comparadores' },
           { text: 'Configuración y Desmontaje', link: '/vitest/configuracion-y-desmontaje' },                  
           { text: 'Filtrando Pruebas', link: '/vitest/filtrando-pruebas' },
-          { text: 'Probando Código Asíncrono', link: '/vitest/probando-codigo-asincrono' },
+          { text: 'Probando Código Asíncrono', link: '/vitest/probando-codigo-asincrono' },          
+          { text: 'Un Ejemplo Asíncrono', link: '/vitest/un-ejemplo-asincrono' },
           { text: 'Funciones Simuladas', link: '/vitest/funciones-simuladas' },
-          { text: 'Un Ejemplo Asíncrono', link: '/vitest/un-ejemplo-asincrono' },          
           { text: 'Simulación', link: '/vitest/simulacion'},
           { text: 'Simulaciones de Temporizador', link: '/vitest/simulaciones-de-temporizador'},
           { text: 'Simulaciones de Clase ES6', link: '/vitest/simulaciones-de-clase-es6'}          
