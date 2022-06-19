@@ -25,11 +25,13 @@ module.exports = {
           { text: '¿Por qué Vitest?', link: '/vitest/porque-vitest' },
           { text: 'Entorno de Prueba', link: '/vitest/entorno-de-prueba' },
           { text: 'Usando Comparadores', link: '/vitest/usando-comparadores' },
-          { text: 'Probando Código Asíncrono', link: '/vitest/probando-codigo-asincrono' },                    
-          { text: 'Configuración y Desmontaje', link: '/vitest/configuracion-y-desmontaje' },
+          { text: 'Configuración y Desmontaje', link: '/vitest/configuracion-y-desmontaje' },                  
+          { text: 'Filtrando Pruebas', link: '/vitest/filtrando-pruebas' },
+          { text: 'Probando Código Asíncrono', link: '/vitest/probando-codigo-asincrono' },
           { text: 'Funciones Simuladas', link: '/vitest/funciones-simuladas' },
           { text: 'Un Ejemplo Asíncrono', link: '/vitest/un-ejemplo-asincrono' },
-          { text: 'Simulaciones de Temporizador', link: '/vitest/simulaciones-de-temporizador'}
+          { text: 'Simulaciones de Temporizador', link: '/vitest/simulaciones-de-temporizador'},
+          { text: 'Simulación', link: '/vitest/simulacion'}
         ]
       },{
         text: 'Vue Tests Utils',
