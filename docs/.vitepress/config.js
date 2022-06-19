@@ -29,9 +29,10 @@ module.exports = {
           { text: 'Filtrando Pruebas', link: '/vitest/filtrando-pruebas' },
           { text: 'Probando Código Asíncrono', link: '/vitest/probando-codigo-asincrono' },
           { text: 'Funciones Simuladas', link: '/vitest/funciones-simuladas' },
-          { text: 'Un Ejemplo Asíncrono', link: '/vitest/un-ejemplo-asincrono' },
+          { text: 'Un Ejemplo Asíncrono', link: '/vitest/un-ejemplo-asincrono' },          
+          { text: 'Simulación', link: '/vitest/simulacion'},
           { text: 'Simulaciones de Temporizador', link: '/vitest/simulaciones-de-temporizador'},
-          { text: 'Simulación', link: '/vitest/simulacion'}
+          { text: 'Simulaciones de Clase ES6', link: '/vitest/simulaciones-de-clase-es6'}          
         ]
       },{
         text: 'Vue Tests Utils',
