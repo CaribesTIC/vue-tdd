@@ -111,6 +111,13 @@ module.exports = {
               { text: 'Ejemplos', link: '/vtl/documentacion/ejemplos' },
             ]
           }, {
+            text: 'Prueba Simples y Completas',
+            path: '/vtl/psyc/',
+            collapsable: true,     
+            children: [
+              { text: 'Consultas DOM', link: '/vtl/psyc/consultas-dom' }
+            ]
+          }, {
             text: 'Diseño Dirigido por Pruebas',
             path: '/vtl/ddp/',
             collapsable: true,     
