@@ -115,7 +115,8 @@ module.exports = {
             path: '/vtl/psyc/',
             collapsable: true,     
             children: [
-              { text: 'Consultas DOM', link: '/vtl/psyc/consultas-dom' }
+              { text: 'Consultas DOM', link: '/vtl/psyc/consultas-dom' },
+              { text: 'Filosofía', link: '/vtl/psyc/filosofia' }              
             ]
           }, {
             text: 'Diseño Dirigido por Pruebas',

@@ -1,8 +1,12 @@
 # Consultas DOM
 
+:::info Prueba
+[Esta lección en video](https://www.youtube.com/watch?v=kMtqZK8z1XE&list=PLC2LZCNWKL9YdD4Z4V6guveajQoKN8rui&index=1)
+:::
+
 Vue Testing Library es bastante similar a Vue Test Utils, discutiremos un poco sobre esto y hablaremos sobre algunas de las diferencias. Ya que es un poco más obstinado y trae opiniones interesantes para debatir. Empecemos...
 
-Para ahorrar un poco de tiempo, empecemos con el componente `HelloWorld.vue` que trae la instalación de Vue por defecto. Para la cual, crearemos el siguiente archivo de prueba:
+Para ahorrar un poco de tiempo, empecemos con el componente `HelloWorld.vue` que trae la instalación de Vue 3 por defecto. Para la cual, crearemos el siguiente archivo de prueba:
 
 
 ```js
@@ -87,17 +91,17 @@ describe("HelloWorld.vue", () => {
 })
 ```
 
-Espero que pase y efectivamente pasó.
+Espero que pase...
+
+```
+√ tests/components/helloworld.spec.js (1)
+
+Test Files  1 passed (1)
+     Tests  1 passed (1)
+      Time  1.82s (in thread 49ms, 3721.69%)
 
 
-
-
-
-
-
-
-
-
-
-
-
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
+```
+... y efectivamente pasó.
