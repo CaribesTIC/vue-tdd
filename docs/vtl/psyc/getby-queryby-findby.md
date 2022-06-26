@@ -1,5 +1,9 @@
 # `getBy`, `queryBy` y `findBy`
 
+:::info Prueba
+[Esta lección en video](https://www.youtube.com/watch?v=B6BdCKStmFQ&list=PLC2LZCNWKL9YdD4Z4V6guveajQoKN8rui&index=3)
+:::
+
 Hasta ahora hemos visto solo una forma de seleccionar elementos del DOM y es usando el selector `getBy`.
 
 En realidad hay tres selectores que usaremos con mucha frecuencia: `getBy`, `queryBy` y `findBy`. Y hay muchas variedades diferentes. Hemos visto la variedad `byText`, pero vamos a ver ahora por `byRoll` y un montón de otras también.
