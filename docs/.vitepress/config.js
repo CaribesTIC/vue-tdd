@@ -116,7 +116,8 @@ module.exports = {
             collapsable: true,     
             children: [
               { text: 'Consultas DOM', link: '/vtl/psyc/consultas-dom' },
-              { text: 'Filosofía', link: '/vtl/psyc/filosofia' }              
+              { text: 'Filosofía', link: '/vtl/psyc/filosofia' },
+              { text: 'getBy, queryBy y findBy', link: '/vtl/psyc/getby-queryby-findby' }                           
             ]
           }, {
             text: 'Diseño Dirigido por Pruebas',
