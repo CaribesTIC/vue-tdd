@@ -283,7 +283,7 @@ describe("HelloWorld.vue", () => {
 }) 
 ```
 
-Vamos a seguir adelante y profundizar eso más adelante.
+Vamos a seguir y profundizar eso más adelante.
 
 
 
