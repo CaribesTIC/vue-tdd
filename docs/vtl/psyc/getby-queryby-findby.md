@@ -240,6 +240,50 @@ describe("HelloWorld.vue", () => {
 }) 
 ```
 
-Guardelo 
+Guardemos y esto pasará.
 
-1.35 / 2.28
+```
+ RERUN  rerun all
+
+ ✓ tests/components/helloworld.spec.js (1)
+
+Test Files  1 passed (1)
+     Tests  1 passed (1)
+      Time  29ms
+
+
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
+```
+
+Por lo que la principal diferencia entre `queryByText` y `getByText` es que `getByText` va a fallar si no encuentra el elemento correcto mientras que `queryByText` no. Podemos confirmar eso, una vez más, con solo mirar los tipos de devolución de `getByText`, que solo puede ser un `HTMLElement`, mientras que `queryByText` puede ser `HTMLElement | null`.
+
+Por lo que generalmente usaremos el método `getByText`, la única razón por la que realmente deseamos usar `queryByText` es si estamos afirmando que algo no existe. De lo contrario, seguiremos con el `getByText`. Por la razón de que es más claro y en realidad nos dará un buen resultado si nuestra prueba sigue adelante.
+
+Hay uno más del cual vamos a hablar, que es `findByText` y este es realmente asíncrono, una de las característica realmente agradables de Vue Testing Library. Y esto resuelve uno de los problemas de Vue Test Utils, donde normalmente tendríamos que usar `nextTick`.
+
+```js{17}
+// tests/components/helloworld.js
+import { render, screen } from "@testing-library/vue"
+import "@testing-library/jest-dom"
+import HelloWorld from "@/components/HelloWorld.vue"
+
+describe("HelloWorld.vue", () => {
+  it("renders props.msg when passed", () => {
+    const msg = "new message"
+    // wrapper
+    render(HelloWorld, {
+      props: { msg }
+    })
+
+    expect(screen.getByText('asdf')).not.toBeInTheDocument()
+
+    // findByText...
+  })
+}) 
+```
+
+Vamos a seguir adelante y profundizar eso más adelante.
+
+
+
