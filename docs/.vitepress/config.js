@@ -117,7 +117,8 @@ module.exports = {
             children: [
               { text: 'Consultas DOM', link: '/vtl/psyc/consultas-dom' },
               { text: 'Filosofía', link: '/vtl/psyc/filosofia' },
-              { text: 'getBy, queryBy y findBy', link: '/vtl/psyc/getby-queryby-findby' }                           
+              { text: 'getBy, queryBy y findBy', link: '/vtl/psyc/getby-queryby-findby' },
+              { text: 'fireEvent y waitFor', link: '/vtl/psyc/fireevent-waitfor' }                                        
             ]
           }, {
             text: 'Diseño Dirigido por Pruebas',
