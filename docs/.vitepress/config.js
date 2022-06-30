@@ -118,7 +118,8 @@ module.exports = {
               { text: 'Consultas DOM', link: '/vtl/psyc/consultas-dom' },
               { text: 'Filosofía', link: '/vtl/psyc/filosofia' },
               { text: 'getBy, queryBy y findBy', link: '/vtl/psyc/getby-queryby-findby' },
-              { text: 'fireEvent y waitFor', link: '/vtl/psyc/fireevent-waitfor' }                                        
+              { text: 'fireEvent y waitFor', link: '/vtl/psyc/fireevent-waitfor' },
+              { text: 'findBy', link: '/vtl/psyc/findby' }
             ]
           }, {
             text: 'Diseño Dirigido por Pruebas',
