@@ -160,7 +160,7 @@ describe("MyForm.vue", () => {
     expect(button).toBeDisabled()
     
     fireEvent.update(
-      screen.getByLabelText('Name'), 'Lachlan'
+      screen.getByLabelText('Name'), 'John'
     )  
   })
 })
@@ -184,7 +184,7 @@ describe("MyForm.vue", () => {
     expect(button).toBeDisabled()
     
     fireEvent.update(
-      screen.getByLabelText('Name'), 'Lachlan'
+      screen.getByLabelText('Name'), 'John'
     )
     
     expect(button).not.toBeDisabled()
@@ -211,7 +211,7 @@ describe("MyForm.vue", () => {
     expect(button).toBeDisabled()
     
     fireEvent.update(
-      screen.getByLabelText('Name'), 'Lachlan'
+      screen.getByLabelText('Name'), 'John'
     )
 
     await nextTick()
@@ -242,7 +242,7 @@ describe("MyForm.vue", () => {
     expect(button).toBeDisabled()
     
     await fireEvent.update(
-      screen.getByLabelText('Name'), 'Lachlan'
+      screen.getByLabelText('Name'), 'John'
     )
 
     await waitFor(()=>{      
@@ -270,7 +270,7 @@ describe("MyForm.vue", () => {
     expect(button).toBeDisabled()
     
     await fireEvent.update(
-      screen.getByLabelText('Name'), 'Lachlan'
+      screen.getByLabelText('Name'), 'John'
     )
 
     expect(button).not.toBeDisabled()   
