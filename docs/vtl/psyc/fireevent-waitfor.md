@@ -125,7 +125,7 @@ Test Files  1 failed (1)
 Revisemos nuestra prueba para determinar porque está fallando.
 
 ```js{13,14}
-// tests/components/helloworld.js
+// tests/components/helloworld.spec.js
 import { render, screen } from "@testing-library/vue"
 import "@testing-library/jest-dom"
 import HelloWorld from "@/components/HelloWorld.vue"
@@ -148,7 +148,7 @@ Así que lo que debemos hacer primero es hacer click en el botón antes de afirm
 ```js
 import { render, screen, fireEvent } from "@testing-library/vue"
 
-//...
+// ...
 
 fireEvent.click(
   // element
@@ -158,7 +158,7 @@ fireEvent.click(
 Ahora podemos disparar un evento click. Necesitamos pasarle el elemento en el que nos gustaría hacer click. En este caso, nos gustaría hacer click en el botón y tenemos una manera excelente de seleccionarlo. Recuerde que agregamos un `role` igual a `show-text`. Vamos a seleccionar dicho elemento usando ese `role`.
 
 ```js{14,15}
-// tests/components/helloworld.js
+// tests/components/helloworld.spec.js
 import { render, screen, fireEvent } from "@testing-library/vue"
 import "@testing-library/jest-dom"
 import HelloWorld from "@/components/HelloWorld.vue"
@@ -182,13 +182,13 @@ Guardemos y veamos que sucede. Podemos ver que obtenemos la misma falla de que e
 Lo que haríamos tradicionalmente es importar el `nextTick` de Vue y luego llamarlo.
 
 ```js
-//...
+// ...
 import { nextTick } from `vue`
-//...
+// ...
 async () => {
   // ...
   await nextTick()
-  // ..
+  // ...
 }
 ```
 
@@ -197,7 +197,7 @@ Lo que esto hará será esperar a que el DOM se actualice y eso garantizará que
 Se podría hacer algo así: 
 
 ```js{3,8,9,19}
-// tests/components/helloworld.js
+// tests/components/helloworld.spec.js
 import { render, screen, fireEvent } from "@testing-library/vue"
 import { nextTick } from "vue"
 import "@testing-library/jest-dom"
@@ -228,11 +228,11 @@ Vamos a ver otro método de Vue Testing Library el cual se llama `waitFor`.
 
 ```js
 import { render, screen, fireEvent, waitFor } from "@testing-library/vue"
-// ..
+// ...
 async () => {
-  // ..
+  // ...
   await waitFor(() =>
-    // ..
+    // ...
   )
 }
 ```
@@ -242,7 +242,7 @@ Básicamente, esto nos permitirá esperar a que suceda algo antes de progresar.
 Veamos cómo funciona.
 
 ```js{2,7,8,19}
-// tests/components/helloworld.js
+// tests/components/helloworld.spec.js
 import { render, screen, fireEvent, waitFor } from "@testing-library/vue"
 import "@testing-library/jest-dom"
 import HelloWorld from "@/components/HelloWorld.vue"

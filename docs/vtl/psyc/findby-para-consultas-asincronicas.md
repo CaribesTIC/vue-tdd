@@ -1,4 +1,4 @@
-# `findBy`
+# `findBy` para consultas asincrónicas
 
 :::info Prueba
 [Esta lección en video](https://www.youtube.com/watch?v=6UypB6LRysc&list=PLC2LZCNWKL9YdD4Z4V6guveajQoKN8rui&index=5)
@@ -7,7 +7,7 @@
 Hasta ahora hemos visto algunas formas en que Vue Testing Library difiere de Vue Test Utils. Cuando llamamos `fireEventet` en lugar de usar `trigger` y `waitFor` en lugar usar `nextTick`.
 
 ```js{13,14,17,18}
-// tests/components/helloworld.js
+// tests/components/helloworld.spec.js
 import { render, screen, fireEvent, waitFor } from "@testing-library/vue"
 import "@testing-library/jest-dom"
 import HelloWorld from "@/components/HelloWorld.vue"
@@ -44,7 +44,7 @@ Lo que tenemos que hacer aquí es colocarlo con `await` y esta prueba pasará.
 
 
 ```js{22}
-// tests/components/helloworld.js
+// tests/components/helloworld.spec.js
 import { render, screen, fireEvent, waitFor } from "@testing-library/vue"
 import "@testing-library/jest-dom"
 import HelloWorld from "@/components/HelloWorld.vue"
@@ -76,7 +76,7 @@ Si nos dirigimos a la documentación de Vue Testing Library y leemos [findBy](ht
 Solo para enfatizar lo que estaba sucediendo antes, vamos a dar un paso atrás y a hacer un `console.log("HI")` dentro de `waitFor` para mostrar lo que sucede.
 
 ```js{18,19,20,21}
-// tests/components/helloworld.js
+// tests/components/helloworld.spec.js
 import { render, screen, fireEvent, waitFor } from "@testing-library/vue"
 import "@testing-library/jest-dom"
 import HelloWorld from "@/components/HelloWorld.vue"

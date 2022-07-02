@@ -7,6 +7,7 @@
 Antes de continuar y discutir algunas de las diferencias entre `getByText` y otros selectores, es importante discutir la filosofía de Vue Testing Library y como funciona todo aquí.
 
 ```js
+// tests/components/helloworld.spec.js
 import { render } from "@testing-library/vue"
 import "@testing-library/jest-dom"
 import HelloWorld from "@/components/HelloWorld.vue"
@@ -34,7 +35,8 @@ Si echamos un vistazo a su [sitio web](https://testing-library.com/docs/) podemo
 
 Lo que estamos haciendo aquí es simular lo que hace un usuario, por lo que un mejor nombre para esta variable aquí sería algo como `user`.
 
-```js{9,10,13,14}
+```js{10,11,14,15}
+// tests/components/helloworld.spec.js
 import { render } from "@testing-library/vue"
 import "@testing-library/jest-dom"
 import HelloWorld from "@/components/HelloWorld.vue"
@@ -58,7 +60,8 @@ Sin embargo, lo que es mucho más común en la comunidad de Vue Testing Library,
 
 Ahora podemos seguir adelante y hacer un `screen.getByText` y esto va para encontrar cualquier texto en la pantalla que contenga lo declarado en `msg`.
 
-```js{1,9,10,13,14}
+```js{2,10,11,14,15}
+// tests/components/helloworld.spec.js
 import { render, screen } from "@testing-library/vue"
 import "@testing-library/jest-dom"
 import HelloWorld from "@/components/HelloWorld.vue"

@@ -13,7 +13,7 @@ Antes de saltar y ver las diferentes variedades, sigamos adelante y veamos cómo
 Mostraremos un pequeño truco con esto. Sigamos adelante y eliminemos la afirmación y simplemente mantengamos el selector de `getByText`.
 
 ```js{13,14,15}
-// tests/components/helloworld.js
+// tests/components/helloworld.spec.js
 import { render, screen } from "@testing-library/vue"
 import "@testing-library/jest-dom"
 import HelloWorld from "@/components/HelloWorld.vue"
@@ -48,7 +48,7 @@ Test Files  1 passed (1)
 Veamos qué sucede si lo cambiamos y lo guardamos.
 
 ```js{14,15}
-// tests/components/helloworld.js
+// tests/components/helloworld.spec.js
 import { render, screen } from "@testing-library/vue"
 import "@testing-library/jest-dom"
 import HelloWorld from "@/components/HelloWorld.vue"
@@ -172,7 +172,7 @@ Por lo que en realidad es una especie de prueba de una manera muy implícita. Au
 Es preferible de esta manera que es más explicito.
 
 ```js{13,14}
-// tests/components/helloworld.js
+// tests/components/helloworld.spec.js
 import { render, screen } from "@testing-library/vue"
 import "@testing-library/jest-dom"
 import HelloWorld from "@/components/HelloWorld.vue"
@@ -195,7 +195,7 @@ Sin embargo, esto plantea la pregunta: ¿Cómo podemos escribir una afirmación 
 Veremos cómo podemos hacer eso, así que avancemos y cambiemos esto. Vamos a decir que obtendrá el mensaje `asdf`, y por supuesto, esto va a fallar.
 
 ```js{13,14}
-// tests/components/helloworld.js
+// tests/components/helloworld.spec.js
 import { render, screen } from "@testing-library/vue"
 import "@testing-library/jest-dom"
 import HelloWorld from "@/components/HelloWorld.vue"
@@ -218,7 +218,7 @@ Pero queremos hacer que esta prueba pase. En lugar de usar `getByText` usaremos 
 Ya que es solo un elemento HTML, por lo que puede devolver un elemento nulo, eso nos va permitir escribir lo contrario como aserción, diciendo que este texto no existe. Todo lo que necesitamos ahora es decir que no esté en el DOM.
 
 ```js{13,14}
-// tests/components/helloworld.js
+// tests/components/helloworld.spec.js
 import { render, screen } from "@testing-library/vue"
 import "@testing-library/jest-dom"
 import HelloWorld from "@/components/HelloWorld.vue"
@@ -258,7 +258,7 @@ Por lo que generalmente usaremos el método `getByText`, la única razón por la
 Hay uno más del cual vamos a hablar, que es `findByText` y este es realmente asíncrono, una de las característica realmente agradables de Vue Testing Library. Y esto resuelve uno de los problemas de Vue Test Utils, donde normalmente tendríamos que usar `nextTick`.
 
 ```js{16}
-// tests/components/helloworld.js
+// tests/components/helloworld.spec.js
 import { render, screen } from "@testing-library/vue"
 import "@testing-library/jest-dom"
 import HelloWorld from "@/components/HelloWorld.vue"

@@ -10,7 +10,7 @@ Para ahorrar un poco de tiempo, empecemos con el componente `HelloWorld.vue` que
 
 
 ```js
-//tests/components/helloworld.spec.js
+// tests/components/helloworld.spec.js
 import { shallowMount } from "@vue/test-utils"
 import HelloWorld from "@/components/HelloWorld.vue"
 
@@ -32,7 +32,7 @@ Luego tomemos el método `render`, esto permitirá renderizar sus componentes. E
 Las opciones de montaje, como `props`, serán similares. Temporalmente, comentaremos la aserción y simplemente ejecutaremos las pruebas en modo de observación, para obtener ese buen ciclo de retroalimentación rápida.
 
 ```js{2,8,9,10,11,12}
-//tests/components/helloworld.spec.js
+// tests/components/helloworld.spec.js
 import { render } from "@testing-library/vue"
 import HelloWorld from "@/components/HelloWorld.vue"
 
@@ -53,7 +53,7 @@ Para ello, vamos a afirmar que el texto aparece en el documento. Hay varias form
 En este caso, queremos usar el `getByText` el cual nos permitirá obtener cualquier elemento en el DOM usando el texto. Así que ahora podemos seguir adelante y actualicemos nuestra afirmación.
 
 ```js{8,9,11,12}
-//tests/components/helloworld.spec.js
+// tests/components/helloworld.spec.js
 import { render } from "@testing-library/vue"
 import HelloWorld from "@/components/HelloWorld.vue"
 
@@ -74,7 +74,7 @@ En este caso, estamos buscando un _nodo dom_ que contiene un mensaje de texto y 
 
 
 ```js{3,14}
-//tests/components/helloworld.spec.js
+// tests/components/helloworld.spec.js
 import { render } from "@testing-library/vue"
 import "@testing-library/jest-dom"
 import HelloWorld from "@/components/HelloWorld.vue"
