@@ -120,7 +120,8 @@ module.exports = {
               { text: 'getBy, queryBy y findBy', link: '/vtl/psyc/getby-queryby-findby' },
               { text: 'fireEvent y waitFor', link: '/vtl/psyc/fireevent-waitfor' },
               { text: 'findBy para consultas asincrónicas', link: '/vtl/psyc/findby-para-consultas-asincronicas' },
-              { text: 'Trabajar con Formularios', link: '/vtl/psyc/trabajar-con-formularios' }
+              { text: 'Trabajar con Formularios', link: '/vtl/psyc/trabajar-con-formularios' },
+              { text: 'Enviar formularios y emitir eventos', link: '/vtl/psyc/enviar-formularios-y-emitir-eventos' }
             ]
           }, {
             text: 'Diseño Dirigido por Pruebas',
