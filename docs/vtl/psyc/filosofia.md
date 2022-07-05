@@ -91,10 +91,6 @@ Si seguimos adelante y guardamos y ejecutamos esta prueba...
 Test Files  1 passed (1)
      Tests  1 passed (1)
       Time  52ms
-
-
- PASS  Waiting for file changes...
-       press h to show help, press q to quit
 ```
 
 ... podemos ver que definitivamente pasará.

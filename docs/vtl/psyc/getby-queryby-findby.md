@@ -39,10 +39,6 @@ Y si guardamos esto, por supuesto, la prueba está en marcha para continuar pasa
 Test Files  1 passed (1)
      Tests  1 passed (1)
       Time  50ms
-
-
- PASS  Waiting for file changes...
-       press h to show help, press q to quit
 ```
 
 Veamos qué sucede si lo cambiamos y lo guardamos.
@@ -81,10 +77,6 @@ Aunque no tenemos una afirmación aquí, pero la prueba en realidad fallará.
 Test Files  1 failed (1)
      Tests  1 failed (1)
       Time  58ms
-
-
- FAIL  Tests failed. Watching for file changes...
-       press h to show help, press q to quit
 ```
 
 Y esta es una de las características de `getByText`. Va a fallar si no encuentra el _nodo_ correcto e incluso, le mostrará una visualización del DOM y le mostrará lo que existe y lo que no.
@@ -245,10 +237,6 @@ Guardemos y esto pasará.
 Test Files  1 passed (1)
      Tests  1 passed (1)
       Time  29ms
-
-
- PASS  Waiting for file changes...
-       press h to show help, press q to quit
 ```
 
 Por lo que la principal diferencia entre `queryByText` y `getByText` es que `getByText` va a fallar si no encuentra el elemento correcto mientras que `queryByText` no. Podemos confirmar eso, una vez más, con solo mirar los tipos de devolución de `getByText`, que solo puede ser un `HTMLElement`, mientras que `queryByText` puede ser `HTMLElement | null`.

@@ -92,10 +92,6 @@ Es posible que esperemos que el `console.log` se active, guardémoslo y veremos 
 Test Files  1 passed (1)
      Tests  1 passed (1)
       Time  121ms
-
-
- PASS  Waiting for file changes...
-       press h to show help, press q to quit
 ```
 
 Podemos ver aquí, que aunque estamos activando el método `submit` no estamos recibiendo el `console.log`, como es de esperar. Ahora la pregunta: ¿por qué sucede esto?
@@ -143,10 +139,6 @@ stdout | tests/components/myform.spec.js > MyForm.vue > enable button when data 
 Test Files  1 passed (1)
      Tests  1 passed (1)
       Time  118ms
-
-
- PASS  Waiting for file changes...
-       press h to show help, press q to quit
 ```
 
 Tenemos el número 18, luego tenemos el número 21 y luego tenemos el número 18 nuevamente.
@@ -155,5 +147,120 @@ Lo que sucede aquí es que estamos esperando el siguiente _tick_ para asegurarno
 
 Es un poco sorprendente y es una especie de error sutil que debemos tener en cuenta. Vamos a ver una mejor forma de escribir esta prueba para evitar este error.
 
-m 1.26
+Lo que hay que hacer es, antes remover los `console.log` que pusimos en nuestra prueba. Entonces, colocaremos un `await` justo antes del método `waitFor` para que se quede ahí esperando hasta que termine antes de disparar el próximo `fireEvent.click`.
 
+```js{18}
+// tests/components/myform.spec.js
+import { render, screen, fireEvent, waitFor } from "@testing-library/vue"
+import "@testing-library/jest-dom"
+import MyForm from "@/components/MyForm.vue"
+
+describe("MyForm.vue", () => {
+  it("enable button when data is entered", async () => {    
+    render(MyForm)
+
+    const button = screen.getByRole("button", {name: "Submit"})
+    expect(button).toBeDisabled()
+    
+    fireEvent.update(
+      screen.getByLabelText('Name'), 'John'
+    )
+
+    await waitFor(() => {    
+      expect(button).not.toBeDisabled()
+    })
+    
+    fireEvent.click(button)
+  })
+})
+```
+
+Si guardamos, veremos que ahora si estará funcionando correctamente, mostrando el `console.log` que declaramos previamente en el método `submit` del componente que estamos probando.
+
+```{2}
+stdout | tests/components/myform.spec.js > MyForm.vue > enable button when data is entered
+...
+
+ √ tests/components/myform.spec.js (1)
+
+Test Files  1 passed (1)
+     Tests  1 passed (1)
+      Time  118ms
+```
+
+Una mejor manera de hacer esto es colocando el `await` antes del método `fireEvent.update`. Haciéndolo así, ahora podemos deshacernos del método `waitFor` y esto nos dará el mismo resultado.
+
+```js{14,18}
+// tests/components/myform.spec.js
+import { render, screen, fireEvent } from "@testing-library/vue"
+import "@testing-library/jest-dom"
+import MyForm from "@/components/MyForm.vue"
+
+describe("MyForm.vue", () => {
+  it("enable button when data is entered", async () => {    
+    render(MyForm)
+
+    const button = screen.getByRole("button", {name: "Submit"})
+    expect(button).toBeDisabled()
+    
+    await fireEvent.update(
+      screen.getByLabelText('Name'), 'John'
+    )
+            
+    expect(button).not.toBeDisabled()
+
+    fireEvent.click(button)
+  })
+})
+```
+
+Es bueno tener en cuenta las dos formas en que se puede hacer. Ambas maneras serán útiles dependiendo de la prueba que queremos lograr.
+
+En fin, dejémoslo así y emitamos el evento asegurandonos que funcione correctamente.
+
+Así que vayamos a nuestro componente y coloquemos el método `emit` dentro del correspondiente método `submit`. Pasemos el nombre del método que queremos llamar, que será `submit` por ahora y pasemos una carga útil que será un objero con la propiedad `name` pasándole el valor de nuestra constante reactiva `name` que será el nombre del usuario que haya llenado la entrada correctamente.
+
+```vue{4,6}
+<script setup>
+import { ref } from "vue"
+
+const emit = defineEmits(["submit"])
+const name = ref("")
+const submit = () => emit("submit", { name: name.value })
+</script>
+
+<template>
+  <form @submit.prevent="submit">
+    <label for="name">Name</label>
+    <input v-model="name" id="name" />
+    <button role="button" :disabled="!name.length">Submit</button>
+  </form>  
+</template>
+```
+
+Regresemos a nuestra prueba y el evento se emitió correctamente. 2.29
+```js{8,9,22}
+// tests/components/myform.spec.js
+import { render, screen, fireEvent, waitFor } from "@testing-library/vue"
+import "@testing-library/jest-dom"
+import MyForm from "@/components/MyForm.vue"
+
+describe("MyForm.vue", () => {
+  it("enable button when data is entered", async () => {    
+    const { emitted } = render(MyForm)
+
+    const button = screen.getByRole("button", {name: "Submit"})
+    expect(button).toBeDisabled()
+    
+    await fireEvent.update(
+      screen.getByLabelText('Name'), 'John'
+    )
+            
+    expect(button).not.toBeDisabled()
+
+    fireEvent.click(button)
+    
+    console.log(emitted().submit)
+  })
+})
+```

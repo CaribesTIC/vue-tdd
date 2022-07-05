@@ -99,9 +99,5 @@ Espero que pase...
 Test Files  1 passed (1)
      Tests  1 passed (1)
       Time  1.82s (in thread 49ms, 3721.69%)
-
-
- PASS  Waiting for file changes...
-       press h to show help, press q to quit
 ```
 ... y efectivamente pasó.

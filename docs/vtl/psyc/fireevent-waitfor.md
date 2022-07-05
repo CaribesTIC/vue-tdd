@@ -57,10 +57,6 @@ A este `role` vamos a llamarlo `show-text` porque esa es la función de este bot
 Test Files  1 passed (1)
      Tests  1 passed (1)
       Time  39ms
-
-
- PASS  Waiting for file changes...
-       press h to show help, press q to quit
 ```
 
 Así que sigamos adelante creando la variable reactiva `show` establecida en `false` y condicionando el respectivo elemento para que muestre el mensaje correspondiente. 
@@ -116,10 +112,6 @@ Ignored nodes: comments, <script />, <style />
 Test Files  1 failed (1)
      Tests  1 failed (1)
       Time  44ms
-
-
- FAIL  Tests failed. Watching for file changes...
-       press h to show help, press q to quit
 ```
 
 Revisemos nuestra prueba para determinar porque está fallando.

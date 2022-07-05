@@ -91,10 +91,6 @@ Guardemos y observaremos que la prueba fallará, queriéndonos decir que si func
 Test Files  1 failed | 1 passed (2)
      Tests  1 failed | 6 passed (7)
       Time  1.98s (in thread 387ms, 512.59%)
-
-
- FAIL  Tests failed. Watching for file changes...
-       press h to show help, press q to quit
 ```
 
 Ahora comprobaremos, con el método `toBeDisabled`, que el botón está deshabilitado. Este es otro método que proviene de `@testing-library/jest-dom`.
@@ -215,10 +211,6 @@ Si guardamos esto, en realidad va a fallar.
 Test Files  1 failed (1)
      Tests  1 failed (1)
       Time  124ms
-
-
- FAIL  Tests failed. Watching for file changes...
-       press h to show help, press q to quit
 ```
 
 Esto es otro problema similar que vimos antes.
