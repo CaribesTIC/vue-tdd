@@ -4,15 +4,35 @@
 [Esta lección en video](https://www.youtube.com/watch?v=rnbji86I0PQ&list=PLC2LZCNWKL9YdD4Z4V6guveajQoKN8rui&index=6)
 :::
 
-Ahora veremos las diversas maneras que tiene la API de Vue Testing Libray para probar formularios. Ante todo, vamos a crear el componente que será nuestro formulario.
+Ahora veremos las diversas maneras que tiene la API de Vue Testing Libray para probar formularios. Ante todo, vamos a crear el componente que será nuestro formulario `@/components/MyForm.vue`.
 
-Empezamos declarando una constante reactiva, con la función `ref` propia de Vue, llamada `name` e inicializada en `""`. Luego, creamos un elemento `form` con el evento `@submit.prevent` que invocará a un método llamado `submit`. Seguido de un `label` para `name` y su respectivo `input` vinculando `v-model` a `name`, junto con la propiedad `id` establecida con `name` también.
+Empezamos en el `<script>` declarando una constante reactiva, con la función `ref` propia de Vue, llamada `name` e inicializada en `""`.
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const name = ref("")
+</script>
+```
+
+
+Luego en el `<template>`, creamos un elemento `form` con el evento `@submit.prevent` que invocará a un método llamado `submit`. Seguido de un `label` para `name` y su respectivo `input` vinculando `v-model` a `name`, junto con la propiedad `id` establecida con `name` también.
+
+```vue
+<template>
+  <form @submit.prevent="submit">
+    <label for="name">Name</label>
+    <input v-model="name" id="name" />    
+  </form>
+</template>
+```
 
 Por último, agregamos un `button` de envio con el texto `Submit` y con el `role` de `"button"` porque obviamente esta es su función. También deshabilitaremos este botón, para que no se pueda enviar el formulario a menos que el usuario haya escrito su nombre. Si `name` no tiene `length` estará `disabled`, y cuando el usuario ingrese su nombre será cuando se habilitará este botón.
 
 Entonces, nuestro `@/components/MyForm.vue` luce de la siguiente forma.
 
-```vue
+```vue{11,12}
 <script setup>
 import { ref } from 'vue'
 
@@ -28,7 +48,7 @@ const name = ref("")
 </template>
 ```
 
-Veamos ahora cómo podemos escribir esta prueba. En el correspondiente archivo partiremos de lo más básico.
+Veamos ahora cómo podemos escribir esta prueba, en el correspondiente archivo partiremos de lo más básico.
 
 ```js
 // tests/components/myform.spec.js
@@ -44,7 +64,9 @@ describe("MyForm.vue", () => {
 })
 ```
 
-Lo primero que haya que probar es que hay un botón deshabilitado, por lo que debemos antes seleccionarlo. Así que para ello podemos usar `screen` con el método `getByRole`, pasando como primer argumento `"button"`. Luego, para buscar el botón específico, pasamos un objeto con el atributo `name` declarado en `"Submit"` como segundo argumento. Es decir, primero buscará el `role="button"` y luego verificará que el texto diga `Submit`.
+Lo primero que probaremos es que haya un botón deshabilitado, por lo que debemos antes seleccionarlo. Así que para ello podemos usar `screen` con el método `getByRole`, pasando como primer argumento `"button"`.
+
+Luego, para buscar el botón específico, pasamos un objeto con el atributo `name` declarado en `"Submit"` como segundo argumento. Es decir, primero buscará el `role="button"` y luego verificará que el texto diga `Submit`.
 
 
 ```js{2,9,10}
@@ -60,7 +82,9 @@ describe("MyForm.vue", () => {
   })
 })
 ```
-Esta es una manera de seleccionar elementos con Vue Testing Library que funciona muy bien. Podemos comprobarlo agregando cualquier cosa dentro de la propiedad `name`, solo para estropearlo y verificar si sucede un error sino encuentra el elemento correcto.
+Esta es una manera de seleccionar elementos con Vue Testing Library que funciona muy bien.
+
+Podemos comprobarlo agregando cualquier cosa dentro de la propiedad `name`, solo para estropearlo y verificar si sucede un error sino encuentra el elemento correcto.
 
 ```js{9,10}
 // tests/components/myform.spec.js
@@ -111,7 +135,7 @@ describe("MyForm.vue", () => {
   })
 })
 ```
-Al guardar y podemos comprobar que la prueba pasará.
+Al guardar podemos comprobar que la prueba pasará.
 
 Seguidamente, podemos hacer una pequeña refactorización para que no se vea tan largo. Vamos a extraer lo que retorna el método `screen.getByRole` en una constante llamada `button`. No es obligatorio hacer esto, pero de esta manera nos resultará más fácil reutilizarla.
 

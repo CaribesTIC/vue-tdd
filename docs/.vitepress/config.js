@@ -121,7 +121,8 @@ module.exports = {
               { text: 'fireEvent y waitFor', link: '/vtl/psyc/fireevent-waitfor' },
               { text: 'findBy para consultas asincrónicas', link: '/vtl/psyc/findby-para-consultas-asincronicas' },
               { text: 'Trabajar con Formularios', link: '/vtl/psyc/trabajar-con-formularios' },
-              { text: 'Enviar formularios y emitir eventos', link: '/vtl/psyc/enviar-formularios-y-emitir-eventos' }
+              { text: 'Enviar formularios y emitir eventos', link: '/vtl/psyc/enviar-formularios-y-emitir-eventos' },
+              { text: 'Integración de Vue Test Utils y más ejemplos', link: '/vtl/psyc/itegracion-de-vue-test-utils-y-mas-ejemplos' }
             ]
           }, {
             text: 'Diseño Dirigido por Pruebas',
