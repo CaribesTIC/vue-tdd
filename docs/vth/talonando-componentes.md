@@ -1,4 +1,4 @@
-## Talonando Componentes
+# Talonando Componentes
 
 Puede encontrar la prueba descrita en esta página [aquí](https://github.com/lmiller1990/vue-testing-handbook/blob/master/demo-app-vue-3/tests/unit/ParentWithAPICallChild.spec.js).
 

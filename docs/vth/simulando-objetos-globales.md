@@ -1,4 +1,4 @@
-## Simulando Objetos Globales
+# Simulando Objetos Globales
 
 `vue-test-utils` proporciona una forma sencilla de simular objetos globales adjuntos a `Vue.prototype`, tanto en base a prueba por prueba como para establecer una simulación predeterminada para todas las pruebas.
 
