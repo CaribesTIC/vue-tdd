@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,a as o}from"./app.afabc1a2.js";const d=JSON.parse('{"title":"Consultas DOM","description":"","frontmatter":{},"headers":[],"relativePath":"vtl/psyc/consultas-dom.md"}'),l={name:"vtl/psyc/consultas-dom.md"},p=o("",19),e=[p];function t(r,c,y,F,D,i){return n(),a("div",null,e)}var C=s(l,[["render",t]]);export{d as __pageData,C as default};

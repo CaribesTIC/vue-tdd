@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,a as o}from"./app.692fce16.js";const A=JSON.parse('{"title":"Filosof\xEDa","description":"","frontmatter":{},"headers":[],"relativePath":"vtl/psyc/filosofia.md"}'),l={name:"vtl/psyc/filosofia.md"},e=o("",19),p=[e];function t(r,c,y,F,i,D){return a(),n("div",null,p)}var u=s(l,[["render",t]]);export{A as __pageData,u as default};
