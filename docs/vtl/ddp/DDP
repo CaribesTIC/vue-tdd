@@ -1,0 +1,10 @@
+, {
+      text: 'Vue Testing Library Diseño Dirigido por Pruebas',
+      path: '/vtl/ddp/',
+      collapsable: true,     
+      items: [
+        { text: 'Introducción', link: '/vtl/ddp/intro' },  
+        { text: 'Patrones para Probar Accesorios', link: '/vtl/ddp/patrones-para-probar-accesorios' },
+        { text: 'Emitir Eventos', link: '/vtl/ddp/emitir-eventos' }
+      ]
+    }

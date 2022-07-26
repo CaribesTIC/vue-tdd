@@ -1,11 +1,21 @@
 ---
-home: true
-heroImage: /logo.png
-heroAlt: Logo image
-heroText: Vue(tdd)
-tagline: TDD con Vue3
-actionText: Comenzar
-actionLink: /comenzar/tdd
+layout: home
+
+hero:
+  name: VitePress
+  text: Vue(tdd)
+  tagline: TDD con Vue3
+  image:
+    src: /logo.png
+    alt: VitePress
+  actions:
+    - theme: brand
+      text: Comenzar
+      link: /comenzar/tdd
+    - theme: alt
+      text: GitHub
+      link: https://github.com/CaribesTIC/vue-tdd
+
 features:
   - title: Vue(tdd)
     details: Aprende TDD para Vue3 de cero a experto, paso a paso. Aquí, explica la correspondiente configuración de Vitest (con Vite) para tus proyectos y la migración a Vitest en cuanto a los Mocks (simulaciones). Todo desde un solo lugar.
@@ -19,9 +29,6 @@ features:
     details: Vue Testing Handbook es un sitio que contiene informaciòn relevante para aprender sobre Vue(TDD).    
   - title: Probando Pinia
     details: Las tiendas, por diseño, se utilizarán en muchos lugares y pueden hacer que las pruebas sean mucho más difíciles de lo que deberían ser. Afortunadamente, esto no tiene por qué ser así. 
-  - title: Cypress
-    details: Proximamente...
-    
 
 footer: MIT Licensed | Copyleft © 2022-present Ernesto Canquiz
 ---
