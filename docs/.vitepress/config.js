@@ -14,7 +14,7 @@ export default {
       path: '/comenzar/',      // optional, link of the title, which should be an absolute path and must exist        
       sidebarDepth: 1,    // optional, defaults to 1
       collapsible: true,
-      collapsed: true, 
+      collapsed: false, 
       items: [
         { text: 'Desarrollo Dirigido por Pruebas', link: '/comenzar/tdd' },
         { text: 'Pruebas Unitarias', link: '/comenzar/pruebas-unitarias' }                    
@@ -23,7 +23,7 @@ export default {
       text: 'Vitest',   // required
       path: '/vitest/',
       collapsible: true,
-      collapsed: false,        
+      collapsed: true,        
       items: [
         { text: '¿Por qué Vitest?', link: '/vitest/porque-vitest' },
         { text: 'Entorno de Prueba', link: '/vitest/entorno-de-prueba' },
