@@ -1,1 +1,0 @@
-import{_ as n,c as s,o as a,a as t}from"./app.1bf5b695.js";const b='{"title":"Enviar formularios y emitir eventos","description":"","frontmatter":{},"headers":[],"relativePath":"vtl/psyc/enviar-formularios-y-emitir-eventos.md"}',p={},o=t("",49),e=[o];function c(u,l,i,r,k,d){return a(),s("div",null,e)}var g=n(p,[["render",c]]);export{b as __pageData,g as default};

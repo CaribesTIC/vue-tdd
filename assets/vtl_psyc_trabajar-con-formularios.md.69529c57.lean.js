@@ -1,1 +1,0 @@
-import{_ as n,c as s,o as a,a as t}from"./app.1bf5b695.js";const g='{"title":"Trabajar con Formularios","description":"","frontmatter":{},"headers":[],"relativePath":"vtl/psyc/trabajar-con-formularios.md"}',o={},p=t("",49),e=[p];function c(u,l,i,r,k,d){return a(),s("div",null,e)}var b=n(o,[["render",c]]);export{g as __pageData,b as default};

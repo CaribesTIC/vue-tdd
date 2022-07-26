@@ -1,1 +1,0 @@
-import{_ as n,c as s,o as a,a as t}from"./app.1bf5b695.js";const g='{"title":"findBy para consultas asincr\xF3nicas","description":"","frontmatter":{},"headers":[],"relativePath":"vtl/psyc/findby-para-consultas-asincronicas.md"}',e={},o=t("",19),p=[o];function c(u,l,r,i,k,d){return a(),s("div",null,p)}var b=n(e,[["render",c]]);export{g as __pageData,b as default};
