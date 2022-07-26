@@ -5,8 +5,8 @@ export default {
   themeConfig: {
     logo: '/logo.png',
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/comenzar/tdd' },
+      { text: 'Inicio', link: '/' },
+      { text: 'Guía', link: '/comenzar/tdd' },
       { text: 'GitHub', link: 'https://github.com/CaribesTIC/vue-tdd' }
     ],
     sidebar: [{

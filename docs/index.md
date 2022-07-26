@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: VitePress
-  text: Vue(tdd)
-  tagline: TDD con Vue3
+  name: Vue(tdd)
+  text: TDD con Vue3
+  tagline: Vite + Vitest + VTU + VTL + Pinia
   image:
     src: /logo.png
     alt: VitePress
