@@ -7,6 +7,7 @@ export default {
     nav: [
       { text: 'Inicio', link: '/' },
       { text: 'Guía', link: '/comenzar/tdd' },
+      { text: 'CaribesTIC', link: 'https://caribestic.github.io/' },
       { text: 'GitHub', link: 'https://github.com/CaribesTIC/vue-tdd' }
     ],
     sidebar: [{
@@ -121,12 +122,12 @@ export default {
         { text: 'Integración de Vue Test Utils y más ejemplos', link: '/vtl/psyc/itegracion-de-vue-test-utils-y-mas-ejemplos' }
       ]
     }, {
-      text: 'Pinia',
+      text: 'Probando Pinia',
       path: '/pinia/',
       collapsible: true,
       collapsed: true,      
       items: [
-        { text: 'Probando Pinia', link: '/pinia/probando-pinia' }
+        { text: '@pinia/testing', link: '/pinia/probando-pinia' }
       ]
     }]
   }
