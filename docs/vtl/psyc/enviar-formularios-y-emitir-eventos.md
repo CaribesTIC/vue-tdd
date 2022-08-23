@@ -165,7 +165,7 @@ describe("MyForm.vue", () => {
 
 Si guardamos, veremos que ahora si estará funcionando correctamente, mostrando el `console.log` que declaramos previamente en el método `submit` del componente que estamos probando.
 
-```{2}
+```sh{2}
 stdout | tests/components/myform.spec.js > MyForm.vue > enable button and emit event
 ...
 
