@@ -2,7 +2,9 @@
 
 ## Crear aplicación con Vite
 
-Para arrancar nuestra aplicación y el entorno de prueba ya debemos tener instalado [Node](https://nodejs.org/es/). Avanzaremos y [crearemos una aplicación con Vue](https://vuejs.org/guide/quick-start.html#creating-a-vue-application). Ejecute lo siguiente en la línea de comando:
+Para arrancar nuestra aplicación, y ya tener preparado el entorno de pruebas, debemos tener instalado [Node](https://nodejs.org/es/). Avanzaremos y [crearemos una aplicación con Vue](https://vuejs.org/guide/quick-start.html#creating-a-vue-application).
+
+Ejecute lo siguiente en la línea de comando:
 
 ```sh
 npm init vue@latest
@@ -10,17 +12,9 @@ npm init vue@latest
 
 >Como habrá notado, para este curso estamos usando [`npm`](https://www.npmjs.com/) para el manejo de paquetes. Siéntase libre de usar [`yarn`](https://yarnpkg.com/) si lo desea.
 
-Inmediatamente se establecerá un diálogo con el terminal:
+Inmediatamente se establecerá un diálogo con el terminal, lo primero que nos preguntará será definir el nombre del proyecto, en mi caso le colocaré `vue-tdd`, usted puede colocar el nombre que desee:
 
-```sh
-Vue.js - The Progressive JavaScript Framework
-
-? Project name: › vue-project
-```
-
-Lo primero que nos preguntará será definir el nombre del proyecto, en mi caso le colocaré `vue-tdd`, usted puede colocar el nombre que desee:
-
-```sh
+```sh{3}
 Vue.js - The Progressive JavaScript Framework
 
 ? Project name: › vue-tdd
@@ -87,9 +81,11 @@ Esto lo hacemos con el propósito de auto-importar las correspondientes funciona
 
 ## Probar el Entorno
 
-**Comencemos** escribiendo una prueba para una función hipotética que suma dos números.
+Comencemos escribiendo una prueba para una función hipotética que suma dos números.
 
-Dentro de la carpeta raiz del proyecto, creemos la carpeta `tests`. Aquí colocaremos todos nuestros archivos de pruebas. Nuestra estructura de carpetas debería lucir de la siguiente manera:
+>Dentro de la carpeta raiz del proyecto, creemos la carpeta `tests`. Aquí colocaremos todos nuestros archivos de pruebas.
+
+Nuestra estructura de carpetas debería lucir de la siguiente manera:
 ```
 vue-tdd/
 ├── node_modules/
@@ -97,7 +93,8 @@ vue-tdd/
 ├── src/
 └── tests/
 ```
-Creemos un archivo `sum.js` dentro de la carpeta del proyecto (`src/`):
+Creemos un archivo `sum.js` dentro de la carpeta `src/` del proyecto:
+
 ```js
 const sum = function(a, b) {
   return a + b;
@@ -105,7 +102,7 @@ const sum = function(a, b) {
 
 export default sum;
 ```
-Luego, cree un archivo llamado `sum.spec.js` dentro de la carpeta para las pruebas (`tests/`). Esto contendrá nuestra prueba real:
+Luego, cree un archivo llamado `sum.spec.js` dentro de la carpeta `tests/` para las pruebas. Esto contendrá nuestra prueba real:
 
 ```js
 import sum from '@/sum';
@@ -115,7 +112,7 @@ test('adds 1 + 2 to equal 3', () => {
 });
 ```
 
-Ejecute en su terminal:
+Entonces, ejecute en su terminal:
 
 ```sh
 npm run test:unit
@@ -145,7 +142,7 @@ Test Files  2 passed (2)
 
 Excelente, ya realizamos nuestra primera prueba.
 
->Tenga en cuenta que al momento de la creación de nuestra aplicación, vue también creó una prueba conjunta denominada `HelloWorld.spec.js`.
+>Tenga en cuenta que al momento de la creación de nuestra aplicación, Vue también creó una prueba conjunta denominada `HelloWorld.spec.js`.
 
 ## Instalar Vue Testing Library
 

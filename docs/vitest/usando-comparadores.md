@@ -1,6 +1,8 @@
 # Usando comparadores
 
-Los "comparadores" permiten probar valores de diferentes maneras. Este documento presentará algunos comparadores de uso común. Para ver la lista completa, consulte el [`expect API doc`](https://vitest.dev/api/#expect).
+Los _"comparadores"_ permiten probar valores de diferentes maneras.
+
+>Este documento presentará algunos comparadores de uso común. Para ver la lista completa, consulte la [`expect API doc`](https://vitest.dev/api/#expect).
 
 ## Comparadores comunes
 
@@ -11,7 +13,7 @@ test('two plus two is four', () => {
   expect(2 + 2).toBe(4);
 });
 ```
-En este código, `expect(2 + 2)` devuelve un objeto de "expectativa". Por lo general, no hará mucho con estos objetos de expectativa, excepto comparadores de llamadas en ellos. En este código, `.toBe(4)` es el comparador. Cuando es ejecutado, realiza un seguimiento de todos los comparadores que fallan para poder imprimir mensajes de error.
+En este código, `expect(2 + 2)` devuelve un objeto de _"expectativa"_. Por lo general, no hará mucho con estos objetos, excepto comparar llamadas en ellos. En este código, `.toBe(4)` es el comparador. Cuando es ejecutado, realiza un seguimiento de todos los comparadores que fallan para poder imprimir mensajes de error.
 
 `toBe` usa `Object.is` para probar la igualdad exacta. Si desea verificar el valor de un objeto, use `toEqual` en su lugar:
 ```js
@@ -36,13 +38,13 @@ test('adding positive numbers is not zero', () => {
 ```
 ## Veracidad
 
-En las pruebas, a veces necesita distinguir entre indefinido, nulo y falso, pero a veces no desea tratarlos de manera diferente. Hay ayudantes que te permiten ser explícito sobre lo que quieres.
+En las pruebas, a veces necesita distinguir entre `undefined`, `null` y `false`, pero a veces no desea tratarlos de manera diferente. Hay ayudantes que te permiten ser explícito sobre lo que quieres.
 
-- `toBeNull` solo coincide con nulo
-- `toBeUndefined` coincide solo con indefinido
-- `toBeDefined` es lo contrario de toBeUndefined
-- `toBeTruthy` coincide con todo lo que una instrucción `if` trata como verdadero
-- `toBeFalsy` coincide con cualquier cosa que una instrucción `if` trata como falsa
+- `toBeNull` solo coincide con `null`
+- `toBeUndefined` coincide solo con `undefined`
+- `toBeDefined` es lo contrario de `toBeUndefined`
+- `toBeTruthy` coincide con todo lo que una instrucción `if` trata como `true`
+- `toBeFalsy` coincide con cualquier cosa que una instrucción `if` trata como `false`
 
 Por ejemplo:
 
@@ -143,7 +145,7 @@ test('compiling android goes as expected', () => {
   expect(() => compileAndroidCode()).toThrowError(/JDK/);
 });
 ```
-Nota: la función que arroja una excepción debe invocarse dentro de una función de ajuste - de lo contrario, la aserción `toThrow` fallará.
+**Nota**: la función que arroja una excepción debe invocarse dentro de una función de ajuste - de lo contrario, la aserción `toThrow` fallará.
 
 ## Y más
 

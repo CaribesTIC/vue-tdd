@@ -1,14 +1,12 @@
 # Configuración y Desmontaje
 
-A menudo, mientras escribe las pruebas, tiene que realizar algún trabajo de configuración antes de que se ejecuten las pruebas, y tiene que realizar algún trabajo de finalización después de que se ejecuten las pruebas. Existen funciones auxiliares para manejar esto.
+>A menudo, mientras escribe las pruebas, tiene que realizar algún trabajo de configuración antes de que se ejecuten las pruebas, y tiene que realizar algún trabajo de finalización después de que se ejecuten las pruebas. Existen funciones auxiliares para manejar esto.
 
 ## Configuración Repetida Para Muchas Pruebas
 
 Si tiene algún trabajo que debe hacer repetidamente para muchas pruebas, puede usar `beforeEach` y `afterEach`.
 
-Por ejemplo, digamos que varias pruebas interactúan con una base de datos de ciudades. Tiene un método `initializeCityDatabase()` que debe llamarse antes de cada una de estas pruebas y un método `clearCityDatabase()` que debe llamarse después de cada una de estas pruebas.
-
-Supongamos que dichos métodos están en el siguiente módulo `src/models/City.js`:
+Por ejemplo, digamos que varias pruebas interactúan con una base de datos de ciudades. También tiene un método `initializeCityDatabase()` que debe llamarse antes de cada una de estas pruebas y un método `clearCityDatabase()` que debe llamarse después de cada una de estas pruebas. Supongamos que dichos métodos están en el siguiente módulo `src/models/City.js`:
 
 ```js
 export const initializeDatabase = () => {
@@ -141,7 +139,9 @@ describe('matching cities with all', () => {
   });
 });
 ```
-Tenga en cuenta que `beforeEach` de nivel superior se ejecuta antes de `beforeEach` dentro del bloque de `describe`. Puede ser útil ilustrar el orden de ejecución de todos los ganchos.
+Tenga en cuenta que `beforeEach` de nivel superior se ejecuta antes de `beforeEach` dentro del bloque de `describe`.
+
+Puede ser útil ilustrar el orden de ejecución de todos los ganchos.
 
 ```js
 beforeAll(() => console.log('1 - beforeAll'));
@@ -161,13 +161,13 @@ describe('Scoped / Nested block', () => {
 // 1 - beforeEach
 // 1 - test
 // 1 - afterEach
-// 2 - beforeAll
 // 1 - beforeEach
-// 2 - beforeEach
+// 2 - beforeEach 
 // 2 - test
 // 2 - afterEach
 // 1 - afterEach
-// 2 - afterAll
+// 2 - beforeAll
+// 2 - afterAll 
 // 1 - afterAll
 ```
 

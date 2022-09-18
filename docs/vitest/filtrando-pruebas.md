@@ -1,23 +1,23 @@
-# Filtrando Pruebas
+# Filtrado de Pruebas
 
-Filtrado, tiempos de espera, concurrente para suite y pruebas
+>Filtrado, tiempos de espera, concurrente para suite y pruebas.
 
 ## CLI
 
 Puede usar CLI para filtrar archivos de prueba por nombre:
 
-```
+```bash
 $ vitest basic
 ```
 
 Solo ejecutará archivos de prueba que contengan `basic`, ejemplo.
 
-```
+```bash
 basic.test.ts
 basic-foo.test.ts
 ```
 
-## Especificando de un Timeout
+## Especificación de un Timeout
 
 Opcionalmente, puede pasar un tiempo de espera en milisegundos como tercer argumento para las pruebas. El valor predeterminado es 5 segundos.
 

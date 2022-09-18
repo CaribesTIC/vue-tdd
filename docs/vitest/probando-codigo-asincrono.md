@@ -1,8 +1,10 @@
 # Probando Código Asíncrono
 
-Es común en JavaScript que el código se ejecute de forma asíncrona. Cuando tiene un código que se ejecuta de forma asíncrona, Vitest necesita saber cuándo se ha completado el código que está probando, antes de poder pasar a otra prueba. Vitest tiene varias formas de manejar esto.
+>Es común en JavaScript que el código se ejecute de forma asíncrona.
 
-## Devoluciones de llamada
+Cuando tiene un código que se ejecuta de forma asíncrona, Vitest necesita saber cuándo se ha completado el código que está probando, antes de poder pasar a otra prueba. Vitest tiene varias formas de manejar esto.
+
+## Callback
 
 El patrón asincrónico más común son las devoluciones de llamada.
 
@@ -58,11 +60,13 @@ Si nunca se llama a `done()`, la prueba fallará (con un error de tiempo de espe
 
 Si la declaración de `expect` falla, arroja un error y no se llama a `done()`. Si queremos ver en el registro de prueba porqué falló, tenemos que envolver `expect` en un bloque `try` y pasar el error en el bloque `catch` a `done`. De lo contrario, terminaremos con un error de tiempo de espera opaco que no muestra qué valor recibió `expect(data)`.
 
->**Nota:** `done()` no debe mezclarse con Promesas, ya que esto tiende a provocar pérdidas de memoria en las pruebas.
+>**Nota:** `done()` no debe mezclarse con [Promise](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise), ya que esto tiende a provocar pérdidas de memoria en las pruebas.
 
-## Promesas
+## Promise
 
-Si su código usa promesas, hay una forma más sencilla de manejar las pruebas asincrónicas. Devuelve una promesa de tu prueba y se esperará a que se resuelva esa promesa. Si se rechaza la promesa, la prueba fallará automáticamente.
+Si su código usa [Promise](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise), hay una forma más sencilla de manejar las pruebas asincrónicas. 
+
+>Devuelve una promesa de tu prueba y se esperará a que se resuelva esa promesa. Si se rechaza la promesa, la prueba fallará automáticamente.
 
 Por ejemplo, digamos que `fetchData`, en lugar de usar una devolución de llamada, devuelve una promesa que se supone que debe resolverse en la cadena `'peanut butter'`. 
 
@@ -80,7 +84,7 @@ export default function (req = true) {
   })
 };
 ```
-**Nota:** Tomemos en cuenta que para el llamado del código anterior usaremos el argumento `req` con el valor `true` de manera predeterminada para que la promesa sea exitosa (`resolve`). De otro modo, cuando queramos que la prueba falle (`reject`) le pasaremos el valor `false`.
+>**Nota:** Tomemos en cuenta que para el llamado del código anterior usaremos el argumento `req` con el valor `true` de manera predeterminada para que la promesa sea exitosa (`resolve`). De otro modo, cuando queramos que la prueba falle (`reject`) le pasaremos el valor `false`.
 
 Podríamos probarlo con:
 ```js
@@ -105,7 +109,7 @@ test('the fetch fails with an error', () => {
 });
 ```
 
-## .resuelve / .rechaza
+## .resolves / .rejects
 
 También puede usar el comparador `.resolves` en su declaración de expectativa, y se esperará a que se resuelva esa promesa. Si se rechaza la promesa, la prueba fallará automáticamente.
 ```js
@@ -139,7 +143,7 @@ test('the fetch fails with an error', () => {
 });
 ```
 
-## Asíncrono/Espera
+## Async/Await
 
 Alternativamente, puede usar `async` y `await` en sus pruebas. Para escribir una prueba asíncrona, use la palabra clave `async` delante de la función que se pasó a prueba. Por ejemplo, el mismo escenario de `fetchData` se puede probar con:
 
@@ -179,7 +183,7 @@ test('the fetch fails with an error', async () => {
   await expect(fetchData(false)).rejects.toMatch('error');
 });
 ```
-En estos casos, `async` y `await` son efectivamente azúcar sintáctico para la misma lógica que usa el ejemplo de promesas.
+En estos casos, `async` y `await` son efectivamente azúcar sintáctico para la misma lógica que usa el ejemplo de Promise.
 
 :::warning PRECAUCIÓN
 Asegúrese de devolver (`return`) o esperar (`await`) la promesa - si omite la declaración de `return`/`await`, su prueba se completará antes de que la promesa devuelta por `fetchData` se resuelva o rechace.
