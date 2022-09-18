@@ -2,8 +2,8 @@
 
 Implementemos un módulo que obtenga datos de usuario de una API y devuelva el nombre de usuario.
 
+📃`models/user.js`
 ```js
-// models/user.js
 import request from '@/services/request';
 
 export function getUserName(userID) {
@@ -15,12 +15,11 @@ En la implementación anterior, esperamos que el módulo `request.js` devuelva u
 
 Ahora imagine una implementación de `request.js` que va a la red y obtiene algunos datos del usuario:
 
-```js
-// services/request.js
+📃`services/request.js`
+```js 
 import http from 'http'
 
 export default function request(url) {
-
   return new Promise(resolve => {
     // This is an example of an http request, for example to fetch
     // user data from an API.
@@ -36,9 +35,8 @@ export default function request(url) {
 
 Debido a que no queremos ir a la red en nuestra prueba, vamos a crear una simulación manual para nuestro módulo `request.js` en la carpeta `__mocks__` (la carpeta distingue entre mayúsculas y minúsculas, `__MOCKS__` no funcionará). Podría verse algo como esto:
 
-
+📃`services/__mocks__/request.js`
 ```js
-// services/__mocks__/request.js
 const users = {
   4: {name: 'Mark'},
   5: {name: 'Paul'},
@@ -60,10 +58,9 @@ export default function request(url) {
 
 Ahora escribamos una prueba para nuestra funcionalidad asíncrona.
 
+📃`tests/models/user.spec.js`
 ```js
-//tests/models/user.spec.js
 vi.mock('@/services/request');
-
 import * as user from '@/models/user';
 
 // The assertion for a promise must be returned.
@@ -73,7 +70,7 @@ it('works with promises', () => {
 });
 ```
 
-Llamamos a `vi.mock('@/services/request')` para decirle a Vitest que use nuestro simulacro manual. `it` espera que el valor de retorno sea una Promesa que se va a resolver. Puede encadenar tantas Promesas como desee y llamar a `expect` en cualquier momento, siempre que devuelva una Promesa al final.
+Llamamos a `vi.mock('@/services/request')` para decirle a Vitest que use nuestro simulacro manual. `it` espera que el valor de retorno sea una _**Promise**_ que se va a resolver. Puede encadenar tantas _**Promises**_ como desee y llamar a `expect` en cualquier momento, siempre que devuelva una _**Promise**_ al final.
 
 ## `.resolves`
 
@@ -81,7 +78,7 @@ Hay una forma menos detallada de usar `resolves` para desenvolver el valor de un
 
 ```js
 it('works with resolves', () => {  
-expect.assertions(1);
+  expect.assertions(1);
   return expect(user.getUserName(5)).resolves.toEqual('Paul');
 });
 ```
