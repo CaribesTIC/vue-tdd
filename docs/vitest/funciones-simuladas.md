@@ -2,7 +2,7 @@
 
 Las funciones simuladas le permiten probar los vínculos entre el código borrando la implementación real de una función, capturando llamadas a la función (y los parámetros pasados en esas llamadas), capturando instancias de funciones de constructor cuando se instancian con nuevas y permitiendo la configuración en tiempo de prueba de valores de retorno.
 
-Hay dos formas de simular funciones: ya sea creando una función simulada para usar en el código de prueba o escribiendo una simulación manual para anular la dependencia de un módulo. Una explicación más específica de cómo hacer simulaciones manuales la podemos encontrar en la documentación oficial de [Jest](https://jestjs.io/docs/manual-mocks).
+>Hay dos formas de simular funciones: ya sea creando una función simulada para usar en el código de prueba o escribiendo una simulación manual para anular la dependencia de un módulo. Una explicación más específica de cómo hacer simulaciones manuales la podemos encontrar en la documentación oficial de [Jest](https://jestjs.io/docs/manual-mocks).
 
 ## Usando una función simulada
 
@@ -36,7 +36,7 @@ test('using a mock function', () => {
 });
 ```
 
-## Propiedad .mock
+## Propiedad `.mock`
 
 Todas las funciones simuladas tienen esta propiedad especial `.mock`, que es donde se guardan los datos sobre cómo se llamó a la función y qué devolvió la función. La propiedad `.mock` también rastrea el valor de esto para cada llamada, por lo que también es posible inspeccionar esto:
 
@@ -71,7 +71,7 @@ test('more exploring mock properties', () => {
     expect(myMock.mock.calls[0][1]).toBe('second arg');
     
     // This function was instantiated exactly once
-    expect(myMock.mock.instances.length).toBe(2);
+    expect(myMock.mock.instances.length).toBe(1);
 });
 ```
 ## Valores de Retorno Simulados
@@ -138,7 +138,7 @@ test('more mock return value', () => {
     expect(myMock.mock.results[3].value).toBe(true);
 });
 ```
-Las funciones simuladas también son muy efectivas en el código que usa un estilo funcional de paso de continuación. El código escrito en este estilo ayuda a evitar la necesidad de stubs complicados que recrean el comportamiento del componente real que representan, a favor de inyectar valores directamente en la prueba justo antes de que se usen.
+Las funciones simuladas también son muy efectivas en el código que usa un estilo funcional de paso de continuación. El código escrito en este estilo ayuda a evitar la necesidad de _**stubs**_ complicados que recrean el comportamiento del componente real que representan, a favor de inyectar valores directamente en la prueba justo antes de que se usen.
 
 ```js
 test('mock filter', () => {    
