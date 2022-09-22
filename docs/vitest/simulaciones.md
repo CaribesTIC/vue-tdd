@@ -1,6 +1,6 @@
 # Simulaciones
 
-Al escribir pruebas, es solo cuestión de tiempo antes de que necesite crear una versión "falsa" de un servicio interno o externo. Esto se conoce comúnmente como simulación. Vitest proporciona funciones de utilidad para ayudarlo a través de su ayudante **vi**. Puede usar `import { vi } from 'vitest'` o acceder a él globalmente (cuando la [configuración global](https://vitest.dev/config/#globals) está habilitada).
+Al escribir pruebas, es solo cuestión de tiempo antes de que necesite crear una versión _"falsa"_ de un servicio interno o externo. Esto se conoce comúnmente como simulación. Vitest proporciona funciones de utilidad para ayudarlo a través de su ayudante **vi**. Puede usar `import { vi } from 'vitest'` o acceder a él globalmente (cuando la [configuración global](https://vitest.dev/config/#globals) está habilitada).
 
 :::warning ADVERTENCIA
 ¡Recuerde siempre borrar o restaurar los simulacros antes o después de cada ejecución de prueba para deshacer los cambios de estado simulados entre ejecuciones! Consulte los documentos de [mockReset](https://vitest.dev/api/#mockreset) para obtener más información.
@@ -70,7 +70,7 @@ A veces, todo lo que necesita es validar si se ha llamado o no a una función es
 
 Sin embargo, los espías solo pueden ayudarlo a espiar funciones, no pueden alterar la implementación de esas funciones. En el caso de que necesitemos crear una versión falsa (o simulada) de una función, podemos usar `vi.fn()` ([lea más aquí](https://vitest.dev/api/#vi-fn)).
 
-Usamos [Tinyspy](https://github.com/tinylibs/tinyspy) como base para las funciones de simulación, pero tenemos nuestro propio envoltorio para que sea compatible con `jest`. Tanto `vi.fn()` como `vi.spyOn()` comparten los mismos métodos, sin embargo, solo se puede llamar al resultado devuelto de vi.fn().
+Usamos [Tinyspy](https://github.com/tinylibs/tinyspy) como base para las funciones de simulación, pero tenemos nuestro propio envoltorio para que sea compatible con `jest`. Tanto `vi.fn()` como `vi.spyOn()` comparten los mismos métodos, sin embargo, solo se puede llamar al resultado devuelto de `vi.fn()`.
 
 **Ejemplo**
 
