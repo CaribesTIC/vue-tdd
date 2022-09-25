@@ -129,6 +129,14 @@ export default {
       items: [
         { text: '@pinia/testing', link: '/pinia/probando-pinia' }
       ]
+    }, {
+      text: 'Cypress Vue Component Testing',
+      path: '/cypress-vtc/',
+      collapsible: true,
+      collapsed: true,      
+      items: [
+        { text: 'Inicio rápido: Vue', link: '/cypress-vtc/inicio-rapido-vue' }
+      ]
     }]
   }
 }
