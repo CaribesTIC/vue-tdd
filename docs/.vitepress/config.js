@@ -137,7 +137,8 @@ export default {
       items: [
         { text: 'Escribir su Primera Prueba de Componentes', link: '/cypress-vtc/escribir-su-primera-prueba-de-componentes' },
         { text: '¿Para Quién Estás Probando?', link: '/cypress-vtc/para-quien-estas-probando' },
-        { text: 'Inicio rápido: Vue', link: '/cypress-vtc/inicio-rapido-vue' }
+        { text: 'Inicio rápido: Vue', link: '/cypress-vtc/inicio-rapido-vue' },
+        { text: 'Montando Componentes', link: '/cypress-vtc/montando-componentes' }
       ]
     }]
   }
