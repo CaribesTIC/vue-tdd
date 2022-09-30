@@ -1,4 +1,4 @@
-# Inicio rápido: Vue
+# Inicio Rápido
 
 :::warning Advertencia
 Cypress Component Testing se encuentra actualmente en versión beta.
