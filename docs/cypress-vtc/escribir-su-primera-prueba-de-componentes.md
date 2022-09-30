@@ -28,4 +28,4 @@ Por último, la API de Cypress está centrada en el usuario y está diseñada pa
 
 ## Empezando
 
-¿Preparado para comenzar? Consulte nuestras guías de [Inicio rápido: Vue](./inicio-rapido-vue.html).
+¿Preparado para comenzar? Consulte nuestras guías de [Inicio rápido: Vue](./inicio-rapido.html).
