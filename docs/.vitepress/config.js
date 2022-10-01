@@ -139,7 +139,9 @@ export default {
         { text: '¿Para Quién Estás Probando?', link: '/cypress-vtc/para-quien-estas-probando' },
         { text: 'Inicio Rápido', link: '/cypress-vtc/inicio-rapido' },
         { text: 'Montando Componentes', link: '/cypress-vtc/montando-componentes' },
-        { text: 'Probando Componentes', link: '/cypress-vtc/probando-componentes' }
+        { text: 'Probando Componentes', link: '/cypress-vtc/probando-componentes' },
+        { text: 'Probando Componentes con Eventos Emitidos', link: '/cypress-vtc/pobando-componentes-con-eventos-emitidos' },
+        
       ]
     }]
   }
