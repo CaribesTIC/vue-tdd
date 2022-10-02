@@ -135,12 +135,13 @@ export default {
       collapsible: true,
       collapsed: true,      
       items: [
-        { text: 'Escribir su Primera Prueba de Componentes', link: '/cypress-vtc/escribir-su-primera-prueba-de-componentes' },
+        { text: 'Prueba de Componentes', link: '/cypress-vtc/prueba-de-componentes' },
         { text: '¿Para Quién Estás Probando?', link: '/cypress-vtc/para-quien-estas-probando' },
         { text: 'Inicio Rápido', link: '/cypress-vtc/inicio-rapido' },
         { text: 'Montando Componentes', link: '/cypress-vtc/montando-componentes' },
         { text: 'Probando Componentes', link: '/cypress-vtc/probando-componentes' },
-        { text: 'Probando Componentes con Eventos Emitidos', link: '/cypress-vtc/pobando-componentes-con-eventos-emitidos' },
+        { text: 'Componentes con Eventos Emitidos', link: '/cypress-vtc/componentes-con-eventos-emitidos' },
+        { text: 'Componentes con Slots', link: '/cypress-vtc/componentes-con-slots' },
         
       ]
     }]

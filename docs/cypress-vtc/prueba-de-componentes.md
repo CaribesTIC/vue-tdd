@@ -1,4 +1,4 @@
-# Escribir Su Primera Prueba de Componentes
+# Prueba de Componentes
 
 :::warning Advertencia
 Cypress Component Testing se encuentra actualmente en versión beta.

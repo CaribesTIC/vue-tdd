@@ -1,4 +1,4 @@
-# Pobando Componentes con Eventos Emitidos
+# Componentes con Eventos Emitidos
 
 Los eventos emitidos, como las propiedades, son estrictamente parte de la API del componente. El usuario final de su aplicación ni siquiera conoce el concepto de eventos emitidos. Esto significa que cuando esté probando eventos emitidos, el usuario que debe tener en cuenta al escribir la prueba es el desarrollador que usará su componente.
 
