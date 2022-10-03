@@ -11,11 +11,11 @@ Los componentes de diseño a nivel de página, como el _**Sidebar**_ o el _**Foo
 Por último, los componentes sin representación, como un componente _**Loading**_ o un componente _**ApolloQuery**_, hacen un uso intensivo de los _**slots**_ para definir qué renderizar en varios estados como: _error_, _loading_, y _success_.
 
 
-## El _stot_ más simple
+## El Stot Más Simple
 
 Mostraremos cómo probar un Modal que usa un `<slot/>` predeterminado. Al igual que en las secciones anteriores, comenzaremos de manera simple.
 
-📃`MySlot.vue`
+📃`Modal.vue`
 ```vue
 <script setup>
 import { ref } from 'vue'
@@ -24,10 +24,10 @@ const show = ref(true)
 </script>
 
 <template>
-  <div class="overlay" v-if="show">
-    <div class="modal">
+  <div class="overlay">
+    <div class="modal" v-if="show">
       <button @click="show = !show">Close</button>
-      <slot />
+      <slot  />
     </div>
   </div>
 </template>
@@ -50,6 +50,7 @@ const show = ref(true)
   min-height: 350px;
   min-width: 400px;
   background: white;
+  color: black;
 }
 </style>
 ```
@@ -62,11 +63,12 @@ const show = ref(true)
   </div>
 </div>
 
-📃`MySlot.cy.js`
+📃`Modal.cy.js`
 ```js
 import Modal from '../Modal.vue'
 
-const modalSelector = '.modal'
+const modalSelector = '.overlay'
+const closeButtonSelector = 'button'
 
 describe('<Modal>', () => {
   it('renders the modal content', () => {
@@ -79,14 +81,36 @@ describe('<Modal>', () => {
     cy.mount(Modal, { slots: { default: () => 'Content' } })
       .get(modalSelector)
       .should('have.contain', 'Content')
-      .get(modalSelector)
+      .get(closeButtonSelector)
       .should('have.contain', 'Close')
       .click()
       // Repeat the assertion to make sure the text
       // is no longer visible
-      .get(modalSelector)
-      .should('have.contain', '')
+      .get(modalSelector)      
+      .should('not.have.text', 'Content')
   })
 })
 ```
 
+## Slots Nombrados
+
+Las ranuras con nombre en Vue le dan al componente principal la capacidad de inyectar diferentes marcas y lógica del padre en los componentes del contenedor.
+
+En el caso de nuestro modal, el modal podría definir un encabezado, un pie de página y un cuerpo denominado slot.
+
+Todo esto es parte de la API del componente y ejercerlo a fondo es responsabilidad de la prueba.
+
+<div style="position: relative; display: flex; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.2); width: 400px; height: 320px;">
+  <div style="padding: 10px; position: absolute; display: flex; flex-direction: column; background: white; border-radius: 3px; min-height: 300px; min-width: 350px; margin: 0px auto;">
+    <div style="font-size: 1.25rem;">Header Content</div>
+    <hr>
+    <div style="flex-grow: 1;">
+      Modal's body content (passed in via slot)
+    </div>
+    <hr>
+    <div style="bottom: 0px; display: flex; justify-content: space-between; width: 100%;">
+    <button>Cancel</button>
+    <button>Continue</button>
+    </div>
+  </div>
+</div>
