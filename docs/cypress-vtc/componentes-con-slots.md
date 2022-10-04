@@ -67,10 +67,10 @@ const show = ref(true)
 ```js
 import Modal from '../Modal.vue'
 
-const modalSelector = '.overlay'
-const closeButtonSelector = 'button'
-
 describe('<Modal>', () => {
+  const modalSelector = '.overlay'
+  const closeButtonSelector = 'button'
+  
   it('renders the modal content', () => {
     cy.mount(Modal, { slots: { default: () => 'Content' } })
       .get(modalSelector)
@@ -114,3 +114,150 @@ Todo esto es parte de la API del componente y ejercerlo a fondo es responsabilid
     </div>
   </div>
 </div>
+
+📃`Modal.vue`
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(true)
+</script>
+
+<template>  
+  <div class="overlay">
+    <div class="modal" v-if="show">
+      <div class="header">
+        <slot name="header" />
+      </div>
+      <hr/>
+      <div class="content">
+        <slot/>
+      </div>
+      <hr/>
+      <div class="footer">
+        <slot name="footer">
+          <button @click="show = !show">Close</button>
+        </slot>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.overlay {
+  position: fixed;
+  display: flex;
+  padding-top: 120px;
+  justify-content: center;
+  background: rgba(100, 100, 100, 30%);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.modal {
+  position: absolute;
+  min-height: 350px;
+  min-width: 400px;
+  background: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  font-size: 1.25rem;
+}
+
+.content {
+  flex-grow: 1;
+}
+</style>
+```
+
+📃`Modal.cy.js`
+```js
+import Modal from '../Modal.vue'
+
+describe('<Modal>', () => {  
+  const modalSelector = '.overlay'
+  const closeButtonSelector = 'button'
+  
+  const footerText = 'My Custom Footer'
+  const headerText = 'My Custom Header'
+
+  const slots = {
+    default: () => 'Content',
+    footer: () => footerText,
+    header: () => headerText
+  }
+
+  it('renders the default modal content', () => {
+    cy.mount(Modal, { slots })
+      .get(modalSelector).should('have.contain', 'Content')
+  })
+
+  it('renders a custom footer', () => {
+    const footerText = 'My Custom Footer'  
+    cy.mount(Modal, { slots })
+      .get(modalSelector).should('have.contain', 'Content')
+      .and('have.contain', footerText)
+  })
+
+  it('renders a custom header', () => {
+    const headerText = 'My Custom Header'
+    cy.mount(Modal, { slots })
+      .get(modalSelector).should('have.contain', 'Content')
+      .and('have.contain', headerText)
+  })
+
+  it('renders the fallback "Close" button when no footer is provided', () => {
+    cy.mount(Modal, {
+      slots: {
+        default: () => 'Content',
+        header: () => headerText
+      }
+    })
+      .get(modalSelector).should('have.contain', 'Content')
+      .get(closeButtonSelector)
+      .should('have.contain', 'Close').click()
+      // Repeat the assertion to make sure the text
+      // is no longer visible
+      .get(modalSelector).should('not.have.contain', 'Content')
+  })  
+})
+```
+
+## Ámbito del Slot
+
+Ahora, ¿qué pasa si queremos permitir que el padre controle cuándo cerrar el modal? Podemos proporcionar una propiedad de **_slot_**, una función llamada cerca de cualquiera de los _**slots**_ que queramos.
+
+La implementación de nuestro modal cambiará ligeramente y solo tenemos que mostrar la plantilla para demostrar el cambio.
+
+📃`Modal.vue`
+```vue
+<template>
+  <div class="overlay" v-if="show">
+    <div class="modal">
+      <div class="header">
+        <slot name="header" :close="onClose">
+      </div>
+      <hr/>
+      <div class="content">
+        <slot :close="onClose"/>
+      </div>
+      <hr/>
+      <div class="footer">
+        <slot name="footer" :close="onClose">
+          <button @click="show = !show">Close</button>
+        </slot>
+      </div>
+    </div>
+  </div>
+</template>
+```
+
+¡Ahora aquí, podemos escribir algunas pruebas nuevas! Cada uno de nuestros componentes principales debería poder utilizar el método y asegurarse de que esté conectado correctamente. Importaremos `h` de Vue para crear nodos virtuales reales para que podamos interactuar con ellos desde fuera de la prueba.
+
+
