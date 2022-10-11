@@ -4,7 +4,7 @@ layout: home
 hero:
   name: Vue(tdd)
   text: TDD con Vue3
-  tagline: Vite + Vitest + VTU + VTL + Pinia
+  tagline: Vitest + VTU + VTL + Cypress
   image:
     src: /logo.png
     alt: VitePress
@@ -26,10 +26,10 @@ features:
   - title: Vue Testing Library (VTL)
     details: Vue Testing Library se basa en DOM Testing Library al agregar API para trabajar con componentes de Vue. Está construido sobre VTU, la biblioteca de prueba oficial para Vue, ajustando algunos métodos de ambas fuentes.    
   - title: Vue Testing Handbook (VTH)
-    details: Vue Testing Handbook es un sitio que contiene informaciòn relevante para aprender sobre Vue(TDD).    
-  - title: Probando Pinia
-    details: Las tiendas, por diseño, se utilizarán en muchos lugares y pueden hacer que las pruebas sean mucho más difíciles de lo que deberían ser. Afortunadamente, esto no tiene por qué ser así. 
-
+    details: Vue Testing Handbook es un sitio que contiene informaciòn relevante para aprender sobre Vue(TDD).  
+  - title: Cypress
+    details: La herramienta de prueba de frontend de próxima generación creada para la web. Aborda los puntos débiles clave que enfrentan los desarrolladores y los ingenieros de control de calidad al probar aplicaciones modernas.
+    
 footer: MIT Licensed | Copyleft © 2022-present Ernesto Canquiz
 ---
 

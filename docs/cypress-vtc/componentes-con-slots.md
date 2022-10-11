@@ -55,7 +55,7 @@ const show = ref(true)
 </style>
 ```
 
-<div style="position: relative; display: flex; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.2); width: 400px; height: 320px;">
+<div style="color: #424949; position: relative; display: flex; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.2); width: 400px; height: 320px;">
   <div style="padding: 10px; position: absolute; background: white; border-radius: 3px; min-height: 300px; min-width: 350px; margin: 0px auto;">
     <div>
       Modal's body content (passed in via slot)
@@ -67,10 +67,10 @@ const show = ref(true)
 ```js
 import Modal from '../Modal.vue'
 
-describe('<Modal>', () => {
-  const modalSelector = '.overlay'
-  const closeButtonSelector = 'button'
-  
+const modalSelector = '.overlay'
+const closeButtonSelector = 'button'
+
+describe('<Modal>', () => { 
   it('renders the modal content', () => {
     cy.mount(Modal, { slots: { default: () => 'Content' } })
       .get(modalSelector)
@@ -87,10 +87,13 @@ describe('<Modal>', () => {
       // Repeat the assertion to make sure the text
       // is no longer visible
       .get(modalSelector)      
-      .should('not.have.text', 'Content')
+      .should('not.have.contain', 'Content')
   })
 })
 ```
+:::info
+Si desea consultar el mismo ejemplo de esta prueba con JSX o del mismo componente con la Options API, puede buscar en la [Documentación Oficial de Cypress](https://docs.cypress.io/guides/component-testing/slots-vue#The-Simplest-Slot).
+:::
 
 ## Slots Nombrados
 
@@ -100,7 +103,7 @@ En el caso de nuestro modal, el modal podría definir un encabezado, un pie de p
 
 Todo esto es parte de la API del componente y ejercerlo a fondo es responsabilidad de la prueba.
 
-<div style="position: relative; display: flex; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.2); width: 400px; height: 320px;">
+<div style="color: #424949; position: relative; display: flex; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.2); width: 400px; height: 320px;">
   <div style="padding: 10px; position: absolute; display: flex; flex-direction: column; background: white; border-radius: 3px; min-height: 300px; min-width: 350px; margin: 0px auto;">
     <div style="font-size: 1.25rem;">Header Content</div>
     <hr>
@@ -118,9 +121,7 @@ Todo esto es parte de la API del componente y ejercerlo a fondo es responsabilid
 📃`Modal.vue`
 ```vue
 <script setup>
-import { ref } from 'vue'
-
-const show = ref(true)
+  // omitted for brevity 
 </script>
 
 <template>  
@@ -144,35 +145,7 @@ const show = ref(true)
 </template>
 
 <style scoped>
-.overlay {
-  position: fixed;
-  display: flex;
-  padding-top: 120px;
-  justify-content: center;
-  background: rgba(100, 100, 100, 30%);
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}
-
-.modal {
-  position: absolute;
-  min-height: 350px;
-  min-width: 400px;
-  background: white;
-  color: black;
-  display: flex;
-  flex-direction: column;
-}
-
-.header {
-  font-size: 1.25rem;
-}
-
-.content {
-  flex-grow: 1;
-}
+  /* omitted for brevity */
 </style>
 ```
 
@@ -180,19 +153,19 @@ const show = ref(true)
 ```js
 import Modal from '../Modal.vue'
 
-describe('<Modal>', () => {  
-  const modalSelector = '.overlay'
-  const closeButtonSelector = 'button'
+const modalSelector = '.overlay'
+const closeButtonSelector = 'button'
   
-  const footerText = 'My Custom Footer'
-  const headerText = 'My Custom Header'
+const footerText = 'My Custom Footer'
+const headerText = 'My Custom Header'
 
-  const slots = {
-    default: () => 'Content',
-    footer: () => footerText,
-    header: () => headerText
-  }
-
+const slots = {
+  default: () => 'Content',
+  footer: () => footerText,
+  header: () => headerText
+}
+  
+describe('<Modal>', () => {
   it('renders the default modal content', () => {
     cy.mount(Modal, { slots })
       .get(modalSelector).should('have.contain', 'Content')
@@ -225,11 +198,15 @@ describe('<Modal>', () => {
       // Repeat the assertion to make sure the text
       // is no longer visible
       .get(modalSelector).should('not.have.contain', 'Content')
-  })  
+  })
 })
 ```
 
-## Ámbito del Slot
+:::info
+Si desea consultar el mismo ejemplo de esta prueba con JSX o del mismo componente con la Options API, puede buscar en la [Documentación Oficial de Cypress](https://docs.cypress.io/guides/component-testing/slots-vue#Named-Slots).
+:::
+
+## Alcance del Slot
 
 Ahora, ¿qué pasa si queremos permitir que el padre controle cuándo cerrar el modal? Podemos proporcionar una propiedad de **_slot_**, una función llamada cerca de cualquiera de los _**slots**_ que queramos.
 
@@ -237,11 +214,16 @@ La implementación de nuestro modal cambiará ligeramente y solo tenemos que mos
 
 📃`Modal.vue`
 ```vue
+<script setup>
+// omitted for brevity
+const onClose = () => show.value = !show.value
+</script>
+
 <template>
-  <div class="overlay" v-if="show">
-    <div class="modal">
+  <div class="overlay">
+    <div class="modal" v-if="show">
       <div class="header">
-        <slot name="header" :close="onClose">
+        <slot name="header" :close="onClose" />
       </div>
       <hr/>
       <div class="content">
@@ -249,15 +231,65 @@ La implementación de nuestro modal cambiará ligeramente y solo tenemos que mos
       </div>
       <hr/>
       <div class="footer">
-        <slot name="footer" :close="onClose">
-          <button @click="show = !show">Close</button>
-        </slot>
+        <slot name="footer" :close="onClose" />
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+  /* omitted for brevity */
+</style>
 ```
 
-¡Ahora aquí, podemos escribir algunas pruebas nuevas! Cada uno de nuestros componentes principales debería poder utilizar el método y asegurarse de que esté conectado correctamente. Importaremos `h` de Vue para crear nodos virtuales reales para que podamos interactuar con ellos desde fuera de la prueba.
+¡Ahora aquí, podemos escribir algunas pruebas nuevas! Cada uno de nuestros componentes principales debería poder utilizar el método y asegurarse de que esté conectado correctamente. Importaremos `h` desde Vue para crear nodos virtuales reales para que podamos interactuar con ellos desde _fuera_ de la prueba.
 
+📃`Modal.cy.js`
+```js
+import Modal from '../Modal.vue'
+import { h } from 'vue'
 
+const modalSelector = '.modal'
+const footerSelector = '[data-testid=footer-close]'
+const headerSelector = '[data-testid=header-close]'
+const contentSelector = '[data-testid=content-close]'
+const text = 'Close me!'
+
+const slots = {
+  footer: ({ close }) => h('div', { onClick: close , 'data-testid': 'footer-close' }, text ),
+  header: ({ close }) => h('div', { onClick: close, 'data-testid': 'header-close' }, text ),
+  default: ({ close }) => h('div', { onClick: close, 'data-testid': 'content-close' }, text ),
+}
+
+describe('<Modal>', () => {
+  it('The footer slot binds the close method', () => {
+    cy.mount(Modal, { slots })
+      .get(footerSelector).should('have.text', text)
+      .click()
+      .get(modalSelector).should('not.exist')
+  })
+
+  it('The header slot binds the close method', () => {
+    cy.mount(Modal, { slots })
+      .get(headerSelector).should('have.text', text)
+      .click()
+      .get(modalSelector).should('not.exist')
+  })
+
+  it('The default slot binds the close method', () => {
+    cy.mount(Modal, { slots })
+      .get(contentSelector).should('have.text', text)
+      .click()
+      .get(modalSelector).should('not.exist')
+  })  
+})
+```
+:::info
+Si desea consultar el mismo ejemplo de esta prueba con JSX o del mismo componente con la Options API, puede buscar en la [Documentación Oficial de Cypress](https://docs.cypress.io/guides/component-testing/slots-vue#Scoped-Slots).
+:::
+
+## ¿Que Sigue?
+
+Ahora que se siente cómodo montando componentes y afirmando sus _slots_, ¡debe estar listo para probar la mayoría de los componentes con _scoped slots_ y _fallbacks_!
+
+Trabajemos en la configuración de un comando de montaje personalizado para manejar aplicaciones como Vuetify y complementos como Vue Router.
