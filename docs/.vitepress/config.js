@@ -141,8 +141,7 @@ export default {
         { text: 'Montando Componentes', link: '/cypress-vtc/montando-componentes' },
         { text: 'Probando Componentes', link: '/cypress-vtc/probando-componentes' },
         { text: 'Componentes con Eventos Emitidos', link: '/cypress-vtc/componentes-con-eventos-emitidos' },
-        { text: 'Componentes con Slots', link: '/cypress-vtc/componentes-con-slots' },
-        
+        { text: 'Componentes con Slots', link: '/cypress-vtc/componentes-con-slots' }        
       ]
     }]
   }
