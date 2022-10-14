@@ -26,7 +26,7 @@ export default {
       collapsible: true,
       collapsed: true,        
       items: [
-        { text: '¿Por qué Vitest?', link: '/vitest/porque-vitest' },
+        { text: '¿Por Qué Vitest?', link: '/vitest/porque-vitest' },
         { text: 'Entorno de Prueba', link: '/vitest/entorno-de-prueba' },
         { text: 'Usando Comparadores', link: '/vitest/usando-comparadores' },
         { text: 'Configuración y Desmontaje', link: '/vitest/configuracion-y-desmontaje' },                  
@@ -130,13 +130,28 @@ export default {
         { text: '@pinia/testing', link: '/pinia/probando-pinia' }
       ]
     }, {
+      text: 'Cypress Visión General',
+      path: '/cypress-overview/',
+      collapsible: true,
+      collapsed: true,      
+      items: [
+        { text: '¿Por Qué Cypress?', link: '/cypress-overview/por-que-cypress' },               
+      ]
+    }, {
+      text: 'Cypress Intro Component Testing',
+      path: '/cypress-intro/',
+      collapsible: true,
+      collapsed: true,      
+      items: [
+        { text: 'Prueba de Componentes', link: '/cypress-intro/prueba-de-componentes' },
+        { text: '¿Para Quién Estás Probando?', link: '/cypress-intro/para-quien-estas-probando' },       
+      ]
+    }, {
       text: 'Cypress Vue Component Testing',
       path: '/cypress-vtc/',
       collapsible: true,
       collapsed: true,      
       items: [
-        { text: 'Prueba de Componentes', link: '/cypress-vtc/prueba-de-componentes' },
-        { text: '¿Para Quién Estás Probando?', link: '/cypress-vtc/para-quien-estas-probando' },
         { text: 'Inicio Rápido', link: '/cypress-vtc/inicio-rapido' },
         { text: 'Montando Componentes', link: '/cypress-vtc/montando-componentes' },
         { text: 'Probando Componentes', link: '/cypress-vtc/probando-componentes' },
