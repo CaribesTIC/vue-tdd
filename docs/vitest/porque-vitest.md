@@ -1,4 +1,4 @@
-# ¿Por qué Vitest?
+# ¿Por Qué Vitest?
 
 ## La necesidad de un corredor de pruebas nativo de Vite
 

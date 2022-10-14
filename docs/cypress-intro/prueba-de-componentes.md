@@ -1,5 +1,7 @@
 # Prueba de Componentes
 
+## Escribir Su Primera Prueba De Componentes 
+
 :::warning Advertencia
 Cypress Component Testing se encuentra actualmente en versión beta.
 :::
@@ -28,4 +30,4 @@ Por último, la API de Cypress está centrada en el usuario y está diseñada pa
 
 ## Empezando
 
-¿Preparado para comenzar? Consulte nuestras guías de [Inicio rápido: Vue](./inicio-rapido.html).
+¿Preparado para comenzar? Consulte nuestras guías de [Inicio rápido: Vue](../cypress-vtc/inicio-rapido.html).
