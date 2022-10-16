@@ -135,7 +135,8 @@ export default {
       collapsible: true,
       collapsed: true,      
       items: [
-        { text: '¿Por Qué Cypress?', link: '/cypress-overview/por-que-cypress' },               
+        { text: '¿Por Qué Cypress?', link: '/cypress-overview/por-que-cypress' },
+        { text: 'Diferencias Clave', link: '/cypress-overview/diferencias-clave' },              
       ]
     }, {
       text: 'Cypress Intro Component Testing',
