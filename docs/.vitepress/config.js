@@ -138,6 +138,15 @@ export default {
         { text: '¿Por Qué Cypress?', link: '/cypress-overview/por-que-cypress' },
         { text: 'Diferencias Clave', link: '/cypress-overview/diferencias-clave' },              
       ]
+    } , {
+      text: 'Cypress Empezando',
+      path: '/cypress-get-start/',
+      collapsible: true,
+      collapsed: true,      
+      items: [
+        { text: 'Instalando Cypress', link: '/cypress-get-start/instalando-cypress' },
+        { text: 'Abriendo la Aplicación', link: '/cypress-get-start/abriendo-la-aplicacion' },                 
+      ]
     }, {
       text: 'Cypress Intro Component Testing',
       path: '/cypress-intro/',
