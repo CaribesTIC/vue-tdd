@@ -8,7 +8,7 @@ Cypress Component Testing se encuentra actualmente en versión beta.
 
 _Cypress Component Testing_ proporciona un _**testable component workbench**_ para que usted construya y pruebe rápidamente cualquier componente, sin importar cuán simple o complejo sea.
 
-El _Test Runner_ está basado en el navegador, lo que le permite probar los estilos y la API de su componente y aislar su componente de la página en la que Cypress lo representará. La separación de los componentes de su sitio web le permite dividir aún más el trabajo en más manejable trozos y, en última instancia, da como resultado componentes construidos conscientemente.
+El _Test Runner_ está basado en el navegador, lo que le permite probar **los estilos y la API de su componente** y **aislar su componente de la página en la que Cypress lo representará**. La separación de los componentes de su sitio web le permite dividir aún más el trabajo en más manejable trozos y, en última instancia, da como resultado componentes construidos conscientemente.
 
 <video controls>
   <source src="./img/vuetify-color-picker-example.webm">

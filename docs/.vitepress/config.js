@@ -148,6 +148,14 @@ export default {
         { text: 'Abriendo la Aplicación', link: '/cypress-get-start/abriendo-la-aplicacion' },                 
       ]
     }, {
+      text: 'Cypress End-to-End Testing',
+      path: '/cypress-e2e/',
+      collapsible: true,
+      collapsed: true,      
+      items: [
+        { text: 'Escribir su Primera Prueba E2E', link: '/cypress-e2e/primera-prueba-E2E' },      
+      ]
+    }, {
       text: 'Cypress Intro Component Testing',
       path: '/cypress-intro/',
       collapsible: true,
