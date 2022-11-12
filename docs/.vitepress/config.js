@@ -130,6 +130,14 @@ export default {
         { text: '@pinia/testing', link: '/pinia/probando-pinia' }
       ]
     }, {
+      text: 'Todo con Pinia',
+      path: '/pinia/',
+      collapsible: true,
+      collapsed: true,      
+      items: [
+        { text: 'La Tienda', link: '/todo-con-pinia/store' }
+      ]
+    } , {
       text: 'Cypress Visión General',
       path: '/cypress-overview/',
       collapsible: true,
