@@ -150,4 +150,41 @@ La clave aquí es sopesar cuidadosamente los beneficios de las pruebas en cuesti
 
 ## Paso 2: Consulta de un elemento
 
+Ahora que tenemos una página cargada, debemos realizar alguna acción en ella. ¿Por qué no hacemos clic en un enlace de la página? Suena bastante fácil, vamos a buscar uno que nos guste... ¿qué tal el `type`?
 
+Para encontrar este elemento por su contenido, usaremos [cy.contains()](https://docs.cypress.io/api/commands/contains).
+
+Vamos a agregarlo a nuestra prueba y ver qué sucede:
+
+```js
+describe('My First Test', () => {
+  it('finds the content "type"', () => {
+    cy.visit('https://example.cypress.io')
+
+    cy.contains('type')
+  })
+})
+```
+
+Nuestra prueba ahora debería mostrar `CONTAINS` en el registro de comandos y seguir siendo verde.
+
+¡Incluso sin agregar una afirmación, sabemos que todo está bien! Esto se debe a que muchos de los comandos de Cypress están diseñados para fallar si no encuentran lo que esperan encontrar. Esto se conoce como una [Afirmación Predeterminada](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress#Default-Assertions).
+
+Para verificar esto, reemplace el `tipe` con algo que no esté en la página, como `hipe`. Notará que la prueba se vuelve roja, ¡pero solo después de unos 4 segundos!
+
+¿Puedes ver lo que está haciendo Cypress debajo del capó? Está esperando y reintentando automáticamente porque espera que el contenido **finalmente** se encuentre en el DOM. ¡No falla inmediatamente!
+
+![first-test-failing-contains.e30e9e1](./img/first-test-failing-contains.e30e9e1.png)
+
+
+:::warning Mensajes de Error
+En Cypress nos hemos ocupado de escribir cientos de mensajes de error personalizados que intentan explicar claramente qué salió mal. En este caso, Cypress agotó el tiempo de espera para volver a intentar encontrar el contenido exagerado en toda la página. Para obtener más información sobre la visualización del error, lea sobre [Errores de Depuración](https://docs.cypress.io/guides/guides/debugging#Errors).
+:::
+
+Antes de agregar otro comando, hagamos que esta prueba vuelva a pasar. Reemplace el `hipe` con el `type`.
+
+<video controls>
+  <source src="./img/first-test-contains-30fps.d13e431.mp4">
+</video>
+
+## Paso 3: Haga clic en un elemento
