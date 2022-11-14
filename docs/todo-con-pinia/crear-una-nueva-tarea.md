@@ -1,69 +1,5 @@
-# La Tienda
+# Crear Una Nueva Tarea
 
-```ts
-export interface Todo {
-  id: string;
-  title: string;
-  done: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-export interface TodoState {
-  items: Todo[];
-}
-```
-
-```ts
-import { defineStore } from "pinia";
-import type { TodoState } from "../types"
-
-const state = (): TodoState => ({
-  items: []
-})
-
-const getters = {}
-
-const actions = {}
-
-export const useTodoStore = defineStore('todoStore',{
-  state,
-  getters,
-  actions
-})
-```
-
-```ts
-import { setActivePinia, createPinia } from "pinia"
-import { afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { useTodoStore } from "../todo";
-
-beforeAll(() => {
-  setActivePinia(createPinia())
-})
-
-describe("useTodoStore", () => {
-  let store: ReturnType<typeof useTodoStore>
-
-  beforeEach(() => {
-    store = useTodoStore()
-  })
-
-  afterEach(() => {
-    store.$reset()
-  })
-
-  it("should creates a store", () => {
-    expect(store).toBeDefined()
-  })
-
-  it("should initializes with empty items", () => {
-    expect(store.items).toStrictEqual([])
-  })
-})
-```
-
-Las pruebas pasan...
 
 ```ts
 // omitted for brevity ...
@@ -93,7 +29,7 @@ npm i uuid
 ```ts
 import { defineStore } from "pinia";
 import { v4 as uuid } from "uuid";
-import type { Todo, TodoAdd, TodoState } from "../types"
+import type { Todo, TodoAdd, TodoState } from "../types/todo"
 
 // omitted for brevity ...
 
@@ -240,7 +176,7 @@ export interface TodoUpdate{
 ```ts
 import { defineStore } from "pinia";
 import { v4 as uuid } from "uuid";
-import type { Todo, TodoAdd, TodoState, TodoUpdate } from "../types"
+import type { Todo, TodoAdd, TodoState, TodoUpdate } from "../types/todo"
 
 // omitted for brevity ...
 const actions = {
@@ -286,7 +222,7 @@ export interface TodoUpdate{
 ```ts
 import { defineStore } from "pinia";
 import { v4 as uuid } from "uuid";
-import type { Todo, TodoAdd, TodoState, TodoUpdate } from "../types"
+import type { Todo, TodoAdd, TodoState, TodoUpdate } from "../types/todo"
 
 const state = (): TodoState => ({
   items: []
@@ -334,7 +270,7 @@ export const useTodoStore = defineStore('todoStore',{
 ```
 
 ```ts
-import {setActivePinia, createPinia} from "pinia"
+import { createPinia, setActivePinia } from "pinia"
 import { describe, it, expect, beforeAll, afterEach, beforeEach } from "vitest";
 import { useTodoStore } from "../todo";
 
