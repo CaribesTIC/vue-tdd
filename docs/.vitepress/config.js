@@ -130,12 +130,12 @@ export default {
         { text: '@pinia/testing', link: '/pinia/probando-pinia' }
       ]
     }, {
-      text: 'Todo List con Pinia',
+      text: 'TDD con Pinia',
       path: '/pinia/',
       collapsible: true,
       collapsed: true,      
       items: [
-        { text: 'Dev App con TDD', link: '/todo-con-pinia/dev-app-con-tdd' },
+        { text: 'CRUD To-Do-List', link: '/todo-con-pinia/crud-todo-list' },
         { text: 'Defieniendo la Tienda', link: '/todo-con-pinia/definiendo-la-tienda' },
         { text: 'Crear Una Nueva Tarea', link: '/todo-con-pinia/crear-una-nueva-tarea' }
       ]
