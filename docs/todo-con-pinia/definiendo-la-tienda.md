@@ -99,11 +99,29 @@ Tenga en cuenta que:
 2. Declaramos la variable `store` para ser usada en cada una de las pruebas.
 3. La asignación de `useTodoStore()` al `store` se realizará en cada prueba.
 4. Al finalizar cada prueba se ejecutará `store.$reset()` para resetear el `store`.
+5. Además de probar que `store` está definido, también probamos que `store.items` es un arreglo vacio.
 
 Ahora ejecutamos las pruebas.
 
 ```bash
 npm run test:unit
 ```
-
 Y las pruebas pasan...
+
+```bash
+ DEV /vue-todo-pinia-tdd/src
+
+ ✓ stores/__tests__/todo.spec.ts (2)
+
+Test Files  1 passed (1)
+     Tests  2 passed (2)
+  Start at  15:47:28
+  Duration  1.73s (transform 691ms, setup 1ms, collect 198ms, tests 10ms)
+
+
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
+
+```
+
+Ahora vamos a las `actions`...
