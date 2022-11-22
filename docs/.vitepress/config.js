@@ -138,7 +138,10 @@ export default {
         { text: 'CRUD To-Do-List', link: '/todo-con-pinia/crud-todo-list' },
         { text: 'Defieniendo la Tienda', link: '/todo-con-pinia/definiendo-la-tienda' },
         { text: 'Crear Nueva Tarea', link: '/todo-con-pinia/crear-nueva-tarea' },
-        { text: 'Consultar Tareas', link: '/todo-con-pinia/consultar-tareas' }
+        { text: 'Consultar Tareas', link: '/todo-con-pinia/consultar-tareas' },
+        { text: 'Eliminar Tarea', link: '/todo-con-pinia/eliminar-tarea' },
+        { text: 'Actualizar Tarea', link: '/todo-con-pinia/actualizar-tarea' },
+        { text: 'Código Completo', link: '/todo-con-pinia/codigo-completo' }
       ]
     } , {
       text: 'Cypress Visión General',
