@@ -141,7 +141,8 @@ export default {
         { text: 'Consultar Tareas', link: '/todo-con-pinia/consultar-tareas' },
         { text: 'Eliminar Tarea', link: '/todo-con-pinia/eliminar-tarea' },
         { text: 'Actualizar Tarea', link: '/todo-con-pinia/actualizar-tarea' },
-        { text: 'Código Completo', link: '/todo-con-pinia/codigo-completo' }
+        { text: 'Código Completo', link: '/todo-con-pinia/codigo-completo' },
+        { text: 'Mundo Real', link: '/todo-con-pinia/mundo-real' }
       ]
     } , {
       text: 'Cypress Visión General',
