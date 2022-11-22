@@ -137,7 +137,8 @@ export default {
       items: [
         { text: 'CRUD To-Do-List', link: '/todo-con-pinia/crud-todo-list' },
         { text: 'Defieniendo la Tienda', link: '/todo-con-pinia/definiendo-la-tienda' },
-        { text: 'Crear Una Nueva Tarea', link: '/todo-con-pinia/crear-una-nueva-tarea' }
+        { text: 'Crear Nueva Tarea', link: '/todo-con-pinia/crear-nueva-tarea' },
+        { text: 'Consultar Tareas', link: '/todo-con-pinia/consultar-tareas' }
       ]
     } , {
       text: 'Cypress Visión General',
