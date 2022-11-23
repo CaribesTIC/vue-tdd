@@ -45,6 +45,23 @@ const actions = {
 // omitted for brevity ...
 ```
 
-Las pruebas pasan...
+Ahora ejecutamos las pruebas.
+
+```bash
+ DEV /vue-todo-pinia-tdd/src
+
+ ✓ stores/__tests__/todo.spec.ts (7)
+
+Test Files  1 passed (1)
+     Tests  7 passed (7)
+  Start at  15:35:16
+  Duration  1.72s (transform 682ms, setup 0ms, collect 197ms, tests 14ms)
+
+
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
+```
+
+Las pruebas pasan.
 
 

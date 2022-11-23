@@ -1,5 +1,7 @@
 # Consultar Tareas
 
+## Consultar una tarea
+
 ```ts
 // omitted for brevity ...
 describe("useTodoStore", () => {
@@ -25,7 +27,28 @@ const getters = {
 // omitted for brevity ...
 ```
 
-Las pruebas pasan...
+Ahora ejecutamos las pruebas.
+
+```bash
+ DEV /vue-todo-pinia-tdd/src
+
+ ✓ stores/__tests__/todo.spec.ts (4)
+
+Test Files  1 passed (1)
+     Tests  4 passed (4)
+  Start at  15:29:20
+  Duration  1.73s (transform 687ms, setup 1ms, collect 215ms, tests 12ms)
+
+
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
+
+
+```
+
+Las pruebas pasan.
+
+## Consultar todas las tarea
 
 ```ts
 // omitted for brevity ...
@@ -64,6 +87,23 @@ const getters = {
 // omitted for brevity ...
 ```
 
-Las pruebas pasan...
+Ahora ejecutamos las pruebas.
+
+```bash
+ DEV /vue-todo-pinia-tdd/src
+
+ ✓ stores/__tests__/todo.spec.ts (5)
+
+Test Files  1 passed (1)
+     Tests  5 passed (5)
+  Start at  15:31:36
+  Duration  1.76s (transform 704ms, setup 1ms, collect 198ms, tests 13ms)
+
+
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
+```
+
+Las pruebas pasan.
 
 
