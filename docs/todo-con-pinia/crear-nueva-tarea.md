@@ -72,12 +72,6 @@ Tenga en cuenta que el método `add`, después de recibir los argumentos, crea l
 Ahora ejecutamos las pruebas.
 
 ```bash
-npm run test:unit
-```
-
-Y las pruebas pasan...
-
-```bash
  DEV /vue-todo-pinia-tdd/src
 
  ✓ stores/__tests__/todo.spec.ts (3)
@@ -92,4 +86,5 @@ Test Files  1 passed (1)
        press h to show help, press q to quit
 ```
 
+Y las pruebas pasan.
 
