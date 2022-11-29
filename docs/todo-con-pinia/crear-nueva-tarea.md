@@ -67,7 +67,7 @@ const actions = {
 
 // omitted for brevity ...
 ```
-Tenga en cuenta que el método `add`, después de recibir los argumentos, crea la constante `todo` asignándole un objeto con las propiedades del tipo [`Todo`](../todo-con-pinia/definiendo-la-tienda.html#tipado-inicial). Luego, hace `push` de este objeto al arreglo `this.items` el cual representa el estado de la tienda.
+Tenga en cuenta que el método `add`, después de recibir los argumentos, crea la constante `todo` asignándole un objeto con las propiedades del tipo [`Todo`](../todo-con-pinia/definiendo-la-tienda.html#tipado-inicial). Luego, hace [`push`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) de este objeto al arreglo `this.items` el cual representa el estado de la tienda.
 
 Ahora ejecutamos las pruebas.
 
