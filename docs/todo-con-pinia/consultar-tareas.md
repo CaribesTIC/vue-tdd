@@ -70,8 +70,8 @@ Para este caso, empezamos preparando la prueba creando el arreglo `items` con tr
 
 Luego de ejecutar la consulta con el método `getOrderedTodos`, haremos dos comprobaciones:
 
-1. Devuelver las tareas de manera ordenada según la fecha.
-2. No altera el estado original de las tareas.
+1. Devuelve las tareas de manera ordenada según la fecha.
+2. No muta el estado original de las tareas.
 
 ```ts
 // omitted for brevity ...
@@ -100,8 +100,7 @@ describe("useTodoStore", () => {
 
 ## Captador `getOrderedTodos`
 
-
-Tenga en cuenta que este **getter** solo recibe un argumento, `state` tipo `TodoState`.
+Una vez preparada la prueba, es momento de construir el **getter** `getOrderedTodos`. Tenga en cuenta que este **getter** solo recibe un argumento, `state` tipo `TodoState`.
 
 >Utilizaremos el método [`sort`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) para ordenar el arreglo que será devuelto. Es importante mencionar, que _"este método ordena los elementos de un arreglo en su lugar y devuelve la referencia al mismo arreglo, ahora ordenado"._
 >
