@@ -1,5 +1,9 @@
 # Eliminar Tareas
 
+## Crear la prueba
+
+Empezaremos creando la prueba que espera que nuestra aplicación permita eliminar una tarea.
+
 ```ts
 // omitted for brevity ...
 describe("useTodoStore", () => {
@@ -15,6 +19,17 @@ describe("useTodoStore", () => {
 })
 ```
 
+Tome en cuenta que en cada prueba el estado inicial del arreglo `items` es vacio.
+Entonces, primero necesitamos preparar la prueba agregando una tarea a través de la acción `add`.
+Luego ejecutaremos la acción `remove` pasándole como argumento el `id` de la tarea que acabamos de agregar.
+Finalmente esperamos que el estado del arreglo `items` sea el de un arreglo vacio.
+
+Avancemos construyendo la acción `remove`.
+
+## Acción `remove`
+
+Ya sabemos que para que la acción `remove` funcione necesita recibir como argumento el `id` tipo `string` del la tarea que queremos eliminar.
+
 ```ts
 // omitted for brevity ...
 const actions = {
@@ -25,6 +40,8 @@ const actions = {
 }
 // omitted for brevity ...
 ```
+
+Tome en cuenta que para que **TypeScript** no se incomode necesitamos antes pasar como argumento el `this` tipo `TodoState`. Finalmente, aplicamos el [`filter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) al arreglo `this.items` devolviendo todas las tareas que cumplan con la condición donde el `item.id` sea distinto al `id` pasado como argumento.
 
 Ahora ejecutamos las pruebas.
 
@@ -43,6 +60,6 @@ Test Files  1 passed (1)
        press h to show help, press q to quit
 ```
 
-Las pruebas pasan.
+Y las pruebas pasan.
 
 
