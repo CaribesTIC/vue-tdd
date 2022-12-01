@@ -4,6 +4,7 @@
 
 Empezaremos creando la prueba que espera que nuestra aplicación permita eliminar una tarea.
 
+📃`stores/__tests__/todo.spec.ts`
 ```ts
 // omitted for brevity ...
 describe("useTodoStore", () => {
@@ -30,6 +31,7 @@ Avancemos construyendo la acción `remove`.
 
 Ya sabemos que para que la acción `remove` funcione necesita recibir como argumento el `id` tipo `string` del la tarea que queremos eliminar.
 
+📃`stores/todo.ts`
 ```ts
 // omitted for brevity ...
 const actions = {
