@@ -4,6 +4,7 @@
 
 Empezaremos creando la prueba que espera que nuestra aplicación permita agregar una nueva tarea.
 
+📃`stores/__tests__/todo.spec.ts`
 ```ts
 // omitted for brevity ...
 describe("useTodoStore", () => {
@@ -23,6 +24,7 @@ Teniendo la respectiva prueba lista, ahora es momento de construir la funcionali
 
 Ya que estamos usuando **TypeScript**, definamos el tipo de valor que recivirá la función. Con esto estamos indicando que el único argumento que necesitamos será el `title` de la tarea.
 
+📃`types/todo.ts`
 ```ts
 // omitted for brevity ...
 
@@ -45,6 +47,7 @@ Avancemos creando el método `add`. Tenga en cuenta que estamos pasando dos argu
 
 El segundo argumento `partialTodo` del tipo `TodoAdd` si es el que nos interesa.
 
+📃`stores/todo.ts`
 ```ts
 import { defineStore } from "pinia";
 import { v4 as uuid } from "uuid";

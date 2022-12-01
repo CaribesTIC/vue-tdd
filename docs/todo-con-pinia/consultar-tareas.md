@@ -4,6 +4,7 @@
 
 Empezaremos creando la prueba que espera que nuestra aplicación permita consultar una tarea.
 
+📃`stores/__tests__/todo.spec.ts`
 ```ts
 // omitted for brevity ...
 describe("useTodoStore", () => {
@@ -29,6 +30,7 @@ Tenga en cuenta que consultaremos una tarea específica según el argumento `id`
 
 En otras palabras, en la primera función pasamos el `state` tipo `TodoState` y en la segunda función pasamos el argumento `id` tipo `string`.
 
+📃`stores/todo.ts`
 ```ts
 // omitted for brevity ...
 const getters = {
@@ -73,6 +75,7 @@ Luego de ejecutar la consulta con el método `getOrderedTodos`, haremos dos comp
 1. Devuelve las tareas de manera ordenada según la fecha.
 2. No muta el estado original de las tareas.
 
+📃`stores/__tests__/todo.spec.ts`
 ```ts
 // omitted for brevity ...
 describe("useTodoStore", () => {
@@ -115,6 +118,7 @@ Una vez preparada la prueba, es momento de construir el **getter** `getOrderedTo
 
 Avancemos creando el **getters** `getOrderedTodos`.
 
+📃`stores/todo.ts`
 ```ts
 // omitted for brevity ...
 const getters = {

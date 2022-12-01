@@ -4,6 +4,7 @@
 
 Empezaremos creando la prueba que espera que nuestra aplicación permita actualizar una tarea.
 
+📃`stores/__tests__/todo.spec.ts`
 ```ts
 // omitted for brevity ...
 describe("useTodoStore", () => {
@@ -28,6 +29,7 @@ Avancemos construyendo la acción `updated`.
 
 Como estamos usuando **TypeScript**, definamos el tipo de argumento que recivirá la acción `update`. 
 
+📃`types/todo.ts`
 ```ts
 // omitted for brevity ...
 export interface TodoUpdate{
@@ -46,6 +48,7 @@ El segundo argumento `id` del tipo `string` permitará buscar dentro del arreglo
 
 El tercer argumento `update` del tipo `TodoUpdate` contiene el objeto con valor(es) con que será actualizada la tarea.
 
+📃`stores/todo.ts`
 ```ts
 import { defineStore } from "pinia";
 import { v4 as uuid } from "uuid";
