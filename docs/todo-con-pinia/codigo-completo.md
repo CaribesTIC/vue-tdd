@@ -1,5 +1,9 @@
 # Código Completo
 
+> Para una visión general aquí está el código completo de este demo.
+
+## El Tipado
+
 ```ts
 export interface Todo {
   id: string;
@@ -22,6 +26,8 @@ export interface TodoUpdate{
   done?: boolean;
 }
 ```
+
+## La Tienda
 
 ```ts
 import { defineStore } from "pinia";
@@ -72,6 +78,8 @@ export const useTodoStore = defineStore('todoStore',{
   actions
 })
 ```
+
+## Las Pruebas
 
 ```ts
 import { createPinia, setActivePinia } from "pinia"

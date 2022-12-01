@@ -1,5 +1,9 @@
 # Actualizar Tarea
 
+## Crear la prueba
+
+Empezaremos creando la prueba que espera que nuestra aplicación permita actualizar una tarea.
+
 ```ts
 // omitted for brevity ...
 describe("useTodoStore", () => {
@@ -16,6 +20,14 @@ describe("useTodoStore", () => {
 })
 ```
 
+Tome en cuenta que en cada prueba el estado inicial del arreglo `items` es vacio. Entonces, primero necesitamos preparar la prueba agregando una tarea a través de la acción `add`. Luego ejecutaremos la acción `update` pasándole como argumento primero el `id` de la tarea que queremos actualizar y el objeto tipo `TodoUpdate` con valor(es) modificado(s). Finalmente esperamos que la tarea en cuestión haya sido actualizada.
+
+Avancemos construyendo la acción `updated`.
+
+## El Tipado `TodoUpdate`
+
+Como estamos usuando **TypeScript**, definamos el tipo de argumento que recivirá la acción `update`. 
+
 ```ts
 // omitted for brevity ...
 export interface TodoUpdate{
@@ -24,6 +36,15 @@ export interface TodoUpdate{
 }
 // omitted for brevity ...
 ```
+Tome en cuenta que, declaramos que el argumento debe ser un objeto tipo `TodoUpdate` con las propiedades `title` y/o `done`, que pueden ser modificables.
+
+## Acción `updated`
+
+Avancemos creando el método `updated`. Tenga en cuenta que estamos pasando tres argumentos, el primero es `this` del tipo `TodoState` que en realidad no lo estamos pasando sino declarando para que **TypeScript** no encienda la alarma.
+
+El segundo argumento `id` del tipo `string` permitará buscar dentro del arreglo `this.items` la tarea que se quiere actualizar.
+
+El tercer argumento `update` del tipo `TodoUpdate` contiene el objeto con valor(es) con que será actualizada la tarea.
 
 ```ts
 import { defineStore } from "pinia";
@@ -45,7 +66,16 @@ const actions = {
 // omitted for brevity ...
 ```
 
-Ahora ejecutamos las pruebas.
+Tome en cuenta que el método [`findIndex`](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) 
+devolverá el índice de la tarea del arreglo `this.items` que cumpla con la condición de la función de prueba proporcionada. En este caso `item => item.id === id`.
+
+Seguidamente actualizamos la tarea que corresponda a la posición del valor de la constante `index`.
+
+```ts
+this.items[index] = { /* omitted for brevity ... */ }
+```
+
+Una vez aclarado esto, entonces ejecutamos las pruebas.
 
 ```bash
  DEV /vue-todo-pinia-tdd/src
@@ -62,6 +92,6 @@ Test Files  1 passed (1)
        press h to show help, press q to quit
 ```
 
-Las pruebas pasan.
+Y las pruebas pasan.
 
 
