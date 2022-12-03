@@ -135,7 +135,7 @@ export default {
       collapsible: true,
       collapsed: true,      
       items: [
-        { text: 'CRUD To-Do-List', link: '/todo-con-pinia/crud-todo-list' },
+        { text: 'CRUD TODO-List', link: '/todo-con-pinia/crud-todo-list' },
         { text: 'Defieniendo la Tienda', link: '/todo-con-pinia/definiendo-la-tienda' },
         { text: 'Crear Nueva Tarea', link: '/todo-con-pinia/crear-nueva-tarea' },
         { text: 'Consultar Tareas', link: '/todo-con-pinia/consultar-tareas' },
