@@ -1,9 +1,9 @@
 # TDD con Pinia
 
-## CRUD To-Do-List
+## CRUD TODO-List
 
 ::: info ¿Qué construiremos aquí?
-Construiremos un CRUD To-Do-List.
+Construiremos un CRUD TODO-List.
 :::
 
 ## ¿Qué significa un CRUD?
@@ -12,13 +12,13 @@ Construiremos un CRUD To-Do-List.
 
 CRUD es una agrupación de cuatro acciones que sirven para gestionar la información que se almacena en diferentes tipos de desarrollo. El concepto CRUD está estrechamente vinculado a la gestión de datos digitales
 
-## ¿Qué es una To-Do-List?
+## ¿Qué es una TODO-List?
 
-Una lista de tareas pendientes, comúnmente conocida como To-Do-List, es una lista de lo que tienes pendiente por hacer.
+Una lista de tareas pendientes, comúnmente conocida como TODO-List, es una lista de lo que tienes pendiente por hacer.
 
 >No es más que una lista de pendientes, es decir, una enumeración de tareas a cumplir. Hablamos del listado de pendientes o el compendio de “cosas por hacer”. 
 
-Un To-Do-List es una herramienta de productividad muy típica. Contiene, básicamente, cualquier actividad que debes realizar.
+Un TODO-List es una herramienta de productividad muy típica. Contiene, básicamente, cualquier actividad que debes realizar.
 
 ## Técnica de Desarrollo
 
