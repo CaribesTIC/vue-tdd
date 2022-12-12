@@ -1,8 +1,8 @@
-# Patrones para Probar Accesorios
+# Patrones para Probar Propiedades
 
-En esta sección, exploramos los accesorios y el tipo de pruebas que quizás desee considerar escribir. Esto lleva a un tema mucho más fundamental e importante; trazar una línea clara entre la lógica de negocios y la UI, también conocida como _separación de preocupaciones_, y cómo sus pruebas pueden ayudar a aclarar esta distinción.
+En esta sección, exploramos las propiedades y el tipo de pruebas que quizás desee considerar escribir. Esto lleva a un tema mucho más fundamental e importante; trazar una línea clara entre la lógica de negocios y la UI, también conocida como _separación de preocupaciones_, y cómo sus pruebas pueden ayudar a aclarar esta distinción.
 
->Considere una de las grandes ideas detrás de marcos como Vue y React:
+>Considere una de las grandes ideas detrás de frameworks como Vue y React:
 **_"Su interfaz de usuario es una función de sus datos"_.**
 
 Esta idea viene en muchas formas; otro es _"interfaces impulsadas por datos"_. Básicamente, su interfaz de usuario (UI) debe estar determinada por los datos presentes. Dados los datos `X`, su UI debería ser `Y`. En informática, esto se conoce como determinismo.
@@ -24,13 +24,13 @@ async function fetchUserData(userId) {
 ```
 Una función impura - tiene un efecto secundario. No es lo ideal, pero es necesario para que la mayoría de los sistemas hagan algo útil.
 
-Esta no es una función pura porque se basa en un recurso externo, en este caso, una API y una base de datos. Dependiendo de lo que haya en la base de datos cuando se llame, podríamos obtener un resultado diferente. Es impredecible.
+>Esta no es una función pura porque se basa en un recurso externo, en este caso, una API y una base de datos. Dependiendo de lo que haya en la base de datos cuando se llame, podríamos obtener un resultado diferente. Es impredecible.
 
-¿Cómo se relaciona esto con los accesorios? Piense en un componente que decida qué representar en función de sus accesorios (no se preocupe por los datos, el cálculo o la configuración por ahora, pero se aplican las mismas ideas). Si piensa en un componente como una función y los accesorios como argumentos, se dará cuenta de que, dados los mismos accesorios, el componente siempre representará lo mismo. Su salida es determinista. Dado que usted decide qué accesorios se pasan al componente, es fácil probarlo, ya que conocemos todos los estados posibles en los que puede estar el componente.
+¿Cómo se relaciona esto con las propiedades? Piense en un componente que decida qué representar en función de sus propiedades (no se preocupe por los datos, el cálculo o la configuración por ahora, pero se aplican las mismas ideas). Si piensa en un componente como una función y las propiedades como argumentos, se dará cuenta de que, dados las mismas propiedades, el componente siempre representará lo mismo. Su salida es determinista. Dado que usted decide qué propiedades se pasan al componente, es fácil probarlo, ya que conocemos todos los estados posibles en los que puede estar el componente.
 
 ## Los fundamentos
 
-Puede declarar accesorios de varias maneras. Trabajaremos con el componente `<Message>` para este ejemplo.
+Puede declarar propiedades de varias maneras. Trabajaremos con el componente `<Message>` para este ejemplo.
 
 ```vue
 <template>
@@ -44,9 +44,9 @@ export default {
 }
 </script>
 ```
-Declarar un accesorio `variant` con la sintaxis de matriz inferior.
+Declarar un accesorio `variant` con la sintaxis de arreglo inferior.
 
-En este ejemplo, declaramos accesorios utilizando la sintaxis de matriz: `props: ['variant']`. Es recomendable evitar la sintaxis de matriz. El uso de la sintaxis de objeto le da al lector más información sobre el tipo de valores que puede tomar la variante.
+En este ejemplo, declaramos propiedades utilizando la sintaxis de arreglo: `props: ['variant']`. Es recomendable evitar la sintaxis de arreglo. El uso de la sintaxis de objeto le da al lector más información sobre el tipo de valores que puede tomar la `variant`.
 ```js
 export default {
   props: {
@@ -57,7 +57,7 @@ export default {
   }
 }
 ```
-Declarar un accesorio `variant` con la sintaxis de objeto superior.
+Declarar una propiedad `variant` con la sintaxis de objeto superior.
 
 Si está utilizando TypeScript, aún mejor: cree un tipo:
 
@@ -77,7 +77,7 @@ Una variante fuertemente tipada usando TypeScript.
 
 En nuestro ejemplo de `<Message>`, estamos trabajando con JavaScript normal, por lo que no podemos especificar cadenas específicas para las variantes de accesorios como puede hacerlo en TypeScript. Sin embargo, hay algunos otros patrones que podemos usar.
 
-Hemos especificado que se requiere el accesorio `variant` y nos gustaría aplicar un subconjunto específico de valores de cadena que puede recibir. Vue nos permite validar accesorios usando una clave de validación. Funciona así:
+Hemos especificado que se requiere el accesorio `variant` y nos gustaría aplicar un subconjunto específico de valores de cadena que puede recibir. Vue nos permite validar propiedades usando una clave de validación. Funciona así:
 
 ```vue{9,10,11,12,13}
 <template>
@@ -97,11 +97,11 @@ export default {
 }
 </script>
 ```
-Los validadores de accesorio son funciones. Si devuelven `false`, Vue mostrará una advertencia en la consola.
+Los validadores de propiedades son funciones. Si devuelven `false`, Vue mostrará una advertencia en la consola.
 
-¡Los validadores de accesorio son como la función de suma de la que hablamos anteriormente en el sentido de que son funciones puras! Eso significa que son fáciles de probar: dada la propiedad `X`, el validador debería devolver el resultado `Y`.
+>¡Los validadores de propiedades son como la función de suma de la que hablamos anteriormente en el sentido de que son funciones puras! Eso significa que son fáciles de probar: dada la propiedad `X`, el validador debería devolver el resultado `Y`.
 
-Antes de agregar un validador, escribamos una prueba simple para el componente `<Message>`. Queremos probar entradas y salidas. En el caso de `<Message>`, el accesorio `variant` es la entrada y lo que se representa es la salida. Podemos escribir una prueba para afirmar que se aplica la clase correcta usando Testing Library y el atributo `classList`:
+Antes de agregar un validador, escribamos una prueba simple para el componente `<Message>`. Queremos probar entradas y salidas. En el caso de `<Message>`, la propiedad `variant` es la entrada y lo que se representa es la salida. Podemos escribir una prueba para afirmar que se aplica la clase correcta usando Testing Library y el atributo `classList`:
 
 ```js
 import { render } from '@testing-library/vue'
@@ -119,13 +119,13 @@ describe('Message', () => {
   })
 })
 ```
-La prueba del accesorio se aplica a la clase.
+La prueba de la propiedad se aplica a la clase.
 
-Esto verifica que todo funcione como se esperaba cuando se pasa una propiedad de variante válida a `<Message>`. ¿Qué pasa cuando se pasa una variante no válida? Queremos prohibir el uso del componente `<Message>` con una variante válida. Este es un buen caso de uso para un validador.
+Esto verifica que todo funcione como se esperaba cuando se pasa una propiedad de `variant` válida a `<Message>`. ¿Qué pasa cuando se pasa una `variant` no válida? Queremos restringir el uso del componente `<Message>` con una `variant` válida. Este es un buen caso de uso para un validador.
 
 ## Agregar un validador
 
-Actualicemos el accesorio `variant` para tener un validador simple:
+Actualicemos la propiedad `variant` para tener un validador simple:
 ```vue{8,9,10,11,12,13,14,15,16,17,18,19,20,21,22}
 <template>
   <div :class="variant">Message! {{ variant }}?</div>
@@ -158,7 +158,7 @@ Ahora obtendremos un error si se pasa una propiedad no válida. Una alternativa 
 
 ¿Cómo probamos el validador? Si queremos cubrir todas las posibilidades, necesitamos 4 pruebas; uno para cada tipo de `variant` y otro para un tipo no válido.
 
-Es preferible probar los validadores de accesorios de forma aislada. Dado que los validadores son generalmente funciones puras, son fáciles de probar. Tambien hay otra razón por la que se prueban los validadores de accesorios, el aislamiento, del que hablaremos después de escribir la prueba.
+>Es preferible probar los validadores de propiedades de forma aislada. Dado que los validadores son generalmente funciones puras, son fáciles de probar. Tambien hay otra razón por la que se prueban los validadores de propiedades, el aislamiento, del que hablaremos después de escribir la prueba.
 
 Para permitir probar el aislamiento del validador, necesitamos refactorizar `<Message>` un poco para separar el validador del componente:
 
@@ -228,7 +228,7 @@ Si el desarrollador pasa una propiedad inválida, recibe un mensaje claro y agra
 ```
 Uncaught Error: variant is required and must be either 'success', 'warning' or 'error'.` You passed: asdf 
 ```
-¡Error! La variante aprobada no es válida.
+¡Error! La variante proporcionada no es válida.
 
 He aquí el mismo ejemplo con Vue Test Utils:
 
