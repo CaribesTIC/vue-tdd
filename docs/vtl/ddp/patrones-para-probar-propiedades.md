@@ -32,6 +32,7 @@ Una función impura - tiene un efecto secundario. No es lo ideal, pero es necesa
 
 Puede declarar propiedades de varias maneras. Trabajaremos con el componente `<Message>` para este ejemplo.
 
+📃`Message.vue`
 ```vue
 <template>
   <div :class="variant">Message</div>
@@ -73,13 +74,14 @@ export default {
   }
 }
 ```
-Una variante fuertemente tipada usando TypeScript.
+>Una variante fuertemente tipada usando TypeScript.
 
 En nuestro ejemplo de `<Message>`, estamos trabajando con JavaScript normal, por lo que no podemos especificar cadenas específicas para las variantes de accesorios como puede hacerlo en TypeScript. Sin embargo, hay algunos otros patrones que podemos usar.
 
 Hemos especificado que se requiere el accesorio `variant` y nos gustaría aplicar un subconjunto específico de valores de cadena que puede recibir. Vue nos permite validar propiedades usando una clave de validación. Funciona así:
 
-```vue{9,10,11,12,13}
+📃`Message.vue`
+```vue{8,9,10,11,12,13}
 <template>
   <div :class="variant">Message! {{ variant }}?</div>
 </template>
@@ -101,11 +103,12 @@ Los validadores de propiedades son funciones. Si devuelven `false`, Vue mostrar�
 
 >¡Los validadores de propiedades son como la función de suma de la que hablamos anteriormente en el sentido de que son funciones puras! Eso significa que son fáciles de probar: dada la propiedad `X`, el validador debería devolver el resultado `Y`.
 
-Antes de agregar un validador, escribamos una prueba simple para el componente `<Message>`. Queremos probar entradas y salidas. En el caso de `<Message>`, la propiedad `variant` es la entrada y lo que se representa es la salida. Podemos escribir una prueba para afirmar que se aplica la clase correcta usando Testing Library y el atributo `classList`:
+Antes de agregar un validador, escribamos una prueba simple para el componente `<Message>`. Queremos probar entradas y salidas. En el caso de `<Message>`, la propiedad `variant` es la entrada y lo que se representa es la salida. Podemos escribir una prueba para afirmar que se aplica la clase correcta usando **Testing Library** y el atributo `classList`:
 
+📃`__tests__/Message.spec.js`
 ```js
 import { render } from '@testing-library/vue'
-import Message from '@/Message.vue'
+import Message from '../Message.vue'
 
 describe('Message', () => {
   it('renders variant correctly when passed', () => {
@@ -113,20 +116,24 @@ describe('Message', () => {
       props: {
         variant: 'success'
       }
-  })
-  
-  expect(container.firstChild.classList).toContain(['success'])
+    })
+
+    expect(container.firstChild.classList).toContain(['success'])
   })
 })
 ```
-La prueba de la propiedad se aplica a la clase.
+>La prueba de la propiedad se aplica a la clase.
 
-Esto verifica que todo funcione como se esperaba cuando se pasa una propiedad de `variant` válida a `<Message>`. ¿Qué pasa cuando se pasa una `variant` no válida? Queremos restringir el uso del componente `<Message>` con una `variant` válida. Este es un buen caso de uso para un validador.
+Esto verifica que todo funcione como se esperaba cuando se pasa una propiedad de `variant` válida a `<Message>`. ¿Qué pasa cuando se pasa una `variant` no válida?
+
+Queremos restringir el uso del componente `<Message>` con una `variant` válida. Este es un buen caso de uso para un validador.
 
 ## Agregar un validador
 
 Actualicemos la propiedad `variant` para tener un validador simple:
-```vue{8,9,10,11,12,13,14,15,16,17,18,19,20,21,22}
+
+📃`Message.vue`
+```vue{8,9,10,11,12,13,14,15,16,17,18,19,20,21}
 <template>
   <div :class="variant">Message! {{ variant }}?</div>
 </template>
@@ -152,17 +159,18 @@ export default {
 }
 </script>
 ```
-Si `variant` no es válido, lanzamos un error.
+>Si `variant` no es válido, lanzamos un error.
 
 Ahora obtendremos un error si se pasa una propiedad no válida. Una alternativa sería simplemente devolver `false` en lugar de arrojar un error; esto solo le dará una advertencia en la consola a través de `console.warn`. Los errores fuertes y claros cuando un componente no se usa correctamente quedan más protegidos.
 
-¿Cómo probamos el validador? Si queremos cubrir todas las posibilidades, necesitamos 4 pruebas; uno para cada tipo de `variant` y otro para un tipo no válido.
+**¿Cómo probamos el validador?** Si queremos cubrir todas las posibilidades, necesitamos 4 pruebas; uno para cada tipo de `variant` y otro para un tipo no válido.
 
 >Es preferible probar los validadores de propiedades de forma aislada. Dado que los validadores son generalmente funciones puras, son fáciles de probar. Tambien hay otra razón por la que se prueban los validadores de propiedades, el aislamiento, del que hablaremos después de escribir la prueba.
 
 Para permitir probar el aislamiento del validador, necesitamos refactorizar `<Message>` un poco para separar el validador del componente:
 
-```vue{6,7,8,9,10,11,12,13,14,15,16,23}
+📃`Message.vue`
+```vue{6,7,8,9,10,11,12,13,14,15,16,22}
 <template>
   <div :class="variant">Message! {{ variant }}?</div>
 </template>
@@ -190,27 +198,28 @@ export default {
 }
 </script>
 ```
-Exportando el validador por separado al componente.
+>Exportando el validador por separado al componente.
 
 Genial, `validarVariant` ahora se exporta por separado y es fácil de probar:
 
-```js{2,16,17,18,19,20,22,23,24}
+📃`__tests__/Message.spec.js`
+```js{2,16,17,18,22}
 import { render } from '@testing-library/vue'
-import Message,{ validateVariant } from '@/Message.vue'
+import Message,{ validateVariant } from '../Message.vue'
 
 describe('Message', () => {
-    it('renders variant correctly when passed', () => {
+  it('renders variant correctly when passed', () => {
     const { container } = render(Message, {
       props: {
         variant: 'success'
       }
+    })
+
+    expect(container.firstChild.classList).toContain(['success'])
   })
-  
-  expect(container.firstChild.classList).toContain(['success'])
-  })
-  
+
   it('validates valid variant prop', () => {
-    ;['success', 'warning', 'error'].forEach(variant => {
+    ['success', 'warning', 'error'].forEach(variant => {
       expect(() => validateVariant(variant)).not.toThrow()
     })
   })
@@ -220,21 +229,22 @@ describe('Message', () => {
   })
 })
 ```
-Probando todos los casos para el validador.
+>Probando todos los casos para el validador.
 
 El simple hecho de hacer que `validateVariant` sea una función separada que se exporte puede parecer un cambio pequeño, pero en realidad es una gran mejora. Al hacerlo, pudimos escribir pruebas para `validateVariant` con facilidad. Podemos estar seguros de que el componente `<Message>` solo se puede usar con un `variant` válido.
 Si el desarrollador pasa una propiedad inválida, recibe un mensaje claro y agradable en la consola::
 
-```
+```sh
 Uncaught Error: variant is required and must be either 'success', 'warning' or 'error'.` You passed: asdf 
 ```
-¡Error! La variante proporcionada no es válida.
+>¡Error! La variante proporcionada no es válida.
 
 He aquí el mismo ejemplo con Vue Test Utils:
 
+📃`__tests__/Message.spec.js`
 ```js
 import { mount } from '@vue/test-utils'
-import Message,{ validateVariant } from '@/Message.vue'
+import Message,{ validateVariant } from '../Message.vue'
 
 describe('Message', () => {
   it('renders variant correctly when passed', () => {
@@ -248,7 +258,7 @@ describe('Message', () => {
   })
 
   it('validates valid variant prop', () => {
-    ;['success', 'warning', 'error'].forEach(variant => {
+    ['success', 'warning', 'error'].forEach(variant => {
       expect(() => validateVariant(variant)).not.toThrow()
     })
   })
