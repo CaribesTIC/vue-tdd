@@ -273,7 +273,7 @@ describe('Message', () => {
 
 Hemos escrito dos tipos diferentes de pruebas. La primera es una prueba de UI - en la que hacemos afirmaciones contra `classList`. El segundo es para el validador. Pone a prueba la lógica de negocios.
 
-Para que esto quede más claro, imagina que tu empresa se especializa en sistemas de diseño. Tienes algunos diseñadores que probablemente usan Figma o Sketch para diseñar cosas como botones y mensajes.
+Para que esto quede más claro, imagina que tu empresa se especializa en sistemas de diseño. Tienes algunos diseñadores que probablemente usan [Figma](https://www.figma.com/) o [Sketch](https://www.sketch.com/) para diseñar cosas como botones y mensajes.
 
 Han decidido admitir tres variantes de mensajes: _success_, _warning_ y _error_. Eres un desarrollador front-end. En este ejemplo, está trabajando en la integración de Vue - escribirá componentes de Vue que aplican clases específicas, que utilizan el CSS que proporcionó por los diseñadores.
 
@@ -283,11 +283,11 @@ Esta distinción es importante. Cuando usamos los métodos de _Testing Library_ 
 
 Separarlos es bueno. Hace que su código sea más fácil de probar y mantener. Este concepto se conoce como _separación de preocupaciones_. Revisaremos esto a lo largo de este contenido.
 
-Si desea saber si algo es parte de la UI o la lógica de negocios, pregúntese esto: "si cambiara a React, ¿podría reutilizar este código y probarlo?".
+>**Si desea saber si algo es parte de la UI o la lógica de negocios, pregúntese esto: "si cambiara a React, ¿podría reutilizar este código y probarlo?".**
 
-En este caso, podría reutilizar el validador y su prueba cuando escriba la integración de React. El validador se preocupa por la lógica de negocios y no sabe nada sobre el marco de la UI. Vue o React, solo admitiremos tres variantes de mensajes: _success_, _warning_ y _error_. El componente y la prueba del componente (donde afirmamos usar `classes()`) tendrían que reescribirse usando un componente React y una biblioteca de pruebas React.
+En este caso, podría reutilizar el validador y su prueba cuando escriba la integración de React. El validador se preocupa por la lógica de negocios y no sabe nada sobre el framework de la UI. Vue o React, solo admitiremos tres variantes de mensajes: _success_, _warning_ y _error_. El componente y la prueba del componente (donde afirmamos usar `classes()`) tendrían que reescribirse usando un componente React y una biblioteca de pruebas React.
 
-Idealmente, no desea que su lógica de negocios se acople a su marco de trabajo de elección; Los marcos van y vienen, pero es poco probable que los problemas que su negocio está resolviendo cambien significativamente.
+Idealmente, no desea que su lógica de negocios se acople a su framework de trabajo de elección; Los framework van y vienen, pero es poco probable que los problemas que su negocio está resolviendo cambien significativamente.
 
 He visto que la separación deficiente de las preocupaciones le cuesta a las empresas decenas de miles de dólares; llegan a un punto en el que agregar nuevas funciones es arriesgado y lento, porque el problema principal de su negocio está demasiado relacionado con la UI. Reescribir la UI significa reescribir la lógica de negocios.
 
@@ -359,13 +359,13 @@ export default {
 }
 </script>
 ```
-
-Comprender e identificar las diferentes preocupaciones en un sistema y estructurar correctamente las aplicaciones es la diferencia entre buenos ingenieros y grandes ingenieros.
+>Comprender e identificar las diferentes preocupaciones en un sistema y estructurar correctamente las aplicaciones es la diferencia entre buenos ingenieros y grandes ingenieros.
 
 ## Otro Ejemplo
 
-Suficiente filosofía de diseño por ahora. Veamos otro ejemplo relacionado con `props.` Este ejemplo usa el componente `<Navbar>`. Puede encontrarlo en `examples/props/navbar.vue`. Se parece a esto:
+Suficiente filosofía de diseño por ahora. Veamos otro ejemplo relacionado con `props.` Este ejemplo usa el componente `<Navbar>`. Puede encontrarlo en [`examples/props/navbar.vue`](https://github.com/lmiller1990/design-patterns-for-vuejs-source-code/blob/master/examples/props/Navbar.vue). Se parece a esto:
 
+📃`Navbar.vue`
 ```vue
 <template>
   <button v-if="authenticated">Logout</button>
@@ -384,15 +384,16 @@ export default {
 </script>
 ```
 
-El componente de la barra de navegación. Tiene un accesorio, autenticado. Es falso por defecto.
+El componente `Navbar` tiene una `props` llamada `authenticated` que es `false` por `default`.
 
-Antes incluso de ver la prueba, está claro que necesitamos dos pruebas para cubrir todos los casos de uso. La razón por la que esto queda claro de inmediato es que la propiedad `authenticated` es un `Boolean`, que solo tiene dos valores posibles.
+>Antes incluso de ver la prueba, está claro que necesitamos dos pruebas para cubrir todos los casos de uso. La razón por la que esto queda claro de inmediato es que la propiedad `authenticated` es un `Boolean`, que solo tiene dos valores posibles.
 
 La prueba no es especialmente interesante (¡pero la discusión que sigue sí lo es!):
 
+📃`__tests__/Navbar.spec.js`
 ```js
 import { render, screen } from '@testing-library/vue'
-import Navbar from '@/Navbar.vue'
+import Navbar from '../Navbar.vue'
 
 describe('Navbar', () => {
   it('shows logout when authenticated is true', () => {
@@ -412,13 +413,13 @@ describe('Navbar', () => {
   })
 })
 ```
-
-Probar el comportamiento de la barra de navegación para todos los valores de autenticados.
+>Prueba el comportamiento del `Navbar` para todos los valores de `authenticated`.
 
 Lo único que cambia según el valor de `authenticated` es el texto del botón. Dado que el valor `default` es `false`, no necesitamos pasarlo como `props` en la segunda prueba.
 
 Podemos refactorizar un poco con una función `renderNavbar`:
 
+📃`__tests__/Navbar.spec.js`
 ```js
 describe('Navbar', () => {
   function renderNavbar(props) {
@@ -438,16 +439,16 @@ describe('Navbar', () => {
   })
 })
 ```
-
-Pruebas más concisas.
+>Pruebas más concisas.
 
 Me gusta más esta versión de la prueba. Puede parecer un poco superficial para una prueba tan simple, pero a medida que sus componentes se vuelven más complejos, tener una función para abstraer parte de la complejidad puede hacer que sus pruebas sean más legibles.
 
-También eliminé la nueva línea entre la representación del componente y la afirmación. Por lo general, no dejo líneas nuevas en mis pruebas cuando son tan simples. Cuando se vuelven más complejos, me gusta dejar algo de espacio, creo que lo hace más legible. Este es solo mi enfoque personal. Lo importante no es tu estilo de código, sino que estás escribiendo pruebas.
+>También eliminé la nueva línea entre la representación del componente y la afirmación. Por lo general, no dejo líneas nuevas en mis pruebas cuando son tan simples. Cuando se vuelven más complejos, me gusta dejar algo de espacio, creo que lo hace más legible. Este es solo mi enfoque personal. Lo importante no es tu estilo de código, sino que estás escribiendo pruebas.
 
 Aunque técnicamente hemos cubierto todos los casos, me gustaría agregar el tercer caso:
 donde `authenticated` se establece explícitamente en `false`.
 
+📃`__tests__/Navbar.spec.js`
 ```js
 describe('Navbar', () => {
   function renderNavbar(props) {
@@ -471,11 +472,11 @@ describe('Navbar', () => {
 })
 ```
 
-Agregar una tercera prueba para ser explícito.
+>Agregar una tercera prueba para ser explícito.
 
 Esto, por supuesto, pasa. Me gusta mucho la simetría que exhiben las tres pruebas, mostrando los tres casos de una manera tan concisa.
 
-Repasemos la idea de la separación de preocupaciones; ¿Es esta una prueba de UI o una prueba de lógica de negocios? Si moviéramos el marco, ¿podríamos reutilizar esta prueba?
+Repasemos la idea de la separación de preocupaciones; ¿Es esta una prueba de UI o una prueba de lógica de negocios? Si moviéramos el framework, ¿podríamos reutilizar esta prueba?
 
 La respuesta es no: necesitaríamos escribir una nueva prueba (para trabajar con React y su integración con la biblioteca de pruebas). Esto está bien, solo significa que esta parte de nuestro código base es parte de la capa de la UI, no nuestra lógica de negocios central. Nada que extraer.
 
@@ -483,8 +484,9 @@ La respuesta es no: necesitaríamos escribir una nueva prueba (para trabajar con
 
 Podemos hacer una pequeña verificación de cordura y asegurarnos de que nuestras pruebas no estén probando detalles de implementación. Los detalles de implementación se refieren a _cómo_ funciona algo. Al realizar pruebas, no nos importan los detalles de cómo funciona algo. En cambio, nos preocupamos por lo _qué_ hace y si lo hace correctamente. Recuerde, debemos probar que obtenemos el resultado esperado en función de las entradas dadas. En este caso, queremos probar que el texto correcto se represente en función de los datos, sin preocuparnos demasiado por cómo se implementa realmente la lógica.
 
-Podemos validar esto refactorizando el componente `<Navbar>`. Mientras las pruebas continúen, podemos estar seguros de que son resistentes a los refactores y están probando comportamientos, no detalles de implementación.
+Podemos validar esto refactorizando el componente `<Navbar>`. Mientras las pruebas continúen, podemos estar seguros de que son resistentes a las refactorizaciones y están probando comportamientos, no detalles de implementación.
 
+📃`Navbar.vue`
 ```vue
 <template>
   <button>
@@ -503,11 +505,11 @@ export default {
 }
 </script>
 ```
-
-Refactorizando `Navbar`. ¡El comportamiento sigue siendo el mismo!
+>Refactorizando `Navbar`. ¡El comportamiento sigue siendo el mismo!
 
 ¡Todo todavía pasa! Nuestras pruebas están haciendo lo que se supone que deben hacer. ¿O son? ¿Qué pasa si decidimos que nos gustaría usar una etiqueta `<a>` en lugar de un `<button>`?
 
+📃`Navbar.vue`
 ```vue
 <template>
   <a>
@@ -526,13 +528,13 @@ export default {
 }
 </script>
 ```
-
-Usar una etiqueta de anclaje en lugar de un botón.
+>Usar una etiqueta de anclaje en lugar de un botón.
 
 Obviamente, en un sistema real se requeriría una propiedad `href` y cambiaría dependiendo de `authenticated`, pero eso no es en lo que nos estamos enfocando aquí. Todavía pasa. ¡Una gran noticia! Nuestras pruebas sobrevivieron a dos refactorizaciones; esto significa que estamos probando el comportamiento, no los detalles de implementación, lo cual es bueno.
 
 He aquí el mismo ejemplo con Vue Test Utils:
 
+📃`__tests__/Navbar.spec.js`
 ```js
 import { mount } from '@vue/test-utils'
 import Navbar from '@/Navbar.vue'
