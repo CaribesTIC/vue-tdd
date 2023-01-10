@@ -484,8 +484,9 @@ La respuesta es no: necesitaríamos escribir una nueva prueba (para trabajar con
 
 Podemos hacer una pequeña verificación de cordura y asegurarnos de que nuestras pruebas no estén probando detalles de implementación. Los detalles de implementación se refieren a _cómo_ funciona algo. Al realizar pruebas, no nos importan los detalles de cómo funciona algo. En cambio, nos preocupamos por lo _qué_ hace y si lo hace correctamente. Recuerde, debemos probar que obtenemos el resultado esperado en función de las entradas dadas. En este caso, queremos probar que el texto correcto se represente en función de los datos, sin preocuparnos demasiado por cómo se implementa realmente la lógica.
 
-Podemos validar esto refactorizando el componente `<Navbar>`. Mientras las pruebas continúen, podemos estar seguros de que son resistentes a los refactores y están probando comportamientos, no detalles de implementación.
+Podemos validar esto refactorizando el componente `<Navbar>`. Mientras las pruebas continúen, podemos estar seguros de que son resistentes a las refactorizaciones y están probando comportamientos, no detalles de implementación.
 
+📃`Navbar.vue`
 ```vue
 <template>
   <button>
@@ -504,11 +505,11 @@ export default {
 }
 </script>
 ```
-
-Refactorizando `Navbar`. ¡El comportamiento sigue siendo el mismo!
+>Refactorizando `Navbar`. ¡El comportamiento sigue siendo el mismo!
 
 ¡Todo todavía pasa! Nuestras pruebas están haciendo lo que se supone que deben hacer. ¿O son? ¿Qué pasa si decidimos que nos gustaría usar una etiqueta `<a>` en lugar de un `<button>`?
 
+📃`Navbar.vue`
 ```vue
 <template>
   <a>
@@ -527,13 +528,13 @@ export default {
 }
 </script>
 ```
-
-Usar una etiqueta de anclaje en lugar de un botón.
+>Usar una etiqueta de anclaje en lugar de un botón.
 
 Obviamente, en un sistema real se requeriría una propiedad `href` y cambiaría dependiendo de `authenticated`, pero eso no es en lo que nos estamos enfocando aquí. Todavía pasa. ¡Una gran noticia! Nuestras pruebas sobrevivieron a dos refactorizaciones; esto significa que estamos probando el comportamiento, no los detalles de implementación, lo cual es bueno.
 
 He aquí el mismo ejemplo con Vue Test Utils:
 
+📃`__tests__/Navbar.spec.js`
 ```js
 import { mount } from '@vue/test-utils'
 import Navbar from '@/Navbar.vue'
