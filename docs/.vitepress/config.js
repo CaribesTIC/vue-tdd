@@ -121,8 +121,7 @@ export default {
         { text: 'Enviar formularios y emitir eventos', link: '/vtl/psyc/enviar-formularios-y-emitir-eventos' },
         { text: 'Integración de Vue Test Utils y más ejemplos', link: '/vtl/psyc/itegracion-de-vue-test-utils-y-mas-ejemplos' }
       ]
-    }  
-    
+    }   
     , {
       text: 'Vue Testing Library Diseño Dirigido por Pruebas',
       path: '/vtl/ddp/',
@@ -131,10 +130,10 @@ export default {
       items: [
         { text: 'Introducción', link: '/vtl/ddp/intro' },  
         { text: 'Patrones para Probar Propiedades', link: '/vtl/ddp/patrones-para-probar-propiedades' },
-        { text: 'Emitir Eventos', link: '/vtl/ddp/emitir-eventos' }
+        { text: 'Emitir Eventos', link: '/vtl/ddp/emitir-eventos' },
+        { text: 'Formularios Comprobables', link: '/vtl/ddp/escribir-formularios-comprobables' }
       ]
-    }   
-    
+    } 
     , {
       text: 'Probando Pinia',
       path: '/pinia/',
