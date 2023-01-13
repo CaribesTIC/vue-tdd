@@ -77,7 +77,9 @@ Este será el formato al que deberán ajustarse nuestros dos validadores (y los 
 
 📃`__tests__/form.spec.js`
 ```js
-import { required } from '../form.js'
+import {
+  required
+} from '../form.js'
 
 describe('required', () => {
   it('is invalid when undefined', () => {
@@ -119,4 +121,173 @@ export function required(value) {
 
 Me gusta verificar primero el caso `null`, cuando el valor no está definido. Eso es solo una preferencia personal.
 
-## 5.4 The isBetween validator
+## El validador `isBetween`
+
+`isBetween` es un poco más interesante. Necesitamos admitir imperial y métrico; construiremos otra función encima de `isBetween` que pasará las restricciones correctas.
+
+Comencemos identificando todos los casos extremos. Si el `weight` mínimo es `66 lb` y el `weight` es `440 lb`, obviamente `65 lb` y `441 lb` no son válidos. Sin embargo, `66 lb` y `440 lb` son válidos, por lo que debemos asegurarnos de agregar pruebas para esos casos.
+
+Esto significa que necesitamos 5 pruebas:
+1. El camino "feliz", donde la entrada es válida.
+2. El valor está por encima del valor máximo.
+3. El valor está por debajo del valor mínimo.
+4. El valor es igual al valor máximo.
+5. El valor es igual al valor mínimo.
+
+Para esta función, es seguro asumir que solo se pueden pasar números como valor de entrada; esta validación es algo que manejaremos en un nivel superior.
+
+📃`__tests__/form.spec.js`
+```js
+import {
+  isBetween
+  required,  
+} from '../form.js'
+
+describe('required', () => {
+  // omitted for brevity ...
+})
+
+describe('isBetween', () => {
+  it('returns true when value is equal to min', () => {
+    expect(isBetween(5, { min: 5, max: 10 }))
+      .toEqual({ valid: true })
+  })
+
+  it('returns true when value is between min/max', () => {
+    expect(isBetween(7, { min: 5, max: 10 }))
+      .toEqual({ valid: true })
+  })
+
+  it('returns true when value is equal to max', () => {
+    expect(isBetween(10, { min: 5, max: 10 }))
+      .toEqual({ valid: true })
+  })
+
+  it('returns false when value is less than min', () => {
+    expect(isBetween(4, { min: 5, max: 10 }))
+      .toEqual({
+        valid: false,
+        message: 'Must be between 5 and 10'
+      })
+  })
+
+  it('returns false when value is greater than max', () => {
+    expect(isBetween(11, { min: 5, max: 10 }))
+      .toEqual({
+        valid: false,
+        message: 'Must be between 5 and 10'
+    })
+  })
+})
+```
+>Pruebas para el validador `isBetween`.
+
+Creo que las pruebas son lo suficientemente simples como para tener todo en una sola declaración de expectativa. Si las pruebas fueran más complejas, probablemente asignaría el resultado de `isBetween()` a una variable (me gusta llamarlo real) y lo pasaría a la afirmación esperada. Más información sobre la estructuración de pruebas más grandes y complejas más adelante.
+
+La implementación es mucho menos código que las pruebas; esto no es inusual.
+
+📃`form.js`
+```js
+export function isBetween(value, { min, max }) {
+  if (value < min || value > max) {
+    return {
+      valid: false,
+      message: `Must be between ${min} and ${max}`
+    }
+  }
+  return { valid: true }
+}
+
+export function required(value) {
+  // omitted for brevity ...
+}
+```
+>Implementación del validador `isBetween`.
+
+Nuevamente, me gusta tener la validación al comienzo de la función.
+
+## Construyendo `validateMeasurement` con `isBetween`
+
+Ahora que hemos escrito nuestro pequeño framework de validación (bueno, dos funciones), es hora de validar el `weight` del paciente. Construiremos una función de `validateMeasurement` utilizando `isBetween` y `required`.
+
+Dado que admitimos el sistema métrico e imperial, pasaremos las restricciones como argumento. El manejo de cuál se selecciona se hará más adelante, en la capa de la UI.
+
+Hay tres escenarios a considerar:
+
+1. El camino feliz cuando el valor es válido.
+2. El valor es nulo/indefinido.
+3. El valor está definido, pero fuera de las restricciones.
+
+No siento la necesidad de agregar pruebas para todos los casos como hicimos con `isBetween`, ya que ya lo probamos a fondo.
+
+📃`__tests__/form.spec.js`
+```js
+import {
+  isBetween,
+  required,
+  validateMeasurement
+} from '../form.js'
+
+describe('required', () => {
+ // omitted for brevity ...
+})
+
+describe('isBetween', () => {
+  // omitted for brevity ...
+})
+
+describe('validateMeasurement', () => {
+  it('returns invalid for input', () => {
+    const constraints = { min: 10, max: 30 }
+    const actual = validateMeasurement(undefined, { constraints })
+
+    expect(actual).toEqual({ valid: false, message: 'Required' })
+  })
+
+  it('returns invalid when outside range', () => {
+    const constraints = { min: 10, max: 30 }
+    const actual = validateMeasurement(40, { constraints })
+
+    expect(actual).toEqual({
+      valid: false,
+      message: 'Must be between 10 and 30'
+    })
+  })
+})
+```
+>Pruebas para el validador `validateMeasurement`.
+
+Dado que la prueba es un poco más compleja, decidí asignar el resultado a `actual` y afirmar contra eso. Creo que esto lo deja más claro.
+
+No necesitamos usar las restricciones específicas para libras y kilogramos descritas en la tabla anterior. Mientras las pruebas pasen con las restricciones que pasamos aquí, podemos estar seguros de que `validateMeasurement` funcionará correctamente para cualquier conjunto dado de restricciones `min`/`max`.
+
+También dejé una línea en blanco entre el cuerpo de la prueba y la afirmación. Esta es una preferencia personal, vagamente inspirada en las tres fases de una prueba: **_arreglar_**, **_actuar_** y **_afirmar_**. Hablaremos de eso más tarde.
+
+No tienes que escribir tus pruebas de esta manera. Encuentro útil pensar en términos de _"hacer cosas"_ (por ejemplo, crear algunas variables, llamar a algunas funciones) y afirmar (donde decimos _"dado este escenario, esto debería suceder"_).
+
+Dejando a un lado la filosofía personal: la implementación, nuevamente, es mucho más corta que el código de prueba. ¿Notas un patrón? Es común que el código de prueba sea más largo que la implementación. Puede parecer un poco extraño al principio, pero no es un problema y se espera para una lógica compleja.
+
+📃`form.js`
+```js
+export function isBetween(value, { min, max }) {
+  // omitted for brevity ...
+}
+
+export function required(value) {
+  // omitted for brevity ...
+}
+
+export function validateMeasurement(value, { constraints }) {
+  const result = required(value)
+  if (!result.valid) {
+    return result
+  }
+
+  return isBetween(value, constraints)
+}
+```
+>Componiendo `validateMeasurement` con `required` y `isBetween`.
+
+¡Bonito! Pudimos reutilizar `required` e `isBetween`. _“Compusimos”_ un validador usando dos pequeños. La reutilización es buena. La componibilidad es buena.
+
+## 5.6 The Form Object and Full Form Validation
