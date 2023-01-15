@@ -288,6 +288,263 @@ export function validateMeasurement(value, { constraints }) {
 ```
 >Componiendo `validateMeasurement` con `required` y `isBetween`.
 
-¡Bonito! Pudimos reutilizar `required` e `isBetween`. _“Compusimos”_ un validador usando dos pequeños. La reutilización es buena. La componibilidad es buena.
+Genial! Pudimos reutilizar `required` e `isBetween`. _“Compusimos”_ un validador usando dos pequeños. La reutilización es buena. La componibilidad es buena.
 
-## 5.6 The Form Object and Full Form Validation
+## El Objeto la Validación del Formulario Completo
+
+Hemos completado todas las validaciones para cada campo. Pensemos ahora en la estructura del formulario.
+
+Tenemos dos campos: `name` y `weight`.
+
+1. `name` es una cadena.
+2. `weight` es un número con unidades asociadas.
+
+Estas son las _entradas_. Debe tener esta forma:
+
+```ts
+// definition
+interface PatientFormState {
+  name: string
+  weight: {
+    value: number
+    units: 'kg' | 'lb'
+  }
+}
+
+// usage
+const patientForm: PatientFormState = {
+  name: 'John',
+  weight: {
+    value: 445,
+    units: 'lb'
+  }
+}
+```
+
+Objeto que describe al(a) paciente.
+
+Dada una entrada (un `patientForm`), podemos validar cada campo. Los campos cuando se validan son `{ valid: true }` o `{ valid: false, message: '...' }`. Entonces, el formulario la interfaces de y validación podrían verse así:
+
+
+```ts
+interface ValidationResult {
+  valid: boolean
+  messsage?: string
+}
+
+interface PatientFormValidity {
+  name: ValidationResult
+  weight: ValidationResult
+}
+
+const patientForm: PatientFormState = {
+  name: 'John',
+  weight: {
+    value: 445,
+    units: 'lb'
+  }
+}
+
+const validState = validateForm(patientForm)
+// Return value should be:
+// {
+//   name: { valid: true }
+//   weight: {
+//     valid: false,
+//     message: 'Must be between 66 and 440'
+//   }
+// }
+```
+>Ejemplo de uso de la función `validateForm` que escribiremos.
+
+Necesitaremos dos funciones:
+
+1. `isFormValid`, para decirnos si el formulario es válido o no.
+2. `patientForm`, que se encarga de averiguar las unidades de peso correctas y llamar a todos los validadores
+
+Comencemos con las pruebas para `isFormValid`. El formulario se considera válido cuando todos los campos son válidos, por lo que solo necesitamos dos pruebas: el caso en que todos los campos son válidos y el caso en que al menos un campo no lo es:
+
+📃`__tests__/form.spec.js`
+```js
+import {
+  isBetween,
+  isFormValid,
+  required,
+  validateMeasurement  
+} from '../form.js'
+
+describe('required', () => {
+  // omitted for brevity ...
+})
+
+describe('isBetween', () => {
+  // omitted for brevity ...
+})
+
+describe('validateMeasurement', () => {
+  // omitted for brevity ...
+})
+
+describe('isFormValid', () => {
+  it('returns true when name and weight field are valid', () => {
+    const form = {
+      name: { valid: true },
+      weight: { valid: true }
+    }
+
+    expect(isFormValid(form)).toBe(true)
+  })
+
+  it('returns false when any field is invalid', () => {
+    const form = {
+      name: { valid: false },
+      weight: { valid: true }
+    }
+
+    expect(isFormValid(form)).toBe(false)
+  })
+})
+```
+>Probando `isFormValid`.
+
+La implementación es simple:
+
+📃`form.js`
+```js{5,6,7}
+export function isBetween(value, { min, max }) {
+  // omitted for brevity ...
+}
+
+export function isFormValid(form) {
+  return form.name.valid && form.weight.valid
+}
+
+export function required(value) {
+  // omitted for brevity ...
+}
+
+export function validateMeasurement(value, { constraints }) {
+  // omitted for brevity ...
+}
+```
+>Implementación `isFormValid`.
+
+Podría volverse elegante e iterar sobre el formulario usando `Object.keys` u `Object.entries` si estuviera creando una biblioteca de validación de formularios más genérica. Esta sería una solución más general. En este caso, lo estoy manteniendo lo más simple posible.
+
+La última prueba que necesitamos para completar la lógica de negocios es el `patientForm`. Esta función toma un objeto con la interfaz `PatientFormState` que definimos anteriormente. Devuelve el resultado de la validación de cada campo.
+
+Querremos tener bastantes pruebas aquí, para asegurarnos de que no nos perdemos nada. Los casos que se me ocurren son:
+
+1. Camino feliz: todas las entradas son válidas
+2. El nombre del paciente es nulo
+3. El peso del paciente está fuera de las restricciones (imperial)
+4. El peso del paciente está fuera de las restricciones (métrica)
+
+📃`__tests__/form.spec.js`
+```js
+import {
+  isBetween,
+  isFormValid,
+  patientForm,
+  required,
+  validateMeasurement  
+} from '../form.js'
+
+describe('required', () => {
+  // omitted for brevity ...
+})
+
+describe('isBetween', () => {
+  // omitted for brevity ...
+})
+
+describe('validateMeasurement', () => {
+  // omitted for brevity ...
+})
+
+describe('isFormValid', () => {
+  // omitted for brevity ...
+})
+
+describe('patientForm', () => {
+  const validPatient = {
+    name: 'test patient',
+    weight: { value: 100, units: 'kg' }
+  }
+
+  it('is valid when form is filled out correctly', () => {
+    const form = patientForm(validPatient)
+    expect(form.name).toEqual({ valid: true })
+    expect(form.weight).toEqual({ valid: true })
+  })
+
+  it('is invalid when name is null', () => {
+    const form = patientForm({ ...validPatient, name: '' })
+    expect(form.name).toEqual({ valid: false, message: 'Required' })
+  })
+
+  it('validates weight in imperial', () => {
+    const form = patientForm({
+      ...validPatient,
+      weight: {
+        value: 65,
+        units: 'lb'
+      }
+    })
+
+    expect(form.weight).toEqual({
+      valid: false,
+      message: 'Must be between 66 and 440'
+    })
+  })
+
+  it('validates weight in metric', () => {
+    const form = patientForm({
+      ...validPatient,
+      weight: {
+        value: 29,
+        units: 'kg'
+      }
+    })
+
+    expect(form.weight).toEqual({
+      valid: false,
+      message: 'Must be between 30 and 200'
+    })
+  })
+})
+```
+>Probando `patientForm`.
+
+¡El código de prueba es bastante largo! Sin embargo, la implementación es trivial. En este ejemplo, solo estoy codificando las restricciones de `weight` en un objeto llamado `limits`. En un sistema del mundo real, probablemente los obtendría de una API y los pasaría a la función de `patientForm`.
+
+📃`form.js`
+```js
+// omitted for brevity ...
+
+const limits = {
+  kg: { min: 30, max: 200 },
+  lb: { min: 66, max: 440 },
+}
+
+export function patientForm(patient) {
+  const name = required(patient.name)
+
+  const weight = validateMeasurement(patient.weight.value, {
+    nullable: false,
+    constraints: limits[patient.weight.units]
+  })
+
+  return {
+    name,
+    weight
+  }
+}
+
+// omitted for brevity ...
+```
+>Implementando el `patientForm`.
+
+Esto completa la lógica de negocio para el formulario del paciente. ¿Notó que aún no hemos escrito los componentes de Vue? Eso es porque nos estamos adhiriendo a uno de nuestros objetivos; separación de preocupaciones y el aislamiento total de la lógica de negocio.
+
+## 5.7 Writing the UI Layer
