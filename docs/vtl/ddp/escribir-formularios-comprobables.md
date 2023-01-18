@@ -547,4 +547,262 @@ export function patientForm(patient) {
 
 Esto completa la lógica de negocio para el formulario del paciente. ¿Notó que aún no hemos escrito los componentes de Vue? Eso es porque nos estamos adhiriendo a uno de nuestros objetivos; separación de preocupaciones y el aislamiento total de la lógica de negocio.
 
-## 5.7 Writing the UI Layer
+## Escribir la capa de UI
+
+Ahora la parte divertida: escribir la capa de la interfaz de usuario con Vue. Aunque creo que TDD es ideal para la lógica de negocio, generalmente no uso TDD para mis pruebas de componentes.
+
+Me gusta comenzar pensando en cómo administraré el estado de mi componente. Usemos la Composition API; Creo que funciona muy bien para los formularios.
+
+📃`FormValidation.spec.js.js`
+```vue
+<script>
+import { reactive, computed, ref } from 'vue'
+import { patientForm, isFormValid } from '@/utils/form.js'
+export default {
+  emits: ['submit'],
+  setup(props, { emit }) {
+    const form = reactive({
+      name: '',
+      weight: {
+        value: '',
+        units: 'kg'
+      }
+    })
+    const validatedForm = computed(() => {
+      return patientForm(form)
+    })
+    const submit = () => {
+      emit('submit', { patient: form })
+    }
+    const valid = computed(() => isFormValid(validatedForm.value))
+    return {
+      form,
+      validatedForm,
+      submit,
+      valid,
+    }
+  }
+}
+</script>
+```
+>Integrando la lógica de negocios del formulario y la capa de UI de Vue.
+
+Decidí mantener el estado en un objeto `reactive`. Tanto el estado `valid` como el `validateForm` son valores `computed`: queremos que la validación y el estado del formulario se actualicen de forma reactiva cuando cambie cualquier valor en el formulario.
+
+Agreguemos la parte `<template>` ahora: es muy simple, solo un buen HTML antiguo.
+
+📃`FormValidation.spec.js.js`
+```vue
+<template>
+  <div class="form-wrapper">
+    <h3>Patient Data</h3>
+    <form @submit.prevent="submit">
+      <div class="field">
+        <div v-if="!validatedForm.name.valid" class="error" role="error">
+          {{ validatedForm.name.message }}
+        </div>
+        <label for="name">Name</label>
+        <input id="name" name="name" role="name" v-model="form.name" />
+      </div>
+      <div class="field">
+        <div v-if="!validatedForm.weight.valid" class="error" role="error">
+          {{ validatedForm.weight.message }}
+        </div>
+        <label for="weight">Weight</label>
+        <input id="weight" role="weight" name="weight" type="number" v-model.number="form.weight.value" />
+        <select id="weight-units" role="weight-units" v-model="form.weight.units">
+          <option value="kg">kg</option>
+          <option value="lb">lb</option>
+        </select>
+      </div>
+      <div class="field">
+        <button role="submit" :disabled="!valid">Submit</button>
+      </div>
+    </form>
+    <div>
+<pre>
+Patient Data
+{{ form }}
+</pre>
+
+<pre>
+Form State
+{{ validatedForm }}
+</pre>
+    </div>
+  </div>
+</template>
+```
+>Un _template_ simple con enlaces v-model de formulario.
+
+Agrego el bloque `<pre>` para algunas depuraciones.
+
+📃`FormValidation.spec.js.js`
+```vue
+<style>
+.field > label {
+  display: inline-block;
+  width: 50px;
+  margin: 0 0 20px 0;
+}
+.field > input {
+  display: inline-block;
+  margin: 2px;
+}
+.error {
+  color: red;
+}
+pre {
+  display: flex;
+  justify-content: flex-start;
+}
+.form-wrapper {
+}
+</style>
+```
+>Un poco de estilo
+
+¡Todo funciona!
+
+![the-patient-form](./img/the-patient-form-3.png)
+
+>Información de depuración de validación
+
+## Algunas Pruebas Básicas de IU
+
+También podemos agregar algunas pruebas de UI básicas usando Testing Library. Aquí hay dos bastante simples que cubren la mayor parte de la funcionalidad:
+
+📃`__tests__/FormValidation.spec.js.js`
+```js
+import { render, screen, fireEvent } from '@testing-library/vue'
+import FormValidation from '@/components/FormValidation.vue'
+
+describe('FormValidation', () => {
+  it('fills out form correctly', async () => {
+    render(FormValidation)
+
+    await fireEvent.update(screen.getByLabelText('Name'), 'lachlan') 
+    await fireEvent.update(screen.getByDisplayValue('kg'), 'lb')
+    await fireEvent.update(screen.getByLabelText('Weight'), '150')
+
+    expect(screen.queryByRole('error')).toBe(null)
+  })
+
+  it('shows errors for invalid inputs', async () => {
+    render(FormValidation)
+
+    await fireEvent.update(screen.getByLabelText('Name'), '')
+    await fireEvent.update(screen.getByLabelText('Weight'), '5')
+    await fireEvent.update(screen.getByDisplayValue('kg'), 'lb')
+
+    expect(screen.getAllByRole('error')).toHaveLength(2)
+  })
+
+  it('emits a submit event with patientForm when valid form submitted', async () => {
+    const { emitted } = render(FormValidation)
+
+    await fireEvent.update(screen.getByLabelText('Name'), 'lachlan')
+    await fireEvent.update(screen.getByLabelText('Weight'), '150')
+    await fireEvent.update(screen.getByDisplayValue('kg'), 'lb')
+    await fireEvent.click(screen.getByText('Submit'))
+
+    expect(emitted().submit[0]).toEqual([
+      {
+        patient: {
+          name: 'lachlan',
+          weight: {
+            value: 150,
+            units: 'lb'
+          }
+        }
+      }
+    ])
+  })
+})
+```
+
+Dado que estas pruebas son un poco más grandes, dejo clara la separación entre cada paso. Me gusta escribir mis pruebas así:
+
+```js
+it('...', async () => {
+  // Arrange - this is where we set everything up
+  render(FormValidation)
+
+  // Act - do things!
+  // Call functions
+  // Assign values
+  // Simulate interactions
+  await fireEvent.update(screen.getByLabelText('Name'), 'lachlan')
+
+  // Assert
+  expect(...).toEqual(...)
+})
+```
+>Anatomía de una prueba: arreglar, actuar, afirmar.
+
+Usando Test Utils
+
+📃`__tests__/FormValidation.spec.js.js`
+```js
+import { mount } from '@vue/test-utils'
+import FormValidation from '@/components/FormValidation.vue'
+
+describe('FormValidation', () => {
+  it('fills out form correctly', async () => {
+    const wrapper = mount(FormValidation)
+
+    await wrapper.find('[role="name"]').setValue('lachlan')
+    await wrapper.find('[role="weight-units"]').setValue('lb')
+    await wrapper.find('[role="weight"]').setValue('150')
+
+    expect(wrapper.findAll('[role="error"]')).toHaveLength(0)
+  })
+
+  it('shows errors for invalid inputs', async () => {
+    const wrapper = mount(FormValidation)
+
+    await wrapper.find('[role="name"]').setValue('')
+    await wrapper.find('[role="weight-units"]').setValue('lb')
+    await wrapper.find('[role="weight"]').setValue('50')
+
+    expect(wrapper.findAll('[role="error"]')).toHaveLength(2)
+  })
+
+  it('emits a submit event with patientForm when valid form submitted', async () => {
+    const wrapper = mount(FormValidation)
+
+    await wrapper.find('[role="name"]').setValue('lachlan')
+    await wrapper.find('[role="weight-units"]').setValue('kg')
+    await wrapper.find('[role="weight"]').setValue('100')
+    await wrapper.find('[role="submit"]').trigger('submit.prevent')
+
+    expect(wrapper.emitted('submit')[0]).toEqual([
+      {
+        patient: {
+          name: 'lachlan',
+          weight: {
+            value: 100,
+            units: 'kg'
+          }
+        }
+      }
+    ])
+  })
+})
+```
+No tenemos ninguna prueba para asegurarnos de que el `<button>` esté deshabilitado correctamente; consulta más abajo para obtener más información.
+
+## Mejoras y Conclusión
+
+El objetivo aquí no era crear el formulario _perfecto_, sino ilustrar cómo separar la validación de su formulario y la lógica de negocio de la capa de la UI.
+
+Tal como está, puede ingresar cualquier cadena en el campo de peso y se considerará válida, no ideal, pero también trivial de corregir. Un buen ejercicio sería escribir algunas pruebas para asegurarse de que la entrada sea un número y, de no ser así, devolver un mensaje de error útil. Tampoco tenemos ninguna prueba para garantizar que el `<button>` esté deshabilitado correctamente.
+
+## Ejercicios
+
+- Agregue una prueba para asegurarse de que cualquier valor no numérico ingresado en el campo de `weight` haga que el campo deje de ser válido y muestre el error _"Weight must be a number"_.
+- Agregue un oyente `@submit.prevent` a `<form>`. Cuando se envíe el formulario, emita un evento con el `patientForm`.
+- Envíe el formulario mediante Testing Library y confirme que se emiten el evento y la carga útil correctos.
+
+Puede encontrar el código fuente completo (incluidos los ejercicios) en el [repositorio de GitHub en examples/form-validation](https://github.com/lmiller1990/design-patterns-for-vuejs-source-code).
+.
