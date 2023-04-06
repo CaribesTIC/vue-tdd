@@ -14,8 +14,8 @@ hero:
       text: Comenzar
       link: /comenzar/tdd
     - theme: alt
-      text: GitHub
-      link: https://github.com/CaribesTIC/vue-tdd
+      text: CaribesTIC
+      link: https://caribestic.github.io/
 
 features:
   - title: Vue(tdd)
