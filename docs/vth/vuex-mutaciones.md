@@ -45,7 +45,7 @@ describe("SET_POST", () => {
 ```
 Ejecutar esta prueba genera el siguiente mensaje de error:
 
-```
+```sh
 FAIL  tests/unit/mutations.spec.js
 ● SET_POST › adds a post to the state
 
@@ -70,7 +70,7 @@ export default {
 
 Ahora la prueba produce:
 
-```
+```sh
 Expected value to equal:
   {"postIds": [1], "posts": {"1": {"id": 1, "title": "Post"}}}
 Received:
