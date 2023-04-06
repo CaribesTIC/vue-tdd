@@ -9,9 +9,8 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Inicio', link: '/' },
-      { text: 'Guía', link: '/comenzar/tdd' },
-      { text: 'CaribesTIC', link: 'https://caribestic.github.io/' },
-      { text: 'GitHub', link: 'https://github.com/CaribesTIC/vue-tdd' }
+      { text: 'Comenzar', link: '/comenzar/tdd' },
+      { text: 'CaribesTIC', link: 'https://caribestic.github.io/' },      
     ],
     sidebar: [{
       text: 'Comenzar',   // required
