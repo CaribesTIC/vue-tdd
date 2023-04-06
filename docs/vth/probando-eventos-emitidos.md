@@ -53,7 +53,7 @@ Agrega una prueba llamada emitUsando la API [`emitted`](https://test-utils.vuejs
 
 Ejecute la prueba:
 
-```
+```sh
 PASS  tests/unit/Emitter.spec.js
 ● Console
 
@@ -84,7 +84,7 @@ it("emits an event with two arguments", () => {
 
 Ejecute la prueba:
 
-```
+```sh
 console.log tests/unit/Emitter.spec.js:11
   [ [ 'name', 'password' ], [ 'name', 'password' ] ]
 ```

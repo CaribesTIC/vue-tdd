@@ -48,7 +48,7 @@ Según el entorno local, se representa la traducción correcta. Intentemos rende
 
 Ejecutar esta prueba arroja un enorme rastro de pila. Si observa cuidadosamente la salida, puede ver:
 
-```
+```sh
 "TypeError: _ctx.$t is not a function"
 ```
 
@@ -115,7 +115,7 @@ describe("Bilingual", () => {
 
 La prueba pasa y se renderiza el siguiente marcado:
 
-```
+```html
 <div class="hello">
   Hello world!
 </div>

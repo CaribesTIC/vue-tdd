@@ -3,7 +3,7 @@
 Vuex es solo un detalle de implementación; no se requiere ningún tratamiento especial para probar componentes usando Vuex. Dicho esto, existen algunas técnicas que pueden hacer que sus pruebas sean más fáciles de leer y escribir. Los veremos aquí.
 
 Esta guía asume que está familiarizado con Vuex. Vuex 4 es la versión que funciona con Vue.js 3. Lea los documentos [aquí](https://vuex.vuejs.org/). Recuerde haberlo instalado para probar algunos ejemplos relacionados:
-```
+```sh
 npm i vuex@next --save
 ```
 ## Un Ejemplo Simple
