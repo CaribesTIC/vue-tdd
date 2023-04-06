@@ -46,7 +46,7 @@ describe('SubmitButton.vue', () => {
 ```
 Al ejecute las pruebas, el resultado será:
 
-```
+```sh
 PASS  tests/unit/SubmitButton.spec.js
   SubmitButton.vue
     ✓ displays a non authorized message (15ms)
@@ -93,7 +93,7 @@ describe('SubmitButton.vue', () => {
 ```
 Ejecute la prueba y verifique los resultados:
 
-```
+```sh
 PASS  tests/unit/SubmitButton.spec.js
   SubmitButton.vue
     ✓ displays a admin privileges message (4ms)
@@ -163,7 +163,7 @@ describe("SubmitButton", () => {
 ```
 Hagamos las pruebas de nuevo. Todo sigue pasando.
 
-```
+```sh
 PASS  tests/unit/SubmitButton.spec.js
  SubmitButton
    has admin privileges

@@ -1,9 +1,12 @@
-export default {
+import { defineConfig } from 'vitepress'
+
+// https://vitepress.dev/reference/site-config
+export default defineConfig({
   title: 'Vue(tdd)',
   description: 'TDD con Vue 3.',
-  base: '/vue-tdd/', //  The default path during deployment / secondary address / base can be used/
+  base: '/vue-tdd/',
   themeConfig: {
-    logo: '/logo.png',
+    // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Inicio', link: '/' },
       { text: 'Guía', link: '/comenzar/tdd' },
@@ -204,8 +207,9 @@ export default {
         { text: 'Componentes con Eventos Emitidos', link: '/cypress-vtc/componentes-con-eventos-emitidos' },
         { text: 'Componentes con Slots', link: '/cypress-vtc/componentes-con-slots' }        
       ]
-    }]
+    }],
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/CaribesTIC/vue-tdd' }
+    ]
   }
-}
-
-
+})

@@ -86,7 +86,7 @@ Comencemos escribiendo una prueba para una función hipotética que suma dos nú
 >Dentro de la carpeta raiz del proyecto, creemos la carpeta `tests`. Aquí colocaremos todos nuestros archivos de pruebas.
 
 Nuestra estructura de carpetas debería lucir de la siguiente manera:
-```
+```sh
 vue-tdd/
 ├── node_modules/
 ├── public/

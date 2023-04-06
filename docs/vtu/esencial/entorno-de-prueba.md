@@ -3,7 +3,7 @@
 ## Instalar Vue Tests Utils
 
 Una vez creado el proyecto con [Vite](../../vitest/entorno-de-prueba.html#crear-proyecto-con-vite) y haber instalado [Vitest](../../vitest/entorno-de-prueba.html#instalar-vitest) hay que ejecutar la siguiente línea de comando para así instalar [Vue Tests Utils](https://test-utils.vuejs.org/installation/) 
-```
+```sh
 npm i -D @vue/test-utils@next
 ```
 Así de fácil, ahora, Escribamos la primera prueba a un componente Vue.
@@ -74,7 +74,7 @@ describe('Greeting.vue', () => {
 
 Ejecute la prueba escribiendo `npm run test` en su terminal. Cualquier archivo en el directorio de pruebas que termine con `.spec.js` o `.test.js` se ejecuta automáticamente. Si todo ha ido bien, deberías ver:
 
-```
+```sh
 <div>Vue and TDD</div>
 
  √ tests/unit/Greeting.spec.js (1)
@@ -114,7 +114,7 @@ describe('Greeting.vue', () => {
 ```
 Ya no necesitamos el ningún `console.log`, por lo que puede eliminarlo. Ejecute las pruebas con `npm run test`, y si todo salió bien, debería obtener:
 
-```
+```sh
  √ tests/unit/Greeting.spec.js (1)
 
 Test Files  1 passed (1)
@@ -144,7 +144,7 @@ export default {
 ```
 Y ahora ejecuta la prueba con `npm run test`:
 
-```
+```sh
 FAIL  tests/unit/Greeting.spec.js > Greeting.vue > renders a greeting
 AssertionError: expected 'Vue without TDD' to include 'Vue and TDD'
  ❯ tests/test.test.js:9:28

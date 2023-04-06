@@ -97,7 +97,7 @@ describe('ParentWithAPICallChild.vue', () => {
 
 Ejecución de prueba:
 
-```
+```sh
 PASS  tests/unit/ParentWithAPICallChild.spec.js
 
 console.log src/components/ComponentWithAsyncCall.vue:17

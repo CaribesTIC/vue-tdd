@@ -148,7 +148,7 @@ Estamos usando `v-model` para vincular a `<input>` y `@submit` para escuchar el 
 
 Si bien esto se ve bien, la ejecución de la prueba muestra un error:
 
-```
+```sh
 expect(received).toHaveLength(expected)
 
     Expected length: 2

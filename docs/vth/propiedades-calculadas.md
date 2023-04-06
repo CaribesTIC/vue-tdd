@@ -56,7 +56,7 @@ export default {
 ```
 Ahora comenzamos el desarrollo y dejamos que los mensajes de error guíen nuestra implementación:
 
-```
+```sh
 ● NumberRenderer › renders even numbers
 
   expect(received).toBe(expected) // Object.is equality
@@ -95,7 +95,7 @@ Y actualice la plantilla para usar la nueva propiedad calculada:
 
 La prueba ahora produce:
 
-```
+```sh
 FAIL  tests/unit/NumberRenderer.spec.js
 ● NumberRenderer › renders even numbers
 
@@ -136,7 +136,7 @@ En lugar de renderizar el componente y hacer una afirmación en `wrapper.text()`
 
 Ejecutar la prueba actual produce:
 
-```
+```sh
 FAIL  tests/unit/NumberRenderer.spec.js
 ● NumberRenderer › renders odd numbers
 
@@ -177,7 +177,7 @@ it("renders odd numbers", () => {
 
 La prueba ahora falla:
 
-```
+```sh
 FAIL  tests/unit/NumberRenderer.spec.js
 ● NumberRenderer › renders odd numbers
 
@@ -189,7 +189,7 @@ FAIL  tests/unit/NumberRenderer.spec.js
 
 vue vincula automáticamente las `props` a `this`. Sin embargo, no estamos renderizando el componente con `mount`, por lo que Vue no vincula nada a `this`. Si haces `console.log(this)`, puedes ver que el contexto es simplemente el objeto `computed`:
 
-```
+```sh
 { numbers: [Function: numbers] }
 ```
 

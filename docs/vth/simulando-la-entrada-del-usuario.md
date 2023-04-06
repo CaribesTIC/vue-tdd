@@ -216,7 +216,7 @@ Ahora, en lugar de usar cualquier biblioteca http real adjunta a `Vue.prototype.
 
 Ejecutdo así en realidad producirá una prueba fallida:
 
-```
+```sh
 FAIL  tests/unit/FormSubmitter.spec.js
   ● FormSubmitter › reveals a notification when submitted
 

@@ -1,10 +1,11 @@
 ---
+# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 hero:
-  name: Vue(tdd)
-  text: TDD con Vue3
-  tagline: Vitest + VTU + VTL + Cypress
+  name: "Vue(tdd)"
+  text: "TDD con Vue3"
+  tagline: "Vitest + VTU + VTL + Cypress"
   image:
     src: /logo.png
     alt: VitePress
