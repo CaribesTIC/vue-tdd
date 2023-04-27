@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,O as o}from"./chunks/framework.8d330141.js";const A=JSON.parse('{"title":"Vuex Mutaciones","description":"","frontmatter":{},"headers":[],"relativePath":"vth/vuex-mutaciones.md"}'),l={name:"vth/vuex-mutaciones.md"},p=o("",24),e=[p];function t(c,r,D,y,F,i){return n(),a("div",null,e)}const u=s(l,[["render",t]]);export{A as __pageData,u as default};

@@ -1,0 +1,1 @@
+import{_ as e,c as a,o,O as s}from"./chunks/framework.8d330141.js";const f=JSON.parse('{"title":"Diseño Dirigido por Pruebas","description":"","frontmatter":{},"headers":[],"relativePath":"vtl/ddp/intro.md"}'),r={name:"vtl/ddp/intro.md"},n=s("",16),i=[n];function d(c,t,l,u,p,m){return o(),a("div",null,i)}const q=e(r,[["render",d]]);export{f as __pageData,q as default};

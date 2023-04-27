@@ -1,1 +1,0 @@
-import{_ as e,c as a,o as r,N as o}from"./chunks/framework.6a8e5212.js";const h=JSON.parse('{"title":"¿Por Qué Vitest?","description":"","frontmatter":{},"headers":[],"relativePath":"vitest/porque-vitest.md"}'),t={name:"vitest/porque-vitest.md"},s=o("",11),i=[s];function n(d,c,l,u,p,m){return r(),a("div",null,i)}const f=e(t,[["render",n]]);export{h as __pageData,f as default};

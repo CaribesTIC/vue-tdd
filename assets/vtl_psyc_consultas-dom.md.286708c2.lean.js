@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as n,N as o}from"./chunks/framework.6a8e5212.js";const C=JSON.parse('{"title":"Consultas DOM","description":"","frontmatter":{},"headers":[],"relativePath":"vtl/psyc/consultas-dom.md"}'),l={name:"vtl/psyc/consultas-dom.md"},p=o("",19),e=[p];function t(r,c,y,F,D,i){return n(),a("div",null,e)}const d=s(l,[["render",t]]);export{C as __pageData,d as default};

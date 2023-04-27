@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as n,N as e}from"./chunks/framework.6a8e5212.js";const d=JSON.parse('{"title":"¿Qué es Vue Test Utils?","description":"","frontmatter":{},"headers":[],"relativePath":"vtu/esencial/intro.md"}'),o={name:"vtu/esencial/intro.md"},l=e("",13),p=[l];function t(r,c,i,y,F,D){return n(),a("div",null,p)}const m=s(o,[["render",t]]);export{d as __pageData,m as default};

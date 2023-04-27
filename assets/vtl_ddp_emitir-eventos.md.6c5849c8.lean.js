@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as n,N as l}from"./chunks/framework.6a8e5212.js";const A=JSON.parse('{"title":"Emitir Eventos","description":"","frontmatter":{},"headers":[],"relativePath":"vtl/ddp/emitir-eventos.md"}'),o={name:"vtl/ddp/emitir-eventos.md"},p=l("",84),e=[p];function t(c,r,F,y,D,i){return n(),a("div",null,e)}const u=s(o,[["render",t]]);export{A as __pageData,u as default};

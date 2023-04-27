@@ -1,1 +1,0 @@
-import{_ as e,c as a,o,N as r}from"./chunks/framework.6a8e5212.js";const g=JSON.parse('{"title":"Desarrollo Dirigido por Pruebas","description":"","frontmatter":{},"headers":[],"relativePath":"comenzar/tdd.md"}'),s={name:"comenzar/tdd.md"},i=r("",17),n=[i];function t(l,d,c,u,p,m){return o(),a("div",null,n)}const h=e(s,[["render",t]]);export{g as __pageData,h as default};

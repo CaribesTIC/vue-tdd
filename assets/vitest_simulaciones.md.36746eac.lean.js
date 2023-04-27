@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,N as l}from"./chunks/framework.6a8e5212.js";const C=JSON.parse('{"title":"Simulaciones","description":"","frontmatter":{},"headers":[],"relativePath":"vitest/simulaciones.md"}'),o={name:"vitest/simulaciones.md"},p=l("",46),e=[p];function t(c,r,F,y,D,A){return a(),n("div",null,e)}const d=s(o,[["render",t]]);export{C as __pageData,d as default};

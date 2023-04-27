@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as n,N as l}from"./chunks/framework.6a8e5212.js";const C=JSON.parse('{"title":"Probando Pinia","description":"","frontmatter":{},"headers":[],"relativePath":"pinia/probando-pinia.md"}'),o={name:"pinia/probando-pinia.md"},p=l("",42),e=[p];function t(c,r,i,y,D,F){return n(),a("div",null,e)}const d=s(o,[["render",t]]);export{C as __pageData,d as default};

@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,O as o}from"./chunks/framework.8d330141.js";const A=JSON.parse('{"title":"Filosofía","description":"","frontmatter":{},"headers":[],"relativePath":"vtl/psyc/filosofia.md"}'),l={name:"vtl/psyc/filosofia.md"},e=o("",19),p=[e];function t(r,c,y,F,i,D){return n(),a("div",null,p)}const d=s(l,[["render",t]]);export{A as __pageData,d as default};
